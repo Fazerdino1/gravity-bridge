@@ -54,13 +54,29 @@ function listFiles(dir) {
   return out.sort();
 }
 
-function sourceCommit(sourceRoot) {
+function git(sourceRoot, args) {
   try {
     // Runs git on the clone to read metadata only; no source file is executed.
-    return execFileSync('git', ['-C', sourceRoot, 'rev-parse', 'HEAD'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+    return execFileSync('git', ['-C', sourceRoot, ...args], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
   } catch {
     return null;
   }
+}
+
+/** True when `sourceRoot` is the top level of its own git repository. */
+function isGitRoot(sourceRoot) {
+  const top = git(sourceRoot, ['rev-parse', '--show-toplevel']);
+  return top !== null && resolve(top) === resolve(sourceRoot);
+}
+
+function sourceCommit(sourceRoot) {
+  return isGitRoot(sourceRoot) ? git(sourceRoot, ['rev-parse', 'HEAD']) : null;
+}
+
+/** Author of the commit that first added the file (following renames). */
+function firstAuthor(sourceRoot, sourcePath) {
+  const log = git(sourceRoot, ['log', '--follow', '--format=%an', '--', sourcePath]);
+  return log ? log.split('\n').pop() : null;
 }
 
 function withoutTimestamp(data) {
@@ -106,6 +122,7 @@ export function convert(options) {
   }
 
   const written = new Set();
+  const useGitAuthor = isGitRoot(sourceRoot);
   for (const type of types) {
     for (const item of discover(sourceRoot, type)) {
       if (only && !only.has(item.name)) continue;
@@ -134,7 +151,9 @@ export function convert(options) {
 
       if (written.has(mapped.target)) { skip(`target collision: ${mapped.target} already produced in this run`); continue; }
 
-      const author = typeof parsed.data.author === 'string' ? parsed.data.author : undefined;
+      const author = typeof parsed.data.author === 'string'
+        ? parsed.data.author
+        : (useGitAuthor ? firstAuthor(sourceRoot, sourcePath) ?? undefined : undefined);
       const frontmatter = {
         ...mapped.frontmatter,
         source_url: sourceUrl,

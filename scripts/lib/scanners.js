@@ -3,11 +3,11 @@
 const SECRET_PATTERNS = [
   ['GitHub token', /\b(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9]{36,}\b/],
   ['GitHub fine-grained token', /\bgithub_pat_[A-Za-z0-9_]{60,}\b/],
-  ['AWS access key', /\bAKIA[0-9A-Z]{16}\b/],
+  ['AWS access key', /\bAKIA(?!IOSFODNN7EXAMPLE)[0-9A-Z]{16}\b/],
   ['Google API key', /\bAIza[0-9A-Za-z_-]{35}\b/],
   ['OpenAI-style key', /\bsk-[A-Za-z0-9]{32,}\b/],
   ['Slack token', /\bxox[abpors]-[A-Za-z0-9-]{10,}\b/],
-  ['Private key', /-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----/],
+  ['Private key', /-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----(?!["'`])/],
 ];
 
 const DANGEROUS_PATTERNS = [

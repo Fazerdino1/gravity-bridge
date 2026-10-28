@@ -101,7 +101,11 @@ export function validate({ root }) {
       if (!hasFrontmatter || error) { errors.push(`${rel}: ${error ?? 'missing front matter'}`); continue; }
       if (folder === 'rules') {
         if (!RULE_TRIGGERS.includes(data.trigger)) errors.push(`${rel}: trigger must be one of ${RULE_TRIGGERS.join(', ')}`);
-        if (Buffer.byteLength(raw, 'utf8') > RULE_MAX_BYTES) errors.push(`${rel}: larger than ${RULE_MAX_BYTES} bytes`);
+        if (Buffer.byteLength(raw, 'utf8') > RULE_MAX_BYTES) {
+          const msg = `${rel}: larger than ${RULE_MAX_BYTES} bytes`;
+          if (data.status === 'draft') warnings.push(`${msg} (will be truncated by Antigravity unless trimmed before review)`);
+          else errors.push(msg);
+        }
       } else {
         warnings.push(`${rel}: workflows are deprecated in Antigravity; prefer a skill`);
       }

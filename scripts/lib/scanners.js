@@ -17,6 +17,7 @@ const DANGEROUS_PATTERNS = [
   ['write outside project', /(?:>|\btee\b|\bcp\b|\bmv\b)\s+(?:\/etc|\/usr|\/bin|~\/|\$HOME|\/root)/],
   ['chmod 777', /\bchmod\s+(?:-R\s+)?777\b/],
   ['disk format', /\bmkfs\.|\bdd\s+if=.*\bof=\/dev\//],
+  ['runs without confirmation', /\bno confirmation\b|\bwithout (?:asking|confirmation|user confirmation)\b/i],
 ];
 
 const INJECTION_PATTERNS = [

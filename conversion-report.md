@@ -6,29 +6,25 @@ Converter version: 0.1.0
 
 _None._
 
-## Unchanged (5)
-
-- `skills/conventional-commit/SKILL.md`
-- `skills/create-readme/SKILL.md`
-- `skills/review-and-refactor/SKILL.md`
-- `rules/markdown.md`
-- `agents/implementation-plan/SKILL.md`
-
-## Skipped (0)
+## Unchanged (0)
 
 _None._
 
-## Manual review (2)
+## Skipped (5)
 
-- `skills/conventional-commit/SKILL.md`
-  - skills/conventional-commit/SKILL.md:20 dangerous command (runs without confirmation)
-- `agents/implementation-plan/SKILL.md`
-  - agent persona: adapt role, tools and handoffs by hand
+- `skills/conventional-commit/SKILL.md`: target has status "reviewed"; use --force to overwrite
+- `skills/create-readme/SKILL.md`: target has status "reviewed"; use --force to overwrite
+- `skills/review-and-refactor/SKILL.md`: target has status "reviewed"; use --force to overwrite
+- `instructions/markdown.instructions.md`: target has status "reviewed"; use --force to overwrite
+- `agents/implementation-plan.agent.md`: target has status "reviewed"; use --force to overwrite
 
-## Warnings (2)
+## Manual review (0)
 
-- `rules/markdown.md`: `applyTo` restated in rule text (native glob trigger TODO(verify))
-- `agents/implementation-plan/SKILL.md`: dropped front matter key `tools` (no Antigravity equivalent)
+_None._
+
+## Warnings (0)
+
+_None._
 
 ## Suggested NOTICE.md rows
 

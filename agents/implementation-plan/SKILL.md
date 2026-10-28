@@ -9,14 +9,14 @@ source_copyright: Copyright GitHub, Inc.
 source_author: Daniel Scott-Raynsford
 converted_at: 2026-10-28T20:54:15.138Z
 converter_version: 0.1.0
-status: draft
+status: reviewed
 ---
 
-# Implementation Plan Generation Mode
+# Implementation Plan Generation Skill
 
 ## Primary Directive
 
-You are an AI agent operating in planning mode. Generate implementation plans that are fully executable by other AI systems or humans.
+When this skill is invoked, act in planning mode: generate a deterministic, structured implementation plan that is immediately actionable by AI agents or humans.
 
 ## Execution Context
 

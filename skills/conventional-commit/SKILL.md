@@ -9,14 +9,12 @@ source_copyright: Copyright GitHub, Inc.
 source_author: Aung Myo Kyaw
 converted_at: 2026-10-28T20:54:15.138Z
 converter_version: 0.1.0
-status: draft
+status: reviewed
 ---
 
 ### Instructions
 
-```xml
-	<description>This file contains a prompt template for generating conventional commit messages. It provides instructions, examples, and formatting guidelines to help users write standardized, descriptive commit messages in accordance with the Conventional Commits specification.</description>
-```
+This skill guides the agent to generate standardized, descriptive commit messages in accordance with the Conventional Commits specification, including validation and user confirmation before committing.
 
 ### Workflow
 
@@ -24,15 +22,15 @@ status: draft
 
 1. Run `git status` to review changed files.
 2. Run `git diff` or `git diff --cached` to inspect changes.
-3. Stage your changes with `git add <file>`.
-4. Construct your commit message using the following XML structure.
-5. After generating your commit message, Copilot will automatically run the following command in your integrated terminal (no confirmation needed):
+3. Stage relevant changes with `git add <file>`.
+4. Construct a commit message using the XML structure below.
+5. Present the proposed commit message to the user and ask for confirmation before running:
 
 ```bash
 git commit -m "type(scope): description"
 ```
 
-6. Just execute this prompt and Copilot will handle the commit for you in the terminal.
+6. Execute the commit in the terminal only after the user confirms (or when explicitly asked by the user to commit directly).
 
 ### Commit Message Structure
 

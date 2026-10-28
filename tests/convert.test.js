@@ -123,6 +123,7 @@ describe('convert', () => {
     const out = tempOut();
     const result = run(out, { dryRun: true });
     assert.equal(result.converted.length, 6);
+    assert.match(result.skipped.find((s) => s.name === 'apache-declared').reason, /declared license "Apache-2.0"/);
     assert.ok(!existsSync(join(out, 'skills')) && !existsSync(join(out, 'rules')));
     const report = renderReport(result);
     assert.match(report, /dry run/);

@@ -121,6 +121,10 @@ export function convert(options) {
       const parsed = parseFrontmatter(raw);
       if (parsed.error) { skip(`front matter error: ${parsed.error}`); continue; }
       if (!item.name) { skip('empty name after normalization'); continue; }
+      const declared = typeof parsed.data.license === 'string' ? parsed.data.license.trim() : '';
+      if (/^[A-Za-z0-9.+-]+$/.test(declared) && declared !== license.spdx) {
+        skip(`declared license "${declared}" differs from ${license.file} (${license.spdx}); check manually`); continue;
+      }
 
       const mapped = MAPPERS[type]({ name: item.name, data: parsed.data, body: parsed.body });
       record.target = mapped.target;

@@ -40,7 +40,7 @@ export function detectSpdx(text) {
  * @param {string} text
  */
 export function extractCopyright(text) {
-  const line = text.split(/\r?\n/).find((l) => /^\s*Copyright\s*(\(c\)|©|\d)/i.test(l));
+  const line = text.split(/\r?\n/).find((l) => /^\s*Copyright\s+(\(c\)|©|\d|[A-Z])/i.test(l) && !/copyright notice/i.test(l));
   return line ? line.trim() : null;
 }
 

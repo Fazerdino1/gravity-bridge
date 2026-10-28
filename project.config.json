@@ -1,0 +1,7 @@
+{
+  "name": "Gravity Bridge",
+  "slug": "gravity-bridge",
+  "description": "An open-source community hub that adapts the Awesome GitHub Copilot ecosystem for Google Antigravity.",
+  "license": "MIT",
+  "repository": "https://github.com/Fazerdino1/gravity-bridge"
+}

@@ -26,7 +26,10 @@
 - `description` kept; `tools`, `model`, `handoffs` dropped and reported.
 - Always listed under "manual review" in the report.
 
-## Source-side assumptions — TODO(verify) against the local clone
+## Source-side facts — verified against awesome-copilot `0fe6545b950671641b2b14b44eb56678fea6c6b4` (2026-10-28)
 
-- Folder names `skills/`, `instructions/`, `prompts/`, `agents/` at the repository root.
-- Front matter keys: `applyTo` (instructions), `mode`/`agent`/`tools`/`model` (prompts), `tools`/`model` (agents).
+- Root folders: `skills/` (447), `instructions/` (193), `agents/` (222), `plugins/`, `hooks/`, `extensions/`, `workflows/`.
+- **No `prompts/` folder**: prompts were migrated upstream to skills (commits `c10cb99a`, `f96a900e`). The prompt mapper is kept for older clones and forks.
+- **No `collections/` folder**: replaced upstream by `plugins/` (commit `6ecd0098`). Collections are curated by hand here.
+- Front matter keys seen — instructions: `applyTo`, `description`, `name`, `title`, `excludeAgent`; agents: `name`, `description`, `tools`, `model`, `mode`, `agent(s)`, `argument-hint`, `mcp-servers`, `handoffs`, `user-invocable`, `disable-model-invocation`, `hidden`, `target`; skills: `name`, `description`, `license`, `metadata`, `compatibility`, `allowed-tools`, `argument-hint`, `user-invocable`, …
+- Licensing: root `LICENSE` is MIT (`Copyright GitHub, Inc.`). 60 skills declare `license:` in front matter (MIT, Apache-2.0, "Complete terms in LICENSE.txt"); several ship their own `LICENSE`/`LICENSE.txt`. The converter uses the nearest license file and refuses items whose declared SPDX license differs from it.

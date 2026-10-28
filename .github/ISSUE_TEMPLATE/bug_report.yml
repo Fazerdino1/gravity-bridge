@@ -1,0 +1,27 @@
+name: Bug report
+description: Something in the tooling (convert, validate, rename) or a resource does not work.
+labels: [bug]
+body:
+  - type: input
+    id: component
+    attributes:
+      label: Affected component or file
+      placeholder: scripts/convert.js, skills/my-skill, ...
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      render: shell
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: Node.js version, OS, Antigravity version

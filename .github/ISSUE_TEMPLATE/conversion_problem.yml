@@ -1,0 +1,25 @@
+name: Conversion problem
+description: A converted item is wrong, incomplete or behaves badly in Antigravity.
+labels: [conversion]
+body:
+  - type: input
+    id: item
+    attributes:
+      label: Converted item path
+      placeholder: rules/typescript.md
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source path in awesome-copilot
+  - type: textarea
+    id: problem
+    attributes:
+      label: Describe the problem
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Antigravity version

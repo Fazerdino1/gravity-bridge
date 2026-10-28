@@ -1,0 +1,43 @@
+name: New resource
+description: Propose a skill, rule or persona to add (converted or original).
+labels: [new-resource]
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Resource type
+      options: [skill, rule, agent persona, collection]
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source URL (or "original")
+    validations:
+      required: true
+  - type: input
+    id: author
+    attributes:
+      label: Original author
+  - type: input
+    id: license
+    attributes:
+      label: License of the source
+      description: Resources without an explicit license allowing redistribution cannot be accepted.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why is it useful for Antigravity users?
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I have read the curation policy (docs/curation-policy.md).
+          required: true
+        - label: The resource contains no secrets and no data exfiltration.
+          required: true

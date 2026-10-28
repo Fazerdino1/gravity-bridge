@@ -1,0 +1,24 @@
+name: License or removal request
+description: Report an attribution/licensing issue, or ask for an item you authored to be removed.
+labels: [license]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Request type
+      options: [Remove my content, Fix attribution, License concern]
+    validations:
+      required: true
+  - type: input
+    id: items
+    attributes:
+      label: Affected item(s)
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: For removal requests, a link showing you are the author helps us act quickly.
+    validations:
+      required: true

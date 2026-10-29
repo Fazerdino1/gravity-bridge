@@ -16,6 +16,7 @@
     "convert": "node scripts/convert.js",
     "validate": "node scripts/validate.js",
     "rename": "node scripts/rename.js",
+    "build:site": "node scripts/build-site.js",
     "lint": "eslint .",
     "test": "node --test \"tests/**/*.test.js\""
   },

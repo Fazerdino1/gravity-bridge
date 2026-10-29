@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Gravity Bridge — Google Antigravity Community Hub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#catalog" class="brand">
+        <span class="brand-badge" aria-hidden="true">⚡</span>
+        <span>Gravity Bridge</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#catalog" data-i18n="navCatalog">Catalogue (855)</a></li>
+          <li><a href="#contributing" data-i18n="navContributing">Contribuer</a></li>
+          <li><a href="#coc" data-i18n="navCoc">Code de conduite</a></li>
+          <li><a href="#faq" data-i18n="navFaq">FAQ</a></li>
+          <li><a href="https://github.com/Fazerdino1/gravity-bridge" target="_blank" rel="noopener">GitHub ↗</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switcher" role="group" aria-label="Language selector">
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn active" data-lang="fr">FR</button>
+        <button type="button" class="lang-btn" data-lang="es">ES</button>
+        <button type="button" class="lang-btn" data-lang="de">DE</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1 data-i18n="heroTitle">Gravity Bridge pour Google Antigravity</h1>
+      <p class="hero-sub" data-i18n="heroSubtitle">
+        Le hub open source communautaire (licence MIT) regroupant 855 skills, règles et personas d'agents adaptés, vérifiés et attribués pour Google Antigravity.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="https://github.com/Fazerdino1/gravity-bridge/issues/new?template=new_resource.yml" target="_blank" rel="noopener" data-i18n="ctaPropose">
+          + Proposer une ressource Antigravity
+        </a>
+        <a class="btn secondary" href="https://github.com/Fazerdino1/gravity-bridge/issues/new?template=conversion_problem.yml" target="_blank" rel="noopener" data-i18n="ctaProblem">
+          Signaler un problème
+        </a>
+        <a class="btn secondary" href="https://github.com/Fazerdino1/gravity-bridge" target="_blank" rel="noopener" data-i18n="ctaRepo">
+          Voir le dépôt GitHub
+        </a>
+      </div>
+      <div class="stats-bar" id="stats-bar" aria-live="polite">
+        <div class="stat"><strong id="stat-total">855</strong> <span data-i18n="statTotal">Ressources</span></div>
+        <div class="stat"><strong id="stat-skills">440</strong> <span>Skills (`.agents/skills/`)</span></div>
+        <div class="stat"><strong id="stat-rules">193</strong> <span data-i18n="statRules">Règles (`.agents/rules/`)</span></div>
+        <div class="stat"><strong id="stat-agents">222</strong> <span>Personas (`agents/`)</span></div>
+      </div>
+    </section>
+
+    <section id="catalog" class="section">
+      <div class="section-header">
+        <h2 data-i18n="catalogTitle">Catalogue interactif Antigravity</h2>
+        <p data-i18n="catalogSub">Recherchez parmi les 855 ressources et copiez la commande d'installation pour votre projet `.agents/`.</p>
+      </div>
+
+      <search class="filter-bar">
+        <form id="filter-form" onsubmit="return false;">
+          <label for="search-input" class="sr-only" data-i18n="searchLabel">Rechercher une ressource</label>
+          <input type="search" id="search-input" name="q" placeholder="Rechercher (ex: typescript, commit, docker, security, plan...)" autocomplete="off">
+          <div class="filter-pills" role="group" aria-label="Filter by resource type">
+            <button type="button" class="pill active" data-type="all" data-i18n="filterAll">Tous (855)</button>
+            <button type="button" class="pill" data-type="skill">Skills (440)</button>
+            <button type="button" class="pill" data-type="rule" data-i18n="filterRules">Règles (193)</button>
+            <button type="button" class="pill" data-type="agent">Personas (222)</button>
+            <button type="button" class="pill" data-type="reviewed" data-i18n="filterReviewed">Vérifiés ★</button>
+          </div>
+        </form>
+      </search>
+
+      <p id="results-count" class="results-meta" aria-live="polite"></p>
+      <div id="catalog-grid" class="catalog-grid"></div>
+      <div class="load-more-wrap">
+        <button type="button" id="load-more-btn" class="btn secondary" hidden data-i18n="loadMore">Afficher plus de résultats</button>
+      </div>
+    </section>
+
+    <section id="contributing" class="section card-panel">
+      <h2 data-i18n="contribTitle">Contribuer & Utiliser avec Google Antigravity</h2>
+      <div id="contrib-content" class="prose"></div>
+    </section>
+
+    <section id="coc" class="section card-panel">
+      <h2 data-i18n="cocHeading">Code de conduite du Contributor Covenant (v2.1)</h2>
+      <div id="coc-content" class="prose"></div>
+    </section>
+
+    <section id="faq" class="section card-panel">
+      <h2 data-i18n="faqHeading">FAQ — Questions fréquentes</h2>
+      <div id="faq-content" class="prose"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>
+        <strong>Gravity Bridge</strong> — MIT License · Copyright (c) 2026 Gravity Bridge contributors ·
+        Contact : <a href="mailto:fazerdinotheck@outlook.fr">fazerdinotheck@outlook.fr</a>
+      </p>
+      <p>
+        <a href="https://github.com/Fazerdino1/gravity-bridge/blob/main/NOTICE.md" target="_blank" rel="noopener">NOTICE.md (Attributions)</a> ·
+        <a href="https://github.com/Fazerdino1/gravity-bridge/blob/main/SECURITY.md" target="_blank" rel="noopener">SECURITY.md</a>
+      </p>
+    </div>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

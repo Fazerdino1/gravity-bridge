@@ -447,6 +447,7 @@ Gravity Bridge is released under the [MIT License](LICENSE). Many resources in t
 | `skills/ai-prompt-engineering-safety-review/SKILL.md` | https://github.com/github/awesome-copilot | `skills/ai-prompt-engineering-safety-review/SKILL.md` | `0fe6545b9506` | Vamshi Verma | MIT | Copyright GitHub, Inc. | 2026-10-28 |
 | `skills/ai-ready/SKILL.md` | https://github.com/github/awesome-copilot | `skills/ai-ready/SKILL.md` | `0fe6545b9506` | John Papa | MIT | Copyright GitHub, Inc. | 2026-10-28 |
 | `skills/ai-team-orchestration/SKILL.md` | https://github.com/github/awesome-copilot | `skills/ai-team-orchestration/SKILL.md` | `0fe6545b9506` | denis-a-evdokimov | MIT | Copyright GitHub, Inc. | 2026-10-28 |
+| `skills/anti-ui-slop/SKILL.md` | https://github.com/github/awesome-copilot | `skills/anti-ui-slop/SKILL.md` | `0fe6545b9506` | Samuel Bushi | Apache-2.0 | copyright license to reproduce, prepare Derivative Works of, | 2026-10-29 |
 | `skills/api-breaking-change-detector/SKILL.md` | https://github.com/github/awesome-copilot | `skills/api-breaking-change-detector/SKILL.md` | `0fe6545b9506` | sudhirp25 | MIT | Copyright GitHub, Inc. | 2026-10-28 |
 | `skills/appinsights-instrumentation/SKILL.md` | https://github.com/github/awesome-copilot | `skills/appinsights-instrumentation/SKILL.md` | `0fe6545b9506` | Chunan Ye | MIT | Copyright 2025 (c) Microsoft Corporation. | 2026-10-28 |
 | `skills/apple-appstore-reviewer/SKILL.md` | https://github.com/github/awesome-copilot | `skills/apple-appstore-reviewer/SKILL.md` | `0fe6545b9506` | Tim Heuer | MIT | Copyright GitHub, Inc. | 2026-10-28 |
@@ -619,6 +620,7 @@ Gravity Bridge is released under the [MIT License](LICENSE). Many resources in t
 | `skills/gen-specs-as-issues/SKILL.md` | https://github.com/github/awesome-copilot | `skills/gen-specs-as-issues/SKILL.md` | `0fe6545b9506` | Aaron Powell | MIT | Copyright GitHub, Inc. | 2026-10-28 |
 | `skills/generate-custom-instructions-from-codebase/SKILL.md` | https://github.com/github/awesome-copilot | `skills/generate-custom-instructions-from-codebase/SKILL.md` | `0fe6545b9506` | Adrien Clerbois | MIT | Copyright GitHub, Inc. | 2026-10-28 |
 | `skills/generate-image/SKILL.md` | https://github.com/github/awesome-copilot | `skills/generate-image/SKILL.md` | `0fe6545b9506` | Adam | MIT | Copyright GitHub, Inc. | 2026-10-28 |
+| `skills/geofeed-tuner/SKILL.md` | https://github.com/github/awesome-copilot | `skills/geofeed-tuner/SKILL.md` | `0fe6545b9506` | Punit | Apache-2.0 | Copyright GitHub, Inc. | 2026-10-29 |
 | `skills/gh-attach/SKILL.md` | https://github.com/github/awesome-copilot | `skills/gh-attach/SKILL.md` | `0fe6545b9506` | Subin Kim | MIT | Copyright GitHub, Inc. | 2026-10-28 |
 | `skills/git-commit/SKILL.md` | https://github.com/github/awesome-copilot | `skills/git-commit/SKILL.md` | `0fe6545b9506` | Aung Myo Kyaw | MIT | Copyright GitHub, Inc. | 2026-10-28 |
 | `skills/git-flow-branch-creator/SKILL.md` | https://github.com/github/awesome-copilot | `skills/git-flow-branch-creator/SKILL.md` | `0fe6545b9506` | Aung Myo Kyaw | MIT | Copyright GitHub, Inc. | 2026-10-28 |
@@ -726,7 +728,11 @@ Gravity Bridge is released under the [MIT License](LICENSE). Many resources in t
 | `skills/performance-review-writer/SKILL.md` | https://github.com/github/awesome-copilot | `skills/performance-review-writer/SKILL.md` | `0fe6545b9506` | sudeepghatak | MIT | Copyright GitHub, Inc. | 2026-10-28 |
 | `skills/pester-migration/SKILL.md` | https://github.com/github/awesome-copilot | `skills/pester-migration/SKILL.md` | `0fe6545b9506` | Jakub Jareš | MIT | Copyright GitHub, Inc. | 2026-10-28 |
 | `skills/pester-should-migration/SKILL.md` | https://github.com/github/awesome-copilot | `skills/pester-should-migration/SKILL.md` | `0fe6545b9506` | Jakub Jareš | MIT | Copyright GitHub, Inc. | 2026-10-28 |
+| `skills/phoenix-cli/SKILL.md` | https://github.com/github/awesome-copilot | `skills/phoenix-cli/SKILL.md` | `0fe6545b9506` | Jim Bennett | Apache-2.0 | Copyright GitHub, Inc. | 2026-10-29 |
+| `skills/phoenix-evals/SKILL.md` | https://github.com/github/awesome-copilot | `skills/phoenix-evals/SKILL.md` | `0fe6545b9506` | Jim Bennett | Apache-2.0 | Copyright GitHub, Inc. | 2026-10-29 |
+| `skills/phoenix-tracing/SKILL.md` | https://github.com/github/awesome-copilot | `skills/phoenix-tracing/SKILL.md` | `0fe6545b9506` | Jim Bennett | Apache-2.0 | Copyright GitHub, Inc. | 2026-10-29 |
 | `skills/php-mcp-server-generator/SKILL.md` | https://github.com/github/awesome-copilot | `skills/php-mcp-server-generator/SKILL.md` | `0fe6545b9506` | Troy Simeon Taylor | MIT | Copyright GitHub, Inc. | 2026-10-28 |
+| `skills/pinecone-rag/SKILL.md` | https://github.com/github/awesome-copilot | `skills/pinecone-rag/SKILL.md` | `0fe6545b9506` | Muhammad Furqan | Apache-2.0 | Copyright GitHub, Inc. | 2026-10-29 |
 | `skills/planning-oracle-to-postgres-migration-integration-testing/SKILL.md` | https://github.com/github/awesome-copilot | `skills/planning-oracle-to-postgres-migration-integration-testing/SKILL.md` | `0fe6545b9506` | PrimedPaul | MIT | Copyright GitHub, Inc. | 2026-10-28 |
 | `skills/plantuml-ascii/SKILL.md` | https://github.com/github/awesome-copilot | `skills/plantuml-ascii/SKILL.md` | `0fe6545b9506` | Aung Myo Kyaw | MIT | Copyright GitHub, Inc. | 2026-10-28 |
 | `skills/playwright-automation-fill-in-form/SKILL.md` | https://github.com/github/awesome-copilot | `skills/playwright-automation-fill-in-form/SKILL.md` | `0fe6545b9506` | Debbie O'Brien | MIT | Copyright GitHub, Inc. | 2026-10-28 |
@@ -857,6 +863,7 @@ Gravity Bridge is released under the [MIT License](LICENSE). Many resources in t
 | `skills/update-specification/SKILL.md` | https://github.com/github/awesome-copilot | `skills/update-specification/SKILL.md` | `0fe6545b9506` | Daniel Scott-Raynsford | MIT | Copyright GitHub, Inc. | 2026-10-28 |
 | `skills/upstash-redis/SKILL.md` | https://github.com/github/awesome-copilot | `skills/upstash-redis/SKILL.md` | `0fe6545b9506` | Cahid Arda | MIT | Copyright GitHub, Inc. | 2026-10-28 |
 | `skills/v-development/SKILL.md` | https://github.com/github/awesome-copilot | `skills/v-development/SKILL.md` | `0fe6545b9506` | Ulises Jeremias | MIT | Copyright GitHub, Inc. | 2026-10-28 |
+| `skills/vardoger-analyze/SKILL.md` | https://github.com/github/awesome-copilot | `skills/vardoger-analyze/SKILL.md` | `0fe6545b9506` | dstrupl | Apache-2.0 | Copyright GitHub, Inc. | 2026-10-29 |
 | `skills/vcpkg/SKILL.md` | https://github.com/github/awesome-copilot | `skills/vcpkg/SKILL.md` | `0fe6545b9506` | Augustin Popa | MIT | Copyright GitHub, Inc. | 2026-10-28 |
 | `skills/verify-agent-action/SKILL.md` | https://github.com/github/awesome-copilot | `skills/verify-agent-action/SKILL.md` | `0fe6545b9506` | RJ | MIT | Copyright GitHub, Inc. | 2026-10-28 |
 | `skills/vscode-ext-commands/SKILL.md` | https://github.com/github/awesome-copilot | `skills/vscode-ext-commands/SKILL.md` | `0fe6545b9506` | Alessandro Fragnani | MIT | Copyright GitHub, Inc. | 2026-10-28 |

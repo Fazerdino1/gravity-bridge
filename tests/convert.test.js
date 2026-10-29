@@ -105,7 +105,7 @@ describe('convert', () => {
     run(out);
     const second = convert({ source: SOURCE, out, commit: COMMIT, now: new Date('2027-01-01T00:00:00Z') });
     assert.equal(second.converted.length, 0);
-    assert.equal(second.unchanged.length, 6);
+    assert.equal(second.unchanged.length, 7);
 
     const file = join(out, 'rules/general.md');
     const edited = readFileSync(file, 'utf8').replace('status: draft', 'status: reviewed').replace('Write clear', 'Write very clear');
@@ -122,8 +122,8 @@ describe('convert', () => {
   it('writes nothing in dry-run mode and renders a report', () => {
     const out = tempOut();
     const result = run(out, { dryRun: true });
-    assert.equal(result.converted.length, 6);
-    assert.match(result.skipped.find((s) => s.name === 'apache-declared').reason, /declared license "Apache-2.0"/);
+    assert.equal(result.converted.length, 7);
+    assert.ok(result.converted.find((c) => c.name === 'apache-declared'));
     assert.ok(!existsSync(join(out, 'skills')) && !existsSync(join(out, 'rules')));
     const report = renderReport(result);
     assert.match(report, /dry run/);

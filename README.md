@@ -3,11 +3,11 @@
 [![Validate](https://github.com/Fazerdino1/gravity-bridge/actions/workflows/validate.yml/badge.svg)](https://github.com/Fazerdino1/gravity-bridge/actions/workflows/validate.yml)
 [![Website](https://github.com/Fazerdino1/gravity-bridge/actions/workflows/pages.yml/badge.svg)](https://fazerdino1.github.io/gravity-bridge/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Resources: 855](https://img.shields.io/badge/Antigravity_Resources-855-10b981.svg)](https://fazerdino1.github.io/gravity-bridge/#catalog)
+[![Resources: 862](https://img.shields.io/badge/Antigravity_Resources-862-10b981.svg)](https://fazerdino1.github.io/gravity-bridge/#catalog)
 
 **Languages:** **English** · [Français](README.fr.md) · [Español](README.es.md) · [Deutsch](README.de.md) · [🌐 Interactive Web Catalog](https://fazerdino1.github.io/gravity-bridge/)
 
-An open-source community hub (MIT-licensed) that adapts, curates, and validates **855 skills, workspace rules, agent personas, collections, and installable plugins** for **Google Antigravity**, with full provenance and author attribution for every item.
+An open-source community hub (MIT-licensed) that adapts, curates, and validates **862 skills, workspace rules, agent personas, collections, and installable plugins** for **Google Antigravity**, with full provenance and author attribution for every item.
 
 ---
 
@@ -32,11 +32,11 @@ npx github:Fazerdino1/gravity-bridge list --search docker
 
 ---
 
-## 📦 Catalog Overview (855 Resources + 6 Plugins)
+## 📦 Catalog Overview (862 Resources + 6 Plugins)
 
 | Category | Folder | Count | Antigravity Target |
 |---|---|---:|---|
-| **Skills** | [`skills/`](skills/) | **440** | `<project>/.agents/skills/<name>/SKILL.md` (invoke via `/<name>`) |
+| **Skills** | [`skills/`](skills/) | **447** | `<project>/.agents/skills/<name>/SKILL.md` (invoke via `/<name>`) |
 | **Workspace Rules** | [`rules/`](rules/) | **193** | `<project>/.agents/rules/<name>.md` (all guaranteed `< 24 KB`) |
 | **Agent Personas** | [`agents/`](agents/) | **222** | `<project>/.agents/skills/<name>/SKILL.md` |
 | **Curated Collections** | [`collections/`](collections/) | **6** | Thematic bundles (`collections/*.yml`) |

@@ -6,7 +6,7 @@
 
 [English](README.md) · [Français](README.fr.md) · [Español](README.es.md) · **Deutsch** · [🌐 Website & Interaktiver Katalog](https://fazerdino1.github.io/gravity-bridge/) · [Mitwirken](CONTRIBUTING.de.md) · [Verhaltenskodex](CODE_OF_CONDUCT.de.md)
 
-Ein Open-Source-Community-Hub (MIT-Lizenz) mit **855 Skills, Regeln, Agenten-Personas, 6 Sammlungen und 6 installierbaren Plugins** für **Google Antigravity**.
+Ein Open-Source-Community-Hub (MIT-Lizenz) mit **862 Skills, Regeln, Agenten-Personas, 6 Sammlungen und 6 installierbaren Plugins** für **Google Antigravity**.
 
 ## 🚀 Installation mit 1 Befehl (CLI)
 

@@ -28,7 +28,7 @@ describe('validate', () => {
   it('passes on freshly converted resources listed in NOTICE.md, with review warnings', () => {
     const { errors, warnings, checked } = validate({ root: convertedRepo() });
     assert.deepEqual(errors, []);
-    assert.equal(checked, 6);
+    assert.equal(checked, 7);
     assert.ok(warnings.some((w) => w.includes('injected-skill') && w.includes('instruction-like')));
   });
 

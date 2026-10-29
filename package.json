@@ -17,6 +17,7 @@
   },
   "scripts": {
     "convert": "node scripts/convert.js",
+    "update:notice": "node scripts/update-notice.js",
     "sanitize": "node scripts/sanitize.js",
     "validate": "node scripts/validate.js",
     "audit:scripts": "node scripts/audit-scripts.js",

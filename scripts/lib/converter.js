@@ -4,7 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 import { normalizeBody, parseFrontmatter, stringifyFrontmatter } from './frontmatter.js';
-import { resolveLicense } from './license.js';
+import { ALLOWED_LICENSES, resolveLicense } from './license.js';
 import { MAPPERS } from './mappers.js';
 import { findDangerousCommands, findInjection, findSecrets } from './scanners.js';
 
@@ -139,8 +139,17 @@ export function convert(options) {
       if (parsed.error) { skip(`front matter error: ${parsed.error}`); continue; }
       if (!item.name) { skip('empty name after normalization'); continue; }
       const declared = typeof parsed.data.license === 'string' ? parsed.data.license.trim() : '';
+      let effectiveSpdx = license.spdx;
       if (/^[A-Za-z0-9.+-]+$/.test(declared) && declared !== license.spdx) {
-        skip(`declared license "${declared}" differs from ${license.file} (${license.spdx}); check manually`); continue;
+        if (!ALLOWED_LICENSES.includes(declared)) {
+          skip(`declared license "${declared}" is not in the allowed licenses list`); continue;
+        }
+        // If the folder ships its own dedicated LICENSE file (not the root LICENSE), the physical LICENSE file wins;
+        // otherwise use the explicitly declared SPDX identifier from the item's front matter.
+        effectiveSpdx = license.file.includes('/') ? license.spdx : declared;
+        record.warnings.push(
+          `declared license "${declared}" differs from ${license.file} (${license.spdx}); recorded as "${effectiveSpdx}"`,
+        );
       }
 
       const mapped = MAPPERS[type]({ name: item.name, data: parsed.data, body: parsed.body });
@@ -159,7 +168,7 @@ export function convert(options) {
         source_url: sourceUrl,
         source_path: sourcePath,
         source_commit: commit,
-        source_license: license.spdx,
+        source_license: effectiveSpdx,
         source_copyright: license.copyright ?? undefined,
         source_author: author,
         converted_at: now,
@@ -209,7 +218,7 @@ export function convert(options) {
       record.extras = extras.map((e) => e.rel);
       result.converted.push(record);
       result.noticeRows.push(
-        `| \`${mapped.target}\` | ${sourceUrl} | \`${sourcePath}\` | \`${commit.slice(0, 12)}\` | ${author ?? 'unknown'} | ${license.spdx} | ${license.copyright ?? 'TODO'} | ${now.slice(0, 10)} |`,
+        `| \`${mapped.target}\` | ${sourceUrl} | \`${sourcePath}\` | \`${commit.slice(0, 12)}\` | ${author ?? 'unknown'} | ${effectiveSpdx} | ${license.copyright ?? 'TODO'} | ${now.slice(0, 10)} |`,
       );
     }
   }

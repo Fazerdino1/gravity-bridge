@@ -6,7 +6,7 @@
 
 [English](README.md) · [Français](README.fr.md) · **Español** · [Deutsch](README.de.md) · [🌐 Sitio Web y Catálogo Interactivo](https://fazerdino1.github.io/gravity-bridge/) · [Contribuir](CONTRIBUTING.es.md) · [Código de Conducta](CODE_OF_CONDUCT.es.md)
 
-Un centro comunitario de código abierto (licencia MIT) con **855 skills, reglas, personas de agentes, 6 colecciones y 6 plugins instalables** adaptados y atribuidos para **Google Antigravity**.
+Un centro comunitario de código abierto (licencia MIT) con **862 skills, reglas, personas de agentes, 6 colecciones y 6 plugins instalables** adaptados y atribuidos para **Google Antigravity**.
 
 ## 🚀 Instalación con 1 comando (CLI)
 

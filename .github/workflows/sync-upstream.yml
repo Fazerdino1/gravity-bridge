@@ -1,0 +1,62 @@
+name: Sync Upstream Resources
+
+on:
+  schedule:
+    # Runs every Monday at 06:00 UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Gravity Bridge
+        uses: actions/checkout@v4
+
+      - name: Checkout Upstream Repository
+        uses: actions/checkout@v4
+        with:
+          repository: github/awesome-copilot
+          path: /tmp/upstream-source
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run conversion, sanitization, notice update, and builds
+        run: |
+          npm run convert -- --source /tmp/upstream-source --out .
+          npm run update:notice
+          npm run sanitize
+          npm run audit:scripts
+          npm run build:plugins
+          npm run build:site
+          npm run validate
+
+      - name: Create Pull Request if new resources were converted
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No upstream changes detected."
+            exit 0
+          fi
+          BRANCH="chore/sync-upstream-$(date +%Y%m%d)"
+          git config user.name "gravity-bridge-bot"
+          git config user.email "fazerdinotheck@outlook.fr"
+          git checkout -b "$BRANCH"
+          git add -A
+          git commit -m "chore: sync and adapt new upstream resources for Antigravity"
+          git push -u origin "$BRANCH"
+          gh pr create --title "chore: sync new upstream resources for Antigravity" \
+            --body "Automated weekly sync: converted new upstream items, sanitized non-Antigravity references, updated NOTICE.md, audited bundled scripts, and rebuilt the website catalog." \
+            --base main --head "$BRANCH" || true

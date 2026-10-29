@@ -2,7 +2,7 @@
 
 All scripts shipped inside `skills/*/scripts/` are copied as inert data by the converter and are **never executed automatically** during conversion or validation. Review a skill's bundled scripts before invoking them in Google Antigravity.
 
-- **Total bundled script files audited**: 91
+- **Total bundled script files audited**: 92
 - **Hardcoded secrets detected**: 0
 
 | Script Path | Parent Skill | Detected Capabilities | Dangerous Patterns |
@@ -54,6 +54,7 @@ All scripts shipped inside `skills/*/scripts/` are copied as inert data by the c
 | `skills/excalidraw-diagram-generator/scripts/add-icon-to-diagram.py` | `skills/excalidraw-diagram-generator` | none | none |
 | `skills/excalidraw-diagram-generator/scripts/split-excalidraw-library.py` | `skills/excalidraw-diagram-generator` | none | none |
 | `skills/foundry-agentic-loop/scripts/evals.mjs` | `skills/foundry-agentic-loop` | child process / shell execution, dynamic code evaluation | none |
+| `skills/geofeed-tuner/scripts/templates/index.html` | `skills/geofeed-tuner` | outbound network call | none |
 | `skills/latchshot-page-capture/scripts/latchshot.mjs` | `skills/latchshot-page-capture` | outbound network call | none |
 | `skills/markdown-to-word-mermaid/scripts/markdown_to_word.py` | `skills/markdown-to-word-mermaid` | child process / shell execution | none |
 | `skills/markdown-to-word-mermaid/scripts/requirements.txt` | `skills/markdown-to-word-mermaid` | none | none |

@@ -1,10 +1,12 @@
 #!/usr/bin/env node
-// Improvement #1 & #2:
-// 1. Sanitize remaining non-Antigravity references (.github/instructions, .github/copilot-instructions.md,
-//    ${input:...}, ${selection}, ${file}, "GitHub Copilot" / "Copilot") across all resources.
+// Improvement #1 & #2 & #3 (second-level):
+// 1. Sanitize non-Antigravity references (.github/instructions, .github/copilot-instructions.md,
+//    ${input:...}, ${selection}, ${file}, "GitHub Copilot", "Copilot Chat", "Copilot CLI",
+//    "paste into Copilot", "the Copilot agent") across all resources AND their references/*.md files,
+//    while preserving legitimate Microsoft 365 Copilot / Copilot Studio API domain terms.
 // 2. Split oversized rules (> 24,000 bytes) into a concise <22KB rule + a full reference doc in
 //    docs/rule-references/<name>-full.md so Antigravity never truncates them mid-line.
-import { mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { parseFrontmatter, stringifyFrontmatter } from './lib/frontmatter.js';
@@ -33,7 +35,23 @@ export function sanitizeContent(text) {
   out = out.replace(/\$\{workspaceFolder\}/g, '<workspace-root>');
   out = out.replace(/\bGitHub Copilot\b/g, 'Google Antigravity');
   out = out.replace(/\bCopilot Chat\b/g, 'Antigravity Chat');
+  out = out.replace(/\bCopilot CLI\b/g, 'Antigravity CLI (agy)');
+  out = out.replace(/\bpaste into Copilot\b/gi, 'paste into Antigravity');
+  out = out.replace(/\bthe Copilot agent\b/gi, 'the Antigravity agent');
+  out = out.replace(/\bThe agent \(Copilot\)/g, 'The agent (Antigravity)');
+  out = out.replace(/\bCopilot coding agent\b/gi, 'Antigravity coding agent');
   return { out, changed: out !== text };
+}
+
+function walkMarkdown(dir) {
+  const out = [];
+  if (!existsSync(dir)) return out;
+  for (const e of readdirSync(dir, { withFileTypes: true })) {
+    const p = join(dir, e.name);
+    if (e.isDirectory()) out.push(...walkMarkdown(p));
+    else if (e.isFile() && e.name.endsWith('.md')) out.push(p);
+  }
+  return out;
 }
 
 /**
@@ -55,7 +73,6 @@ function condenseOversizedRule(root, name, raw, parsed) {
     kept.push(line);
     bytes += lineBytes;
   }
-  // Ensure we don't leave an unclosed fenced code block
   const fenceCount = kept.filter((l) => /^(`{3,}|~{3,})/.test(l.trim())).length;
   if (fenceCount % 2 === 1) kept.push('```');
 
@@ -88,6 +105,16 @@ export function sanitizeAll(root = resolve('.')) {
         writeFileSync(file, stringifyFrontmatter(parsed.data, bodyRes.out));
         sanitizedFiles++;
       }
+      for (const sub of ['references', 'examples', 'resources']) {
+        for (const mdFile of walkMarkdown(join(dir, sub))) {
+          const mdRaw = readFileSync(mdFile, 'utf8');
+          const mdRes = sanitizeContent(mdRaw);
+          if (mdRes.changed) {
+            writeFileSync(mdFile, mdRes.out);
+            sanitizedFiles++;
+          }
+        }
+      }
     }
   }
 
@@ -118,5 +145,5 @@ export function sanitizeAll(root = resolve('.')) {
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const { sanitizedFiles, splitRules } = sanitizeAll();
-  console.log(`Sanitized ${sanitizedFiles} resource(s); condensed ${splitRules} oversized rule(s) (<24KB) with full reference backups.`);
+  console.log(`Sanitized ${sanitizedFiles} file(s); condensed ${splitRules} oversized rule(s) (<24KB).`);
 }

@@ -145,7 +145,7 @@ the cycle and returns a clean 401.
 ## Quick Reference
 
 ```bash
-# Get your staged diff to paste into Copilot
+# Get your staged diff to paste into Antigravity
 git diff --staged
 
 # Check which emoji style the repo already uses

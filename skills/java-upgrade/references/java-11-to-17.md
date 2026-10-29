@@ -2,7 +2,7 @@
 
 ## Project Context
 
-This guide provides comprehensive GitHub Copilot instructions for upgrading Java projects from JDK 11 to JDK 17, covering major language features, API changes, and migration patterns based on 47 JEPs integrated between these versions.
+This guide provides comprehensive Google Antigravity instructions for upgrading Java projects from JDK 11 to JDK 17, covering major language features, API changes, and migration patterns based on 47 JEPs integrated between these versions.
 
 ## Language Features and API Changes
 
@@ -773,4 +773,4 @@ java -XX:SharedArchiveFile=myapp.jsa -cp myapp.jar com.example.Main
    - Statistical applications
    - Gaming and simulation
 
-This comprehensive guide enables GitHub Copilot to provide contextually appropriate suggestions when upgrading Java 11 projects to Java 17, focusing on language enhancements, API improvements, and modern Java development practices.
+This comprehensive guide enables Google Antigravity to provide contextually appropriate suggestions when upgrading Java 11 projects to Java 17, focusing on language enhancements, API improvements, and modern Java development practices.

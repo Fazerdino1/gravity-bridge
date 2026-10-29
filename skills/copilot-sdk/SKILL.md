@@ -18,7 +18,7 @@ Embed Copilot's agentic workflows in any application using Python, TypeScript, G
 
 ## Overview
 
-The Google Antigravity SDK exposes the same engine behind Copilot CLI: a production-tested agent runtime you can invoke programmatically. No need to build your own orchestration - you define agent behavior, Copilot handles planning, tool invocation, file edits, and more.
+The Google Antigravity SDK exposes the same engine behind Antigravity CLI (agy): a production-tested agent runtime you can invoke programmatically. No need to build your own orchestration - you define agent behavior, Copilot handles planning, tool invocation, file edits, and more.
 
 ## Prerequisites
 
@@ -745,7 +745,7 @@ await using var session = await client.CreateSessionAsync(new SessionConfig
 
 | Option | Description | Default |
 |--------|-------------|---------|
-| `cliPath` | Path to Copilot CLI executable | System PATH |
+| `cliPath` | Path to Antigravity CLI (agy) executable | System PATH |
 | `cliUrl` | Connect to existing server (e.g., "localhost:4321") | None |
 | `port` | Server communication port | Random |
 | `useStdio` | Use stdio transport instead of TCP | true |
@@ -808,7 +808,7 @@ try {
     );
 } catch (error) {
     if (error.code === "ENOENT") {
-        console.error("Copilot CLI not installed");
+        console.error("Antigravity CLI (agy) not installed");
     } else if (error.code === "ECONNREFUSED") {
         console.error("Cannot connect to Copilot server");
     } else {
@@ -893,7 +893,7 @@ Your Application
        |
   SDK Client
        | JSON-RPC
-  Copilot CLI (server mode)
+  Antigravity CLI (agy) (server mode)
        |
   GitHub (models, auth)
 ```

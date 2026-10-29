@@ -253,7 +253,7 @@ trunk name and mark any legacy default branch "history only — do not target."
 removed services, renamed branches, changed commands, new/removed endpoints.
 
 **Risk:** Only the plan's status markers get updated; the **executable/onboarding
-docs** (`.github/copilot-instructions.md`, `README`, module lists, command
+docs** (`GEMINI.md (or AGENTS.md)`, `README`, module lists, command
 tables) go stale and start actively misleading the next agent/human — e.g. a
 "quarantined module" list that no longer matches the reactor.
 

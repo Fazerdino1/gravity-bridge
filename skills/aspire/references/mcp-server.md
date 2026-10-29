@@ -18,7 +18,7 @@ aspire mcp init
 The command walks you through an interactive setup:
 
 1. **Workspace root** — prompts for the path to your workspace root (defaults to current directory)
-2. **Environment detection** — detects supported AI environments (VS Code, Copilot CLI, Claude Code, OpenCode) and asks which to configure
+2. **Environment detection** — detects supported AI environments (VS Code, Antigravity CLI (agy), Claude Code, OpenCode) and asks which to configure
 3. **Playwright MCP** — optionally offers to configure the Playwright MCP server alongside Aspire
 4. **Config creation** — writes the appropriate configuration files (e.g., `.vscode/mcp.json`)
 5. **AGENTS.md** — if one doesn't already exist, creates an `AGENTS.md` with Aspire-specific instructions for AI agents
@@ -31,7 +31,7 @@ The command walks you through an interactive setup:
 
 When you run `aspire mcp init`, the CLI creates configuration files appropriate for your detected environment.
 
-### VS Code (GitHub Copilot)
+### VS Code (Google Antigravity)
 
 Creates or updates `.vscode/mcp.json`:
 
@@ -123,8 +123,8 @@ builder.Build().Run();
 
 The `aspire mcp init` command supports:
 
-- [VS Code](https://code.visualstudio.com/docs/copilot/customization/mcp-servers) (GitHub Copilot)
-- [Copilot CLI](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#add-an-mcp-server)
+- [VS Code](https://code.visualstudio.com/docs/copilot/customization/mcp-servers) (Google Antigravity)
+- [Antigravity CLI (agy)](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#add-an-mcp-server)
 - [Claude Code](https://docs.claude.com/en/docs/claude-code/mcp)
 - [OpenCode](https://opencode.ai/docs/mcp-servers/)
 
@@ -191,5 +191,5 @@ If you run into issues, check the [open MCP issues on GitHub](https://github.com
 - [aspire mcp command](https://aspire.dev/reference/cli/commands/aspire-mcp/)
 - [aspire mcp init command](https://aspire.dev/reference/cli/commands/aspire-mcp-init/)
 - [aspire mcp start command](https://aspire.dev/reference/cli/commands/aspire-mcp-start/)
-- [GitHub Copilot in the Dashboard](https://aspire.dev/dashboard/copilot/)
+- [Google Antigravity in the Dashboard](https://aspire.dev/dashboard/copilot/)
 - [How I taught AI to read Aspire docs](https://davidpine.dev/posts/aspire-docs-mcp-tools/)

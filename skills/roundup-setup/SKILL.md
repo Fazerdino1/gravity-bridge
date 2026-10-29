@@ -195,7 +195,7 @@ After writing, give the user a clear, memorable summary of how to use roundup go
 
 > You're all set. Here's what to remember:
 >
-> **To generate a briefing:** Just say `use roundup` in any Copilot CLI session. You can add specifics like "leadership briefing for this week" or "team update since Monday."
+> **To generate a briefing:** Just say `use roundup` in any Antigravity CLI (agy) session. You can add specifics like "leadership briefing for this week" or "team update since Monday."
 >
 > **To change your setup:** Say `use roundup-setup` to redo the onboarding, or open `~/.config/roundup/config.md` directly -- it's plain text, easy to edit.
 >

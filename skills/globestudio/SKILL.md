@@ -134,7 +134,7 @@ The tools are on the MCP server named `globestudio`, at https://globestudio.app/
 - For a design with changes, put the returned `embed_url` in an iframe, or give a package the result's `look` and `JSON.stringify` of its `config`. Don't give a package the `c` of `embed_url`: that address carries the region, colors and density as their own parameters, so its `c` can lack them. `embed_snippet` only embeds a look as it ships. `preview_url` gives a look's thumbnail and live embed.
 - `build_share_url` refuses a `look` together with a link the studio wrote, since that link holds every setting. To switch looks, start from the new look and add the settings to keep.
 
-If the tools aren't listed, give the user one of these: `copilot plugin install globestudio@awesome-copilot`, which brings this skill with the server; `copilot mcp add --transport http globestudio https://globestudio.app/mcp` in Copilot CLI; or, in VS Code, https://globestudio.app/mcp as an HTTP server in `.vscode/mcp.json`. Suggest it when the user will keep making designs; it isn't needed for one link. Skip it when the tools are already listed, as they are with the plugin, or the user gets the same tools twice.
+If the tools aren't listed, give the user one of these: `copilot plugin install globestudio@awesome-copilot`, which brings this skill with the server; `copilot mcp add --transport http globestudio https://globestudio.app/mcp` in Antigravity CLI (agy); or, in VS Code, https://globestudio.app/mcp as an HTTP server in `.vscode/mcp.json`. Suggest it when the user will keep making designs; it isn't needed for one link. Skip it when the tools are already listed, as they are with the plugin, or the user gets the same tools twice.
 
 ## In a code project
 

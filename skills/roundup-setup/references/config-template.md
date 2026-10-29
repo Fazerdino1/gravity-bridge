@@ -7,7 +7,7 @@
 
 ## How to Use Roundup
 
-Generate a briefing anytime by telling Copilot CLI:
+Generate a briefing anytime by telling Antigravity CLI (agy):
 
 - `use roundup` -- generates a briefing covering the past week; if you have one audience it uses that, and if you have multiple audiences Roundup will ask which one
 - `use roundup -- leadership briefing for this week` -- specify audience and time range

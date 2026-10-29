@@ -1,6 +1,6 @@
 ---
 name: brag-sheet
-description: 'Turn vague "what did I do?" into evidence-backed impact statements for performance reviews, self-reviews, promotion packets, and weekly updates. Uniquely mines Copilot CLI session logs to reconstruct forgotten work, plus git commits and GitHub PRs. Enforces a 3-part impact contract (action → result → evidence). Works standalone with zero dependencies. Trigger for: "brag", "log work", "what did I do", "backfill my work history", "performance review", "self-review", "self assessment", "write impact statement", "review prep", "promo packet", "promotion case", "weekly update", "status report", "accomplishments", "what did I ship", "I forgot to log my work", "summarize my work", "track my wins", "what should I highlight", "end of half", "career growth", "work journal", or any request to document, summarize, or organize work accomplishments.'
+description: 'Turn vague "what did I do?" into evidence-backed impact statements for performance reviews, self-reviews, promotion packets, and weekly updates. Uniquely mines Antigravity CLI (agy) session logs to reconstruct forgotten work, plus git commits and GitHub PRs. Enforces a 3-part impact contract (action → result → evidence). Works standalone with zero dependencies. Trigger for: "brag", "log work", "what did I do", "backfill my work history", "performance review", "self-review", "self assessment", "write impact statement", "review prep", "promo packet", "promotion case", "weekly update", "status report", "accomplishments", "what did I ship", "I forgot to log my work", "summarize my work", "track my wins", "what should I highlight", "end of half", "career growth", "work journal", or any request to document, summarize, or organize work accomplishments.'
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/brag-sheet/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -14,7 +14,7 @@ status: draft
 
 # Brag Sheet — Work Impact Writer
 
-Turn engineering work into evidence-backed impact statements for performance reviews, self-reviews, promotion packets, and weekly updates. Uniquely mines Copilot CLI session logs, git history, and PRs to reconstruct forgotten work.
+Turn engineering work into evidence-backed impact statements for performance reviews, self-reviews, promotion packets, and weekly updates. Uniquely mines Antigravity CLI (agy) session logs, git history, and PRs to reconstruct forgotten work.
 
 USE FOR: "brag", "log work", "what did I do", "backfill", "performance review", "self-review", "promo packet", "weekly update", "status report", "write impact statement", "what did I ship", "I forgot to log my work", "review prep", "accomplishments"
 DO NOT USE FOR: project management, sprint planning, time tracking, ticket creation
@@ -228,7 +228,7 @@ PR history (`gh pr list --state merged`) is more reliable for long time ranges t
 Not every entry needs a number. See the Evidence Ladder above. Acceptable evidence includes PR links, "unblocked Team X", or qualitative outcomes with context. Never invent a metric to fill the gap.
 
 ### Copilot session directory doesn't exist
-`~/.copilot/session-state/` only exists if the user has run Copilot CLI sessions. Don't error — silently skip and note: "No Copilot session history found; scanning git and PRs only."
+`~/.copilot/session-state/` only exists if the user has run Antigravity CLI (agy) sessions. Don't error — silently skip and note: "No Copilot session history found; scanning git and PRs only."
 
 ### "brag" might mean something else
 The user might say "brag about this feature to my team" (a launch announcement, not a work entry). Confirm intent if ambiguous.
@@ -238,4 +238,4 @@ If multiple authors appear on the same commits, ask: "Should I credit this as yo
 
 ## Automatic Session Tracking (Optional)
 
-For automatic background tracking of every Copilot CLI session (files edited, PRs created, git actions), install the [copilot-brag-sheet](https://github.com/microsoft/copilot-brag-sheet) extension. It adds `save_to_brag_sheet`, `review_brag_sheet`, and `generate_work_log` tools to every session.
+For automatic background tracking of every Antigravity CLI (agy) session (files edited, PRs created, git actions), install the [copilot-brag-sheet](https://github.com/microsoft/copilot-brag-sheet) extension. It adds `save_to_brag_sheet`, `review_brag_sheet`, and `generate_work_log` tools to every session.

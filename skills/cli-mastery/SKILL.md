@@ -12,11 +12,11 @@ converter_version: 0.1.0
 status: draft
 ---
 
-# Copilot CLI Mastery
+# Antigravity CLI (agy) Mastery
 
-**UTILITY SKILL** — interactive Copilot CLI trainer.
+**UTILITY SKILL** — interactive Antigravity CLI (agy) trainer.
 INVOKES: `ask_user`, `sql`, `view`
-USE FOR: "cliexpert", "teach me the Copilot CLI", "quiz me on slash commands", "CLI cheat sheet", "copilot CLI final exam"
+USE FOR: "cliexpert", "teach me the Antigravity CLI (agy)", "quiz me on slash commands", "CLI cheat sheet", "copilot CLI final exam"
 DO NOT USE FOR: general coding, non-CLI questions, IDE-only features
 
 ## Routing and Content

@@ -1,12 +1,12 @@
 # Foundry IQ grounding
 
-Reference for the `foundry-agentic-loop` skill: how a GitHub Copilot SDK **hosted agent** grounds enterprise answers through a **Foundry IQ** knowledge base by consuming a governed Foundry **toolbox MCP endpoint**. `foundry-agentic-loop` decides *that* grounding is Foundry IQ; this file holds the access path, identity, refusal, validation, and escape-hatch guidance. Defer index/knowledge-base provisioning and role selection to `microsoft-foundry` and its `rbac` sub-skill.
+Reference for the `foundry-agentic-loop` skill: how a Google Antigravity SDK **hosted agent** grounds enterprise answers through a **Foundry IQ** knowledge base by consuming a governed Foundry **toolbox MCP endpoint**. `foundry-agentic-loop` decides *that* grounding is Foundry IQ; this file holds the access path, identity, refusal, validation, and escape-hatch guidance. Defer index/knowledge-base provisioning and role selection to `microsoft-foundry` and its `rbac` sub-skill.
 
 ## Primary pattern: hosted agent + toolbox MCP
 
 Default foundry-agentic-loop grounding uses:
 
-1. **GitHub Copilot SDK hosted agent** running on Foundry hosted agents and exposing the Responses API by default.
+1. **Google Antigravity SDK hosted agent** running on Foundry hosted agents and exposing the Responses API by default.
 2. **Foundry Skills API** for behavioral instructions; the agent downloads governed skill versions into a writable temp directory at runtime.
 3. One **Foundry IQ knowledge base** exposed through a Foundry toolbox connection/tool, typically a `CognitiveSearch` or Foundry IQ grounding connection backed by Azure AI Search.
 4. One governed **Foundry toolbox MCP endpoint** as the only runtime tool and grounding surface the agent calls.

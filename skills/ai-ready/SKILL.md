@@ -20,7 +20,7 @@ This skill helps the user install the latest [ai-ready](https://github.com/johnp
 
 ## Steps
 
-1. Tell the user to add the skill by running this command inside Copilot CLI:
+1. Tell the user to add the skill by running this command inside Antigravity CLI (agy):
 
    ```
    /skills add johnpapa/ai-ready

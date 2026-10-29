@@ -125,7 +125,7 @@ Inside the container the agent must bind `*` for the port mapping to work, so JD
 
 ## Optional code-navigation aid
 
-If the Copilot CLI `lsp` tool is configured (see the `lsp-setup` skill), go-to-definition, find-references, and call hierarchy help trace the execution path. It is optional; grep and reading code work as well.
+If the Antigravity CLI (agy) `lsp` tool is configured (see the `lsp-setup` skill), go-to-definition, find-references, and call hierarchy help trace the execution path. It is optional; grep and reading code work as well.
 
 ## References
 

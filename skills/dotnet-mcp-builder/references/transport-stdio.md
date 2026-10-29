@@ -121,7 +121,7 @@ For a published self-contained executable, replace `command`/`args` with the exe
 "args": ["MyMcpServer", "--version", "1.2.3"]
 ```
 
-## Wiring to VS Code (GitHub Copilot Chat)
+## Wiring to VS Code (Google Antigravity Chat)
 
 In `.vscode/mcp.json`:
 
@@ -131,7 +131,7 @@ In `.vscode/mcp.json`:
     "my-server": {
       "type": "stdio",
       "command": "dotnet",
-      "args": ["run", "--project", "${workspaceFolder}/src/MyMcpServer"]
+      "args": ["run", "--project", "<workspace-root>/src/MyMcpServer"]
     }
   }
 }

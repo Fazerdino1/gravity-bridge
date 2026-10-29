@@ -33,7 +33,7 @@ Model availability varies by region and changes frequently — do not rely on st
 ### Per-Service MS Docs URLs
 
 The full URL registry is in `references/azure-dynamic-sources.md`. Refer to this file when fetching.
-Reference files are located under the `.github/skills/azure-architecture-autopilot/` path.
+Reference files are located under the `.agents/skills/azure-architecture-autopilot/` path.
 
 > **Important**: Fetch directly from the URL using web_fetch to confirm the latest stable apiVersion. Do not blindly use hardcoded versions from reference files or previous conversations.
 

@@ -1,6 +1,6 @@
 # Java 17 to Java 21 Upgrade Guide
 
-These instructions help GitHub Copilot assist developers in upgrading Java projects from JDK 17 to JDK 21, focusing on new language features, API changes, and best practices.
+These instructions help Google Antigravity assist developers in upgrading Java projects from JDK 17 to JDK 21, focusing on new language features, API changes, and best practices.
 
 ## Major Language Features in JDK 18-21
 

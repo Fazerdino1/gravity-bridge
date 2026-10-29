@@ -11,7 +11,7 @@ Details for the Java entry in [lsp-servers.md](lsp-servers.md). LSP is optional 
 
 - Maven: jdtls reads `pom.xml` (multi-module supported). Run `./mvnw -q compile` once so dependencies are in `~/.m2`.
 - Gradle: jdtls uses the Gradle wrapper (`gradlew`) if present. Run `./gradlew classes` once.
-- Open Copilot CLI at the repository root (or the module root) so the build file is found.
+- Open Antigravity CLI (agy) at the repository root (or the module root) so the build file is found.
 - After large `pom.xml` / `build.gradle` edits, restart the session (`/exit`, relaunch) so the project is re-imported.
 
 ## Workspace (data) directory

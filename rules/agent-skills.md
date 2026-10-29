@@ -23,7 +23,7 @@ Instructions for creating effective and portable Agent Skills that enhance Googl
 Agent Skills are self-contained folders with instructions and bundled resources that teach AI agents specialized capabilities. Unlike custom instructions (which define coding standards), skills enable task-specific workflows that can include scripts, examples, templates, and reference data.
 
 Key characteristics:
-- **Portable**: Works across VS Code, Copilot CLI, and Copilot coding agent
+- **Portable**: Works across VS Code, Antigravity CLI (agy), and Antigravity coding agent
 - **Progressive loading**: Only loaded when relevant to the user's request
 - **Resource-bundled**: Can include scripts, templates, examples alongside instructions
 - **On-demand**: Activated automatically based on prompt relevance

@@ -68,7 +68,7 @@ readdirSync(inputDir)
     const html = marked.parse(markdown);
     const outputFile = basename(file, '.md') + '.html';
     writeFileSync(join(outputDir, outputFile), html);
-    console.log(`Converted: ${file} → ${outputFile}`);
+    console.log(`Converted: <current-file> → ${outputFile}`);
   });
 ```
 

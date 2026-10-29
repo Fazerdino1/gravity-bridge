@@ -260,8 +260,8 @@ aspire mcp init
 
 # Interactive — detects your AI environment and creates config files.
 # Supported environments:
-# - VS Code (GitHub Copilot)
-# - Copilot CLI
+# - VS Code (Google Antigravity)
+# - Antigravity CLI (agy)
 # - Claude Code
 # - OpenCode
 ```

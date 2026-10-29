@@ -11,7 +11,7 @@
 | Level | Location |
 |-------|----------|
 | User | `~/.copilot/skills/<name>/SKILL.md` or `~/.agents/skills/<name>/SKILL.md` |
-| Repo | `.github/skills/<name>/SKILL.md` |
+| Repo | `.agents/skills/<name>/SKILL.md` |
 | Org | Shared via org-level config |
 
 ## Creating a custom skill

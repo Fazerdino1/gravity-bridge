@@ -4,9 +4,9 @@ Present a 10-question comprehensive exam using `ask_user` with 4 choices each. R
 
 ## Question Bank
 
-1. Which command initializes Copilot CLI in a new project? → `/init`
+1. Which command initializes Antigravity CLI (agy) in a new project? → `/init`
 2. What shortcut cycles through modes? → `Shift+Tab`
-3. Where are repo-level custom agents stored? → `.github/agents/*.md`
+3. Where are repo-level custom agents stored? → `.agents/skills/*.md`
 4. What does MCP stand for? → Model Context Protocol
 5. Which agent is safe to run in parallel? → `explore`
 6. How do you add a file to AI context? → `@filename` (e.g. `@src/auth.ts`)

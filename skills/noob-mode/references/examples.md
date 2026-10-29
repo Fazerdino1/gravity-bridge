@@ -1,6 +1,6 @@
 # Noob Mode — Before & After Examples
 
-These examples show how Copilot CLI behaves **without** Noob Mode vs. **with** Noob Mode active. Same actions, completely different experience.
+These examples show how Antigravity CLI (agy) behaves **without** Noob Mode vs. **with** Noob Mode active. Same actions, completely different experience.
 
 ---
 

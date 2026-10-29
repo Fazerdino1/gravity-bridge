@@ -68,7 +68,7 @@ Each `.json` file maps events to an array of hook entries.
 | Field | Required | What it does |
 | ---- | ---- | ---- |
 | `type` | yes | `"command"` for scripts |
-| `matcher` | no | Host-level filter — hook only fires when the tool name matches this value (e.g. `"bash"`, `"powershell"`, `"edit"`, `"create"`). Locally verified working in Copilot CLI v1.0.36; not yet used in repo hook samples. |
+| `matcher` | no | Host-level filter — hook only fires when the tool name matches this value (e.g. `"bash"`, `"powershell"`, `"edit"`, `"create"`). Locally verified working in Antigravity CLI (agy) v1.0.36; not yet used in repo hook samples. |
 | `bash` | one or both | Command line invoked on Unix / Bash-capable hosts |
 | `powershell` | one or both | Command line invoked on Windows / PowerShell-capable hosts |
 | `cwd` | no | Working directory, relative to repo root |

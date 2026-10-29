@@ -527,7 +527,7 @@ Look for `chunk_size`, `batch_size`, or similar configuration in the project to 
 
 When the project under test is an AI skill, CLI tool that wraps LLM calls, or any software whose primary execution path involves invoking an AI model, the integration test protocol must include **LLM-automated integration tests** — tests that run the tool end-to-end via a command-line AI agent and structurally verify the output.
 
-This is distinct from standard integration tests because the system under test doesn't have a deterministic API to call. The "integration" is: install the skill into a test repo, invoke it through a CLI agent (GitHub Copilot CLI, Claude Code, or similar), and verify the output artifacts meet structural and content expectations.
+This is distinct from standard integration tests because the system under test doesn't have a deterministic API to call. The "integration" is: install the skill into a test repo, invoke it through a CLI agent (Google Antigravity CLI, Claude Code, or similar), and verify the output artifacts meet structural and content expectations.
 
 **Why this matters:** Skills and LLM tools cannot be tested by calling functions directly — their execution path goes through an AI agent that interprets instructions, reads files, and produces artifacts. The only way to test whether the skill works is to run it. Manual execution is fine for development, but a quality playbook should encode the test as a repeatable protocol.
 
@@ -538,7 +538,7 @@ This is distinct from standard integration tests because the system under test d
 
 ### Prerequisites
 - CLI agent installed and configured (e.g., `gh copilot`, `claude`, `npx @anthropic-ai/claude-code`)
-- Test repo prepared with skill installed at `.github/skills/SKILL.md` (or equivalent)
+- Test repo prepared with skill installed at `.agents/skills/SKILL.md` (or equivalent)
 - Clean `quality/` directory (no artifacts from prior runs)
 - Optional: `reference_docs/` folder for with-docs comparison runs
 
@@ -560,7 +560,7 @@ cp -r path/to/skill/.github test-repo/.github
 
 # Run via CLI agent (adapt command to your agent)
 cd test-repo
-gh copilot -p "Read .github/skills/SKILL.md and its reference files. Execute the quality playbook for this project." \
+gh copilot -p "Read .agents/skills/SKILL.md and its reference files. Execute the quality playbook for this project." \
     --model gpt-5.4 --yolo > quality_run.output.txt 2>&1
 ```
 

@@ -70,7 +70,7 @@ Configure rulesets to block PR merging when:
 
 ## Copilot Autofix
 
-GitHub Copilot Autofix automatically generates fix suggestions for CodeQL alerts in pull requests.
+Google Antigravity Autofix automatically generates fix suggestions for CodeQL alerts in pull requests.
 
 ### Availability
 - Free for all public repositories

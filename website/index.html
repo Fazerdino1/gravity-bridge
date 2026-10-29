@@ -98,6 +98,7 @@
               <option value="az" data-i18n="sortAz">Tri : Nom (A → Z)</option>
               <option value="author" data-i18n="sortAuthor">Tri : Par auteur</option>
             </select>
+            <button type="button" id="reset-filters-btn" class="btn secondary" data-i18n="resetFilters">Réinitialiser</button>
           </div>
           <div class="filter-pills" role="group" aria-label="Filter by resource type">
             <button type="button" class="pill active" data-type="all" data-i18n="filterAll">Tous (862)</button>
@@ -105,6 +106,14 @@
             <button type="button" class="pill" data-type="rule" data-i18n="filterRules">Règles (193)</button>
             <button type="button" class="pill" data-type="agent">Personas (222)</button>
             <button type="button" class="pill" data-type="reviewed" data-i18n="filterReviewed">Vérifiés ★</button>
+            <button type="button" class="pill" data-type="favorites" id="fav-pill" data-i18n="filterFavorites">Mes Favoris ⭐ (0)</button>
+          </div>
+          <div id="fav-cli-bar" class="install-box" hidden>
+            <strong data-i18n="favCliTitle">Installer tous vos favoris en 1 commande :</strong>
+            <div class="install-cmd-row">
+              <code id="fav-cli-cmd"></code>
+              <button type="button" id="copy-fav-cli" class="mini-btn" data-i18n="copyCmd">Copier CLI</button>
+            </div>
           </div>
           <div class="tag-pills" id="tag-pills" role="group" aria-label="Filter by technology tag"></div>
         </form>
@@ -154,7 +163,10 @@
       <pre tabindex="0"><code id="dialog-preview-code"></code></pre>
       <div class="dialog-footer">
         <span id="dialog-meta"></span>
-        <a id="dialog-gh-link" class="btn primary" href="#" target="_blank" rel="noopener" data-i18n="viewFile">Voir sur GitHub ↗</a>
+        <div class="res-actions">
+          <a id="dialog-dl-link" class="btn secondary" href="#" download data-i18n="downloadFile">Télécharger .md ⬇</a>
+          <a id="dialog-gh-link" class="btn primary" href="#" target="_blank" rel="noopener" data-i18n="viewFile">Voir sur GitHub ↗</a>
+        </div>
       </div>
     </div>
   </dialog>

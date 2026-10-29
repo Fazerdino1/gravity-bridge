@@ -120,9 +120,9 @@ who can decide it:
 
 Some findings are decided by **project policy**, not by general
 correctness reasoning. Before applying a generic "fix", **research
-the repo's own conventions first** — `.github/instructions/*.md`
+the repo's own conventions first** — `.agents/rules/*.md`
 files (often have an `applyTo` glob that pins them to the changed
-file's path), `.github/skills/`, `AGENTS.md`, `CONTRIBUTING.md`, CI
+file's path), `.agents/skills/`, `AGENTS.md`, `CONTRIBUTING.md`, CI
 config, and recent commits to similar files. Fan out multiple
 `explore` sub-agents when several axes need checking (lint, format,
 spell-check, license header, etc.) — don't invent answers. What

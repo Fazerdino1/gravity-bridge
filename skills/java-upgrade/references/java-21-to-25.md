@@ -1,6 +1,6 @@
 # Java 21 to Java 25 Upgrade Guide
 
-These instructions help GitHub Copilot assist developers in upgrading Java projects from JDK 21 to JDK 25, focusing on new language features, API changes, and best practices.
+These instructions help Google Antigravity assist developers in upgrading Java projects from JDK 21 to JDK 25, focusing on new language features, API changes, and best practices.
 
 ## Language Features and API Changes in JDK 22-25
 

@@ -39,7 +39,7 @@ Use Microsoft Learn as the source of truth for AZD behavior and schema details. 
 
 ## Skill format
 
-- [Adding agent skills for GitHub Copilot](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills)
+- [Adding agent skills for Google Antigravity](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills)
 - [About agent skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)
 
 When a field, command flag, host type, preview status, or authentication behavior is uncertain, consult the relevant current reference before changing code. Do not rely on remembered syntax for fast-moving preview features.

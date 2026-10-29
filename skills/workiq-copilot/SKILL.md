@@ -1,6 +1,6 @@
 ---
 name: workiq-copilot
-description: Guides the Copilot CLI on how to use the WorkIQ CLI/MCP server to query Microsoft 365 Copilot data (emails, meetings, docs, Teams, people) for live context, summaries, and recommendations.
+description: Guides the Antigravity CLI (agy) on how to use the WorkIQ CLI/MCP server to query Microsoft 365 Copilot data (emails, meetings, docs, Teams, people) for live context, summaries, and recommendations.
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/workiq-copilot/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -28,11 +28,11 @@ WorkIQ (Public Preview) lets Copilot query Microsoft 365 data with natural langu
 
 ## Getting Access
 
-1. **Copilot CLI plugin (preferred)**
+1. **Antigravity CLI (agy) plugin (preferred)**
    - `copilot`
    - `/plugin marketplace add github/copilot-plugins`
    - `/plugin install workiq@copilot-plugins`
-   - Restart Copilot CLI.
+   - Restart Antigravity CLI (agy).
 2. **Standalone CLI / MCP server**
    - `npm install -g @microsoft/workiq` (or `npx -y @microsoft/workiq mcp`).
    - Run `workiq mcp` to expose MCP tools if needed.
@@ -96,7 +96,7 @@ WorkIQ (Public Preview) lets Copilot query Microsoft 365 data with natural langu
 - **Missing CLI** – install via npm or ensure PATH is set; notify user if unavailable.
 - **Consent/auth errors** – re-run command after admin grants permissions or after completing device login.
 - **Long/incomplete output** – rerun with refined scope or ask for specific data slices (per day/project/person).
-- **Command hanging** – cancel the running command in your terminal (for example, with Ctrl+C) or restart the Copilot CLI session, then retry; ensure browser login completed.
+- **Command hanging** – cancel the running command in your terminal (for example, with Ctrl+C) or restart the Antigravity CLI (agy) session, then retry; ensure browser login completed.
 
 ## Follow-up Actions to Offer
 

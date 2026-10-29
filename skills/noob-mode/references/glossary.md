@@ -1,6 +1,6 @@
 # Noob Mode Glossary
 
-A plain-English reference for technical terms you'll encounter when using Copilot CLI. Organized by category.
+A plain-English reference for technical terms you'll encounter when using Antigravity CLI (agy). Organized by category.
 
 ---
 
@@ -293,10 +293,10 @@ A plain-English reference for technical terms you'll encounter when using Copilo
 
 ---
 
-## 🤖 Copilot CLI Specific
+## 🤖 Antigravity CLI (agy) Specific
 
 ### MCP Server (Model Context Protocol)
-**Plain English:** An add-on that gives Copilot CLI extra abilities — like plugins for a web browser.
+**Plain English:** An add-on that gives Antigravity CLI (agy) extra abilities — like plugins for a web browser.
 **Analogy:** Installing a new app on your phone that adds a capability it didn't have before.
 **Example in context:** "Configure an MCP server" = "Set up an add-on that gives Copilot new capabilities."
 
@@ -326,17 +326,17 @@ A plain-English reference for technical terms you'll encounter when using Copilo
 **Example in context:** "This uses 1,000 tokens" = "This is about 750 words' worth of AI processing."
 
 ### Skill
-**Plain English:** A specialized capability you can add to Copilot CLI for a specific type of task.
+**Plain English:** A specialized capability you can add to Antigravity CLI (agy) for a specific type of task.
 **Analogy:** A specialist you can call in — like bringing in a tax expert vs. a contracts expert.
 **Example in context:** "Activate a skill" = "Turn on a specialized capability."
 
 ### Plugin
-**Plain English:** An add-on that extends what Copilot CLI can do, provided by a third party.
+**Plain English:** An add-on that extends what Antigravity CLI (agy) can do, provided by a third party.
 **Analogy:** A browser extension — someone else built it, and you install it to add features.
 **Example in context:** "Install a plugin" = "Add a third-party feature to Copilot."
 
 ### Session
-**Plain English:** One continuous conversation with Copilot CLI, from when you start to when you close it.
+**Plain English:** One continuous conversation with Antigravity CLI (agy), from when you start to when you close it.
 **Analogy:** A phone call — everything discussed is part of that one session until you hang up.
 **Example in context:** "Resume a session" = "Pick up a previous conversation where you left off."
 

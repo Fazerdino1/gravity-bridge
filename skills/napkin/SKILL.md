@@ -1,6 +1,6 @@
 ---
 name: napkin
-description: Visual whiteboard collaboration for Copilot CLI. Creates an interactive whiteboard that opens in your browser — draw, sketch, add sticky notes, then share everything back with Copilot. Copilot sees your drawings and text, and responds with analysis, suggestions, and ideas.
+description: Visual whiteboard collaboration for Antigravity CLI (agy). Creates an interactive whiteboard that opens in your browser — draw, sketch, add sticky notes, then share everything back with Copilot. Copilot sees your drawings and text, and responds with analysis, suggestions, and ideas.
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/napkin/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -12,7 +12,7 @@ converter_version: 0.1.0
 status: draft
 ---
 
-# Napkin — Visual Whiteboard for Copilot CLI
+# Napkin — Visual Whiteboard for Antigravity CLI (agy)
 
 Napkin gives users a browser-based whiteboard where they can draw, sketch, and add sticky notes to think through ideas visually. The agent reads back the whiteboard contents (via a PNG snapshot and optional JSON data) and responds conversationally with analysis, suggestions, and next steps.
 

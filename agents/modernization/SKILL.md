@@ -570,6 +570,6 @@ The entire process typically involves 2-3 interactions with **significant analys
 
 - This agent creates a paper trail of decisions and analysis
 - All documentation is version-controlled in `/docs/`
-- Implementation plan can be fed directly to Copilot Coding Agent
+- Implementation plan can be fed directly to Antigravity coding agent
 - Suitable for regulated industries requiring audit trails
 - Works best with repositories containing 1000+ files or complex business logic

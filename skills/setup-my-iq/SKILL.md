@@ -450,7 +450,7 @@ it, so a single write flows to every wired-up harness.
    "Which AI harness do you use most: VS Code Antigravity Chat, Claude Code,
    Google Antigravity CLI, something else?" Then create the matching
    user-scope file (`.claude\CLAUDE.md` for the first two,
-   `.copilot\copilot-instructions.md` for Copilot CLI) with a
+   `.copilot\copilot-instructions.md` for Antigravity CLI (agy)) with a
    `## Personal Context` section.
 
 If the user explicitly asks for workspace scope instead, write to

@@ -1,5 +1,6 @@
-/* global document, window, localStorage, fetch, navigator, setTimeout, history, URLSearchParams */
+/* global document, window, localStorage, fetch, navigator, setTimeout, history, URLSearchParams, Blob */
 const REPO_URL = 'https://github.com/Fazerdino1/gravity-bridge';
+const RAW_BASE = 'https://raw.githubusercontent.com/Fazerdino1/gravity-bridge/main';
 const PAGE_SIZE = 36;
 const ALL_TAGS = [
   'TypeScript / JS',
@@ -30,24 +31,29 @@ const I18N = {
     collectionsTitle: 'Collections & Plugins Antigravity (Installation en 1 commande)',
     collectionsSub: 'Installez un pack thématique complet dans .agents/ ou comme plugin Antigravity.',
     catalogTitle: 'Catalogue interactif Antigravity',
-    catalogSub: "Recherchez, filtrez par technologie, prévisualisez et copiez la commande d'installation CLI.",
+    catalogSub: "Recherche multi-mots, filtres technologiques, favoris ⭐ et aperçu complet à la demande.",
     searchLabel: 'Rechercher une ressource',
-    searchPlaceholder: 'Rechercher (ex: typescript, commit, docker, security, plan...)',
+    searchPlaceholder: 'Rechercher plusieurs mots (ex: python test, typescript security...)',
     sortReviewed: "Tri : Vérifiés ★ d'abord",
     sortAz: 'Tri : Nom (A → Z)',
     sortAuthor: 'Tri : Par auteur',
+    resetFilters: 'Réinitialiser',
     filterAll: 'Tous (862)',
     filterRules: 'Règles (193)',
     filterReviewed: 'Vérifiés ★',
+    favBtnLabel: (count) => `Mes Favoris ⭐ (${count})`,
+    favCliTitle: 'Installer tous vos favoris en 1 commande :',
     loadMore: 'Afficher plus de résultats',
     resultsShowing: (shown, total) => `${shown} affichés sur ${total} ressources correspondantes`,
     previewBtn: 'Aperçu',
     copyCmd: 'Copier CLI',
     copied: 'Copié !',
+    downloadFile: 'Télécharger .md ⬇',
     viewFile: 'GitHub ↗',
+    loadingPreview: 'Chargement du fichier Markdown complet...',
     byAuthor: 'Auteur :',
     installCliLabel: 'Installation en 1 commande (CLI) :',
-    previewHeading: 'Aperçu du contenu',
+    previewHeading: 'Contenu complet de la ressource',
     contribTitle: 'Contribuer & Utiliser avec Google Antigravity',
     contribHtml: `
       <h3>1. Installer en 1 commande avec le CLI Gravity Bridge</h3>
@@ -78,7 +84,7 @@ npx github:Fazerdino1/gravity-bridge add --plugin git-and-docs-essentials</code>
       <h3>Comment les règles de plus de 24 Ko sont-elles gérées ?</h3>
       <p>Antigravity applique une limite de 24 000 octets par fichier de règle. Notre outil <code>npm run sanitize</code> condense automatiquement les règles volumineuses sous 24 Ko et conserve la référence complète dans <code>docs/rule-references/</code>.</p>
       <h3>Les scripts embarqués dans les skills sont-ils audités ?</h3>
-      <p>Oui : <code>npm run audit:scripts</code> inspecte les 91 scripts embarqués et publie le rapport dans <a href="${REPO_URL}/blob/main/docs/scripts-security-audit.md" target="_blank" rel="noopener">docs/scripts-security-audit.md</a>.</p>
+      <p>Oui : <code>npm run audit:scripts</code> inspecte les 92 scripts embarqués et publie le rapport dans <a href="${REPO_URL}/blob/main/docs/scripts-security-audit.md" target="_blank" rel="noopener">docs/scripts-security-audit.md</a>.</p>
     `,
   },
   en: {
@@ -98,56 +104,40 @@ npx github:Fazerdino1/gravity-bridge add --plugin git-and-docs-essentials</code>
     collectionsTitle: 'Antigravity Collections & Plugins (1-Command Install)',
     collectionsSub: 'Install a complete curated bundle into .agents/ or as a global Antigravity plugin.',
     catalogTitle: 'Interactive Antigravity Catalog',
-    catalogSub: 'Search, filter by technology tag, preview content, and copy the one-line CLI install command.',
+    catalogSub: 'Multi-keyword search, technology tags, favorites ⭐, and on-demand full Markdown preview.',
     searchLabel: 'Search resources',
-    searchPlaceholder: 'Search (e.g. typescript, commit, docker, security, plan...)',
+    searchPlaceholder: 'Multi-word search (e.g. python test, typescript security...)',
     sortReviewed: 'Sort: Reviewed ★ first',
     sortAz: 'Sort: Name (A → Z)',
     sortAuthor: 'Sort: By author',
+    resetFilters: 'Reset',
     filterAll: 'All (862)',
     filterRules: 'Rules (193)',
     filterReviewed: 'Reviewed ★',
+    favBtnLabel: (count) => `Favorites ⭐ (${count})`,
+    favCliTitle: 'Install all your favorites in 1 command:',
     loadMore: 'Load more results',
     resultsShowing: (shown, total) => `Showing ${shown} of ${total} matching resources`,
     previewBtn: 'Preview',
     copyCmd: 'Copy CLI',
     copied: 'Copied!',
+    downloadFile: 'Download .md ⬇',
     viewFile: 'GitHub ↗',
+    loadingPreview: 'Loading full Markdown file...',
     byAuthor: 'Author:',
     installCliLabel: 'One-Command CLI Install:',
-    previewHeading: 'Content Preview',
+    previewHeading: 'Full Resource Content',
     contribTitle: 'Contribute & Use with Google Antigravity',
     contribHtml: `
       <h3>1. Install in 1 Command with the Gravity Bridge CLI</h3>
-      <pre tabindex="0"><code># Install a skill, rule, or persona into your project (.agents/):
-npx github:Fazerdino1/gravity-bridge add conventional-commit
-
-# Install a curated thematic collection:
+      <pre tabindex="0"><code>npx github:Fazerdino1/gravity-bridge add conventional-commit
 npx github:Fazerdino1/gravity-bridge add --collection fullstack-web-typescript
-
-# Install a complete Antigravity plugin into ~/.gemini/config/plugins/:
 npx github:Fazerdino1/gravity-bridge add --plugin git-and-docs-essentials</code></pre>
-      <h3>2. Interactive GitHub Issue Forms</h3>
-      <ul>
-        <li><a href="${REPO_URL}/issues/new?template=new_resource.yml" target="_blank" rel="noopener">Propose a New Antigravity Resource</a></li>
-        <li><a href="${REPO_URL}/issues/new?template=conversion_problem.yml" target="_blank" rel="noopener">Report a Resource or Conversion Problem</a></li>
-        <li><a href="${REPO_URL}/issues/new?template=bug_report.yml" target="_blank" rel="noopener">Report a Tooling Bug</a></li>
-        <li><a href="${REPO_URL}/issues/new?template=license_or_removal_request.yml" target="_blank" rel="noopener">License, Attribution, or Removal Request</a></li>
-      </ul>
     `,
     cocHeading: 'Contributor Covenant Code of Conduct (v2.1)',
-    cocHtml: `
-      <p>We pledge to make participation in our community a harassment-free experience for everyone and to act in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.</p>
-      <p>Unacceptable behavior may be reported to <a href="mailto:fazerdinotheck@outlook.fr">fazerdinotheck@outlook.fr</a> or through <a href="${REPO_URL}/security/advisories/new" target="_blank" rel="noopener">GitHub private reporting</a>.</p>
-      <p>Full text: <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">English</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.fr.md" target="_blank" rel="noopener">Français</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.es.md" target="_blank" rel="noopener">Español</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.de.md" target="_blank" rel="noopener">Deutsch</a>.</p>
-    `,
+    cocHtml: `<p>Contact: <a href="mailto:fazerdinotheck@outlook.fr">fazerdinotheck@outlook.fr</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">CODE_OF_CONDUCT.md</a>.</p>`,
     faqHeading: 'FAQ — Frequently Asked Questions',
-    faqHtml: `
-      <h3>How are rules larger than 24 KB handled?</h3>
-      <p>Antigravity enforces a 24,000-byte per-rule limit. <code>npm run sanitize</code> condenses large rules below 24 KB and preserves the full unabridged reference in <code>docs/rule-references/</code>.</p>
-      <h3>Are bundled skill scripts audited?</h3>
-      <p>Yes: <code>npm run audit:scripts</code> scans all 91 bundled scripts and writes <a href="${REPO_URL}/blob/main/docs/scripts-security-audit.md" target="_blank" rel="noopener">docs/scripts-security-audit.md</a>.</p>
-    `,
+    faqHtml: `<p>All 193 rules are strictly under Antigravity's 24 KB limit, and all 92 bundled scripts are audited in <a href="${REPO_URL}/blob/main/docs/scripts-security-audit.md" target="_blank" rel="noopener">docs/scripts-security-audit.md</a>.</p>`,
   },
   es: {
     navCollections: 'Colecciones y Plugins (6)',
@@ -166,24 +156,29 @@ npx github:Fazerdino1/gravity-bridge add --plugin git-and-docs-essentials</code>
     collectionsTitle: 'Colecciones y Plugins de Antigravity',
     collectionsSub: 'Instale un paquete temático completo con un solo comando CLI.',
     catalogTitle: 'Catálogo interactivo de Antigravity',
-    catalogSub: 'Busque, filtre por tecnología, previsualice y copie el comando de instalación.',
+    catalogSub: 'Búsqueda multipalabra, filtros por tecnología, favoritos ⭐ y vista previa completa.',
     searchLabel: 'Buscar recursos',
-    searchPlaceholder: 'Buscar (ej: typescript, commit, docker, security, plan...)',
+    searchPlaceholder: 'Buscar (ej: python test, typescript security...)',
     sortReviewed: 'Orden: Revisados ★ primero',
     sortAz: 'Orden: Nombre (A → Z)',
     sortAuthor: 'Orden: Por autor',
+    resetFilters: 'Restablecer',
     filterAll: 'Todos (862)',
     filterRules: 'Reglas (193)',
     filterReviewed: 'Revisados ★',
+    favBtnLabel: (count) => `Favoritos ⭐ (${count})`,
+    favCliTitle: 'Instalar todos sus favoritos con 1 comando:',
     loadMore: 'Mostrar más resultados',
     resultsShowing: (shown, total) => `Mostrando ${shown} de ${total} recursos`,
     previewBtn: 'Vista previa',
     copyCmd: 'Copiar CLI',
     copied: '¡Copiado!',
+    downloadFile: 'Descargar .md ⬇',
     viewFile: 'GitHub ↗',
+    loadingPreview: 'Cargando archivo Markdown completo...',
     byAuthor: 'Autor:',
     installCliLabel: 'Instalación con 1 comando (CLI):',
-    previewHeading: 'Vista previa del contenido',
+    previewHeading: 'Contenido completo del recurso',
     contribTitle: 'Contribuir y usar con Google Antigravity',
     contribHtml: `<pre tabindex="0"><code>npx github:Fazerdino1/gravity-bridge add conventional-commit</code></pre>`,
     cocHeading: 'Código de Conducta del Contributor Covenant (v2.1)',
@@ -208,24 +203,29 @@ npx github:Fazerdino1/gravity-bridge add --plugin git-and-docs-essentials</code>
     collectionsTitle: 'Antigravity-Sammlungen & Plugins',
     collectionsSub: 'Installieren Sie ein kuratiertes Paket mit einem einzigen CLI-Befehl.',
     catalogTitle: 'Interaktiver Antigravity-Katalog',
-    catalogSub: 'Suchen, nach Technologie filtern, Vorschau anzeigen und CLI-Befehl kopieren.',
+    catalogSub: 'Mehrwortsuche, Technologie-Filter, Favoriten ⭐ und vollständige Vorschau.',
     searchLabel: 'Ressource suchen',
-    searchPlaceholder: 'Suchen (z. B. typescript, commit, docker, security, plan...)',
+    searchPlaceholder: 'Suchen (z. B. python test, typescript security...)',
     sortReviewed: 'Sortierung: Geprüft ★ zuerst',
     sortAz: 'Sortierung: Name (A → Z)',
     sortAuthor: 'Sortierung: Nach Autor',
+    resetFilters: 'Zurücksetzen',
     filterAll: 'Alle (862)',
     filterRules: 'Regeln (193)',
     filterReviewed: 'Geprüft ★',
+    favBtnLabel: (count) => `Favoriten ⭐ (${count})`,
+    favCliTitle: 'Alle Favoriten mit 1 Befehl installieren:',
     loadMore: 'Mehr Ergebnisse laden',
     resultsShowing: (shown, total) => `${shown} von ${total} passenden Ressourcen angezeigt`,
     previewBtn: 'Vorschau',
     copyCmd: 'CLI kopieren',
     copied: 'Kopiert!',
+    downloadFile: 'Download .md ⬇',
     viewFile: 'GitHub ↗',
+    loadingPreview: 'Vollständige Markdown-Datei wird geladen...',
     byAuthor: 'Autor:',
     installCliLabel: 'Installation mit 1 Befehl (CLI):',
-    previewHeading: 'Inhaltsvorschau',
+    previewHeading: 'Vollständiger Inhalt',
     contribTitle: 'Mitwirken & Nutzung mit Google Antigravity',
     contribHtml: `<pre tabindex="0"><code>npx github:Fazerdino1/gravity-bridge add conventional-commit</code></pre>`,
     cocHeading: 'Verhaltenskodex des Contributor Covenant (v2.1)',
@@ -242,6 +242,42 @@ let activeFilter = 'all';
 let activeTag = '';
 let activeSort = 'reviewed';
 let visibleLimit = PAGE_SIZE;
+let favorites = new Set();
+
+function loadFavorites() {
+  try {
+    const raw = localStorage.getItem('gb-favorites');
+    if (raw) favorites = new Set(JSON.parse(raw));
+  } catch { /* ignore */ }
+}
+
+function saveFavorites() {
+  try {
+    localStorage.setItem('gb-favorites', JSON.stringify([...favorites]));
+  } catch { /* ignore */ }
+  updateFavoritesUi();
+}
+
+function updateFavoritesUi() {
+  const dict = I18N[currentLang];
+  const favPill = document.getElementById('fav-pill');
+  if (favPill) favPill.textContent = dict.favBtnLabel(favorites.size);
+  const favBar = document.getElementById('fav-cli-bar');
+  if (!favBar) return;
+  if (activeFilter === 'favorites' && favorites.size > 0) {
+    favBar.hidden = false;
+    const cmd = [...favorites].map((n) => `npx github:Fazerdino1/gravity-bridge add ${n}`).join(' && ');
+    document.getElementById('fav-cli-cmd').textContent = cmd;
+    const btn = document.getElementById('copy-fav-cli');
+    btn.onclick = () => {
+      navigator.clipboard?.writeText(cmd);
+      btn.textContent = dict.copied;
+      setTimeout(() => { btn.textContent = I18N[currentLang].copyCmd; }, 1400);
+    };
+  } else {
+    favBar.hidden = true;
+  }
+}
 
 function syncUrlState() {
   const params = new URLSearchParams();
@@ -283,10 +319,10 @@ function setupThemeToggle() {
     const sysScheme = sysDark ? 'dark' : 'light';
     if (target === sysScheme) {
       meta.content = 'light dark';
-      try { localStorage.removeItem('color-scheme'); } catch { /* ignore storage restrictions */ }
+      try { localStorage.removeItem('color-scheme'); } catch { /* ignore */ }
     } else {
       meta.content = target;
-      try { localStorage.setItem('color-scheme', target); } catch { /* ignore storage restrictions */ }
+      try { localStorage.setItem('color-scheme', target); } catch { /* ignore */ }
     }
   });
 }
@@ -347,7 +383,7 @@ function renderTagPills() {
   }
 }
 
-function openPreviewModal(item) {
+async function openPreviewModal(item) {
   const dialog = document.getElementById('preview-dialog');
   if (!dialog) return;
   const dict = I18N[currentLang];
@@ -357,9 +393,14 @@ function openPreviewModal(item) {
   document.getElementById('dialog-desc').textContent = item.description;
   const cliCmd = `npx github:Fazerdino1/gravity-bridge add ${item.name}`;
   document.getElementById('dialog-cli-cmd').textContent = cliCmd;
-  document.getElementById('dialog-preview-code').textContent = item.preview || item.description;
+  const codeEl = document.getElementById('dialog-preview-code');
+  codeEl.textContent = dict.loadingPreview;
   document.getElementById('dialog-meta').textContent = `${dict.byAuthor} ${item.author} · License: ${item.license} · Status: ${item.status}`;
   document.getElementById('dialog-gh-link').href = `${REPO_URL}/blob/main/${item.path}`;
+
+  const dlLink = document.getElementById('dialog-dl-link');
+  dlLink.download = `${item.name}.md`;
+  dlLink.href = `${RAW_BASE}/${item.path}`;
 
   const copyBtn = document.getElementById('dialog-copy-cli');
   copyBtn.onclick = () => {
@@ -368,6 +409,16 @@ function openPreviewModal(item) {
     setTimeout(() => { copyBtn.textContent = I18N[currentLang].copyCmd; }, 1400);
   };
   dialog.showModal();
+
+  try {
+    const res = await fetch(`../${item.path}`);
+    const fullText = res.ok ? await res.text() : await (await fetch(`${RAW_BASE}/${item.path}`)).text();
+    codeEl.textContent = fullText;
+    const blob = new Blob([fullText], { type: 'text/markdown;charset=utf-8' });
+    dlLink.href = URL.createObjectURL(blob);
+  } catch {
+    codeEl.textContent = item.description;
+  }
 }
 
 function applyLanguage(lang) {
@@ -390,23 +441,25 @@ function applyLanguage(lang) {
   for (const p of document.querySelectorAll('.pill')) {
     p.classList.toggle('active', p.dataset.type === activeFilter);
   }
+  updateFavoritesUi();
   renderCollections();
   renderTagPills();
   renderCatalog();
 }
 
 function getFilteredItems() {
-  const q = (document.getElementById('search-input')?.value || '').trim().toLowerCase();
+  const rawQuery = (document.getElementById('search-input')?.value || '').trim().toLowerCase();
+  const terms = rawQuery ? rawQuery.split(/\s+/).filter(Boolean) : [];
   const filtered = allItems.filter((item) => {
+    if (activeFilter === 'favorites' && !favorites.has(item.name)) return false;
     if (activeFilter === 'reviewed' && item.status !== 'reviewed') return false;
-    if (activeFilter !== 'all' && activeFilter !== 'reviewed' && item.type !== activeFilter) return false;
+    if (activeFilter !== 'all' && activeFilter !== 'reviewed' && activeFilter !== 'favorites' && item.type !== activeFilter) {
+      return false;
+    }
     if (activeTag && !(item.tags || []).includes(activeTag)) return false;
-    if (!q) return true;
-    return (
-      item.name.toLowerCase().includes(q) ||
-      item.description.toLowerCase().includes(q) ||
-      item.author.toLowerCase().includes(q)
-    );
+    if (!terms.length) return true;
+    const hay = `${item.name} ${item.description} ${item.author} ${(item.tags || []).join(' ')}`.toLowerCase();
+    return terms.every((t) => hay.includes(t));
   });
 
   return filtered.sort((a, b) => {
@@ -424,6 +477,7 @@ function renderCatalog() {
   const countEl = document.getElementById('results-count');
   const moreBtn = document.getElementById('load-more-btn');
 
+  updateFavoritesUi();
   countEl.textContent = dict.resultsShowing(slice.length, filtered.length);
   moreBtn.hidden = slice.length >= filtered.length;
 
@@ -435,17 +489,36 @@ function renderCatalog() {
     const top = document.createElement('div');
     top.className = 'res-top';
 
+    const leftBadges = document.createElement('div');
+    leftBadges.style.display = 'flex';
+    leftBadges.style.gap = '0.35rem';
+
     const badge = document.createElement('span');
     badge.className = `badge ${item.type}`;
     badge.textContent = item.type;
-    top.appendChild(badge);
+    leftBadges.appendChild(badge);
 
     if (item.status === 'reviewed') {
       const rev = document.createElement('span');
       rev.className = 'badge reviewed';
       rev.textContent = '★ reviewed';
-      top.appendChild(rev);
+      leftBadges.appendChild(rev);
     }
+
+    const starBtn = document.createElement('button');
+    starBtn.type = 'button';
+    starBtn.className = 'mini-btn';
+    const isFav = favorites.has(item.name);
+    starBtn.textContent = isFav ? '⭐' : '☆';
+    starBtn.setAttribute('aria-label', `Favorite ${item.name}`);
+    starBtn.addEventListener('click', () => {
+      if (favorites.has(item.name)) favorites.delete(item.name);
+      else favorites.add(item.name);
+      saveFavorites();
+      renderCatalog();
+    });
+
+    top.append(leftBadges, starBtn);
 
     const title = document.createElement('h3');
     title.className = 'res-title';
@@ -505,12 +578,28 @@ function renderCatalog() {
 }
 
 async function init() {
+  loadFavorites();
   loadUrlState();
   setupThemeToggle();
 
   document.getElementById('copy-hero-cli')?.addEventListener('click', (e) => {
     navigator.clipboard?.writeText('npx github:Fazerdino1/gravity-bridge add conventional-commit');
     e.currentTarget.textContent = I18N[currentLang].copied;
+  });
+
+  document.getElementById('reset-filters-btn')?.addEventListener('click', () => {
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) searchInput.value = '';
+    activeFilter = 'all';
+    activeTag = '';
+    activeSort = 'reviewed';
+    const sortSel = document.getElementById('sort-select');
+    if (sortSel) sortSel.value = 'reviewed';
+    visibleLimit = PAGE_SIZE;
+    for (const p of document.querySelectorAll('.pill')) p.classList.toggle('active', p.dataset.type === 'all');
+    renderTagPills();
+    syncUrlState();
+    renderCatalog();
   });
 
   for (const btn of document.querySelectorAll('.lang-btn')) {

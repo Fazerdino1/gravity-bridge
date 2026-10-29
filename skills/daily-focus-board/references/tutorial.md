@@ -2,7 +2,7 @@
 
 A warm, visual board for your day that you run **by talking to your AI partner** (Ember). You set
 the tasks; you keep it current through conversation and a few one-tap controls. This guide covers
-running it in the **GitHub Copilot app** (best experience) and **directly through Ember** anywhere.
+running it in the **Google Antigravity app** (best experience) and **directly through Ember** anywhere.
 
 ## Quick start
 
@@ -15,7 +15,7 @@ board, serve it locally, and open it. That's it — you're running your day with
 
 ## Two ways to run it
 
-### A) In the GitHub Copilot app (browser canvas) — recommended
+### A) In the Google Antigravity app (browser canvas) — recommended
 The app can show a **browser canvas** right next to the chat, so the board lives beside your
 conversation.
 

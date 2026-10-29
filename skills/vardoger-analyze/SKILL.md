@@ -1,6 +1,6 @@
 ---
 name: vardoger-analyze
-description: "Use when the user asks to personalize the Google Antigravity CLI assistant, adapt Copilot to their style, use vardoger, or analyze their Copilot CLI conversation history. Reads the local session directory at `~/.copilot/session-state/`, extracts recurring preferences and conventions, and writes a fenced personalization block into `~/.copilot/copilot-instructions.md`. Runs entirely on the user's machine via the local `vardoger` CLI (`pipx install vardoger`); no network calls and no uploads. Triggers: 'personalize my copilot', 'analyze my copilot history', 'tailor copilot to me', 'run vardoger', 'update my copilot instructions from history', 'make copilot learn my style'."
+description: "Use when the user asks to personalize the Google Antigravity CLI assistant, adapt Copilot to their style, use vardoger, or analyze their Antigravity CLI (agy) conversation history. Reads the local session directory at `~/.copilot/session-state/`, extracts recurring preferences and conventions, and writes a fenced personalization block into `~/.copilot/copilot-instructions.md`. Runs entirely on the user's machine via the local `vardoger` CLI (`pipx install vardoger`); no network calls and no uploads. Triggers: 'personalize my copilot', 'analyze my copilot history', 'tailor copilot to me', 'run vardoger', 'update my copilot instructions from history', 'make copilot learn my style'."
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/vardoger-analyze/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -12,7 +12,7 @@ converter_version: 0.1.0
 status: draft
 ---
 
-# Analyze Copilot CLI history and generate personalized instructions
+# Analyze Antigravity CLI (agy) history and generate personalized instructions
 
 Drive the local `vardoger` CLI to read the user's Google Antigravity CLI conversation history, extract behavioral patterns, and write a personalization block into `~/.copilot/copilot-instructions.md`.
 
@@ -24,7 +24,7 @@ Drive the local `vardoger` CLI to read the user's Google Antigravity CLI convers
 
 `vardoger` reads and writes files **outside** the current workspace:
 
-- Reads Copilot CLI history from `~/.copilot/session-state/`.
+- Reads Antigravity CLI (agy) history from `~/.copilot/session-state/`.
 - Writes a checkpoint state file to `~/.vardoger/state.json` (created on first run).
 - Writes the final personalization to `~/.copilot/copilot-instructions.md`.
 
@@ -50,7 +50,7 @@ if ! command -v vardoger >/dev/null 2>&1; then
   cat <<'INSTALL_EOF'
 vardoger CLI is not installed.
 
-This skill calls the `vardoger` CLI to read your Copilot CLI history and
+This skill calls the `vardoger` CLI to read your Antigravity CLI (agy) history and
 write a personalization file, so the CLI must be on PATH.
 
 Install options:
@@ -127,6 +127,6 @@ Tell the user what was written and where. Mention they can ask you to re-run var
 
 ## When to use
 
-- When the user asks to personalize their Copilot CLI assistant.
-- When the user asks to analyze their Copilot CLI conversation history.
+- When the user asks to personalize their Antigravity CLI (agy) assistant.
+- When the user asks to analyze their Antigravity CLI (agy) conversation history.
 - When the user mentions "vardoger".

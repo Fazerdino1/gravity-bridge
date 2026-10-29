@@ -203,7 +203,7 @@ Read it via `Assembly.GetManifestResourceStream("MyMcpServer.AppUi.chart.html")`
 ## Testing locally
 
 1. Run your MCP server (STDIO or HTTP).
-2. Use a host that supports MCP Apps — Claude Desktop or VS Code Copilot Chat are the easiest.
+2. Use a host that supports MCP Apps — Claude Desktop or VS Code Antigravity Chat are the easiest.
 3. Trigger the tool via the LLM. The UI renders inline.
 
 For pure-UI iteration, [MCP Inspector](https://github.com/modelcontextprotocol/inspector) shows resource contents but does not fully render apps; for that, point Claude Desktop at your dev server.

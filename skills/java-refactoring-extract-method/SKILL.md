@@ -97,7 +97,7 @@ protected RelationshipExpander newExpander(RelationshipType[] types,
 - Baseline first: run the narrowest green test command for the code (`./mvnw -q -Dtest=MyTest test`, `./gradlew test --tests MyTest`) or `./mvnw verify` / `./gradlew build`. Re-run it after every extraction. If the baseline is red, stop and report.
 - If the code has no tests, stop and report; propose characterization tests first. Never delete or weaken tests.
 - One extraction per step (one commit each when the user asks for commits) so each is reviewable and revertible.
-- Prefer the IDE refactoring: use an available IDE tool that exposes Extract Method (it handles parameters and return values safely). The Copilot CLI `lsp` tool offers navigation and rename but no code actions, so configuring jdtls through `lsp-setup` does not provide it; otherwise extract by hand and validate with the compiler and tests.
+- Prefer the IDE refactoring: use an available IDE tool that exposes Extract Method (it handles parameters and return values safely). The Antigravity CLI (agy) `lsp` tool offers navigation and rename but no code actions, so configuring jdtls through `lsp-setup` does not provide it; otherwise extract by hand and validate with the compiler and tests.
 - Extracted methods are `private` by default. Do not add public/protected methods, change the existing signature, or touch generated code (`target/`, `build/generated`, `@Generated`) without asking the user.
 - Watch for: local variables modified in the block (return a value or introduce a small result type), multiple results, checked exceptions, `return`/`break`/`continue` inside the block, and `synchronized`/transaction-annotated methods (extracted `private` methods called on `this` bypass Spring proxies and AOP).
 

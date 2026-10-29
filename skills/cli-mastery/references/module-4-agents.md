@@ -14,7 +14,7 @@
 | Level | Location | Scope |
 |-------|----------|-------|
 | Personal | `~/.copilot/agents/*.md` | All your projects |
-| Project | `.github/agents/*.md` | Everyone on this repo |
+| Project | `.agents/skills/*.md` | Everyone on this repo |
 | Organization | `.github-private/agents/` in org repo | Entire org |
 
 ## Agent file anatomy

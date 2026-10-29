@@ -126,7 +126,7 @@ Most common for entrance animations: `"play none none none"` (animate once, don'
 
 ### 1. Fade-in Batch Reveal
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 Using GSAP ScrollTrigger.batch, animate all .card elements: 
 fade in from opacity 0, y 50 when they enter the viewport at 85%.
@@ -156,7 +156,7 @@ Why `batch` over individual ScrollTriggers: batch groups elements entering toget
 
 ### 2. Scrub Animation (scroll-linked)
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 GSAP scrub: animate .hero-image scale from 1 to 1.3 and opacity to 0
 as the user scrolls past .hero-section. 
@@ -181,7 +181,7 @@ gsap.to('.hero-image', {
 
 ### 3. Pinned Timeline
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 GSAP pinned timeline: pin .story-section while a sequence plays —
 fade in .title (y: 60), scale .image to 1, slide .text from x: 80.
@@ -210,7 +210,7 @@ tl
 
 ### 4. Parallax Layers
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 GSAP parallax: background image moves yPercent -20 (slow),
 foreground text moves yPercent -60 (fast). Both scrubbed to scroll, no pin.
@@ -247,7 +247,7 @@ gsap.to('.parallax-fg', {
 
 ### 5. Horizontal Scroll Section
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 GSAP horizontal scroll: 4 .panel elements inside .panels-container.
 Pin .horizontal-section, scrub 1, snap per panel.
@@ -294,7 +294,7 @@ Required CSS:
 
 ### 6. Character Stagger Text Reveal
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 Split .hero-title into characters using SplitType.
 Animate each char: opacity 0→1, y 80→0, rotateX -90→0.
@@ -329,7 +329,7 @@ gsap.from(text.chars, {
 
 ### 7. Scroll Snap Sections
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 GSAP: each full-height section scales from 0.9 to 1 when it enters view.
 Also add global scroll snapping between sections using ScrollTrigger.create snap.
@@ -366,7 +366,7 @@ ScrollTrigger.create({
 
 ### 8. Scroll Progress Bar
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 GSAP: fixed progress bar at top of page. scaleX 0→1 linked to 
 full page scroll, scrub 0.3 for slight smoothing. transformOrigin left center.
@@ -401,7 +401,7 @@ gsap.to('.progress-bar', {
 
 ### 9. ScrollSmoother Setup
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 Set up GSAP ScrollSmoother with smooth: 1.5, effects: true.
 Show the required wrapper HTML structure.
@@ -438,7 +438,7 @@ ScrollSmoother.create({
 
 ### 10. Animated Number Counter
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 GSAP: animate .counter elements from 0 to their data-target value 
 when they enter the viewport. Duration 2s, ease power2.out.
@@ -486,7 +486,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 **Why useGSAP instead of useEffect:**
 `useGSAP` automatically kills all ScrollTriggers created inside it when the component unmounts — preventing memory leaks. It also handles React strict mode's double-invoke correctly. Think of it as a drop-in replacement for `useLayoutEffect` that GSAP understands.
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 React: use useGSAP from @gsap/react to animate .card elements inside containerRef.
 Fade in from y 60, opacity 0, stagger 0.12, scrollTrigger start top 80%.
@@ -562,7 +562,7 @@ if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger);
 npm install lenis
 ```
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 Integrate Lenis smooth scroll with GSAP ScrollTrigger.
 Add lenis.raf to gsap.ticker. Set lagSmoothing to 0.
@@ -593,7 +593,7 @@ useEffect(() => {
 
 ## Responsive with matchMedia
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 Use gsap.matchMedia to animate x: 200 on desktop (min-width: 768px)
 and y: 100 on mobile. Both should skip animation if prefers-reduced-motion is set.

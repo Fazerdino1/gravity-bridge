@@ -82,7 +82,7 @@ WebSocket server listening on port 4402
 
 ### Step 4: Configure Your MCP Client
 
-#### VS Code with GitHub Copilot
+#### VS Code with Google Antigravity
 
 Add to your VS Code `settings.json`:
 

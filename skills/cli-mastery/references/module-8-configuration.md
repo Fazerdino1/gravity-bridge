@@ -9,7 +9,7 @@
 | `~/.copilot/lsp-config.json` | Language servers (user-level) |
 | `.github/lsp.json` | Language servers (repo-level) |
 | `~/.copilot/copilot-instructions.md` | Global custom instructions |
-| `.github/copilot-instructions.md` | Repo-level custom instructions |
+| `GEMINI.md (or AGENTS.md)` | Repo-level custom instructions |
 
 ## Environment variables
 

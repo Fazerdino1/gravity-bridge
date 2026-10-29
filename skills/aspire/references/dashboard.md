@@ -179,7 +179,7 @@ docker run --rm -d \
 
 ## Copilot integration
 
-The dashboard integrates with GitHub Copilot in VS Code:
+The dashboard integrates with Google Antigravity in VS Code:
 
 - Ask questions about resource status
 - Query logs and traces in natural language

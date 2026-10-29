@@ -1,4 +1,4 @@
-# Known LSP Servers for Copilot CLI
+# Known LSP Servers for Antigravity CLI (agy)
 
 Reference data for the `lsp-setup` skill. Each section contains install commands per OS and a ready-to-use config snippet.
 
@@ -74,7 +74,7 @@ Repo-level `.github/lsp.json` (no absolute paths; the data dir is relative to th
 }
 ```
 
-Add `.jdtls-workspace/` to `.gitignore`. Verified with Homebrew jdtls 1.61.0 on macOS: `--jvm-arg=-Xmx2G -data .jdtls-workspace` are accepted, the server answers `initialize` over stdio and `documentSymbol` on a Quarkus project (Copilot CLI 1.0.95 `copilot lsp list` loads this `.github/lsp.json` shape, which also matches the GitHub docs field table: `command`, `args`, `fileExtensions` required, optional `env`, `rootUri`, `initializationOptions`, `requestTimeoutMs`, `initializationTimeoutMs`; a live `lsp` tool call through it was not exercised). Run `jdtls --help` to confirm that your wrapper version supports `--jvm-arg` and `-data`; if not, drop those flags and use the plain `"args": []` form.
+Add `.jdtls-workspace/` to `.gitignore`. Verified with Homebrew jdtls 1.61.0 on macOS: `--jvm-arg=-Xmx2G -data .jdtls-workspace` are accepted, the server answers `initialize` over stdio and `documentSymbol` on a Quarkus project (Antigravity CLI (agy) 1.0.95 `copilot lsp list` loads this `.github/lsp.json` shape, which also matches the GitHub docs field table: `command`, `args`, `fileExtensions` required, optional `env`, `rootUri`, `initializationOptions`, `requestTimeoutMs`, `initializationTimeoutMs`; a live `lsp` tool call through it was not exercised). Run `jdtls --help` to confirm that your wrapper version supports `--jvm-arg` and `-data`; if not, drop those flags and use the plain `"args": []` form.
 
 Maven (`pom.xml`) and Gradle (`build.gradle[.kts]`) projects are imported automatically. See [java-jdtls.md](java-jdtls.md) for project import, troubleshooting, performance, Lombok/annotation processing, and what each `lsp` operation provides for Java.
 

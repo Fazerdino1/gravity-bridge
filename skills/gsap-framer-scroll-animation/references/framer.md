@@ -181,7 +181,7 @@ For a subtle lag (not physics), use `useTransform` with `clamp: false` and an ea
 
 ### 1. Scroll Progress Bar
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 Framer Motion: fixed scroll progress bar at top of page.
 useScroll for page scroll progress, useSpring to smooth scaleX.
@@ -211,7 +211,7 @@ export function ScrollProgressBar() {
 
 ### 2. Reusable ScrollReveal Wrapper
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 Framer Motion: reusable ScrollReveal component that wraps children with 
 fade-in-up entrance animation using whileInView. Props: delay (default 0), 
@@ -255,7 +255,7 @@ export function ScrollReveal({
 
 ### 3. Parallax Layers
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 Framer Motion parallax section: background moves y from 0% to 30% (slow),
 foreground text moves y from 50 to -50px (fast). 
@@ -298,7 +298,7 @@ export function ParallaxSection() {
 
 ### 4. Horizontal Scroll Section
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 Framer Motion horizontal scroll: 4 cards scroll horizontally as user scrolls vertically.
 Outer container ref height 300vh controls speed (sticky pattern).
@@ -352,7 +352,7 @@ export function HorizontalScroll() {
 
 ### 5. Image Reveal with clipPath
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 Framer Motion: image reveals left to right as it scrolls into view.
 useScroll target ref, offset ['start end', 'center center'].
@@ -395,7 +395,7 @@ export function ImageReveal({ src, alt }: { src: string; alt: string }) {
 
 ### 6. Scroll-linked Navbar (Hide on Scroll Down)
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 Framer Motion navbar: transparent when at top, white with shadow after 80px.
 Hide by sliding up when scrolling down, reveal when scrolling up.
@@ -442,7 +442,7 @@ export function Navbar() {
 
 ### 7. Staggered Card Grid
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 Framer Motion: card grid with stagger entrance. Use variants: 
 container has staggerChildren 0.1, delayChildren 0.2.
@@ -494,7 +494,7 @@ export function CardGrid({ cards }: { cards: { id: number; title: string }[] }) 
 
 ### 8. 3D Tilt on Scroll
 
-**Copilot Chat Prompt:**
+**Antigravity Chat Prompt:**
 ```
 Framer Motion: 3D perspective card that rotates on X axis as it scrolls through view.
 rotateX 15→0→-15, scale 0.9→1→0.9, opacity 0→1→0.

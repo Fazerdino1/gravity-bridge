@@ -94,7 +94,7 @@ When invoked standalone (not during a playbook run), the challenge gate:
 
 Example prompt for standalone use:
 ```
-Read the quality playbook skill at .github/skills/SKILL.md and .github/skills/references/challenge_gate.md.
+Read the quality playbook skill at .agents/skills/SKILL.md and .agents/skills/references/challenge_gate.md.
 Run the challenge gate on BUG-042 using the writeup at quality/writeups/BUG-042.md
 and the source code in this repo.
 ```

@@ -1,6 +1,6 @@
 ---
 name: noob-mode
-description: Plain-English translation layer for non-technical Copilot CLI users. Translates every approval prompt, error message, and technical output into clear, jargon-free English with color-coded risk indicators.
+description: Plain-English translation layer for non-technical Antigravity CLI (agy) users. Translates every approval prompt, error message, and technical output into clear, jargon-free English with color-coded risk indicators.
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/noob-mode/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -14,7 +14,7 @@ status: draft
 
 # Noob Mode
 
-Activate **Noob Mode** to make Copilot CLI speak plain English. Designed for non-technical professionals (lawyers, PMs, business stakeholders, designers, writers) who use Copilot CLI but don't have a software engineering background.
+Activate **Noob Mode** to make Antigravity CLI (agy) speak plain English. Designed for non-technical professionals (lawyers, PMs, business stakeholders, designers, writers) who use Antigravity CLI (agy) but don't have a software engineering background.
 
 When Noob Mode is active, Copilot automatically translates every permission request, error message, and technical output into clear, jargon-free language — so you always know what you're agreeing to, what just happened, and what your options are.
 

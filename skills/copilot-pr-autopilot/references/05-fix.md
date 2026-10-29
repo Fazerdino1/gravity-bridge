@@ -25,9 +25,9 @@ a one-line description of the change.
 
 1. **Discover repo conventions for the area being edited — first.**
    Before writing any code, read:
-   - `.github/instructions/*.md` whose `applyTo` glob matches the
+   - `.agents/rules/*.md` whose `applyTo` glob matches the
      file's path,
-   - `.github/skills/`,
+   - `.agents/skills/`,
    - `AGENTS.md`,
    - `CONTRIBUTING.md`,
    - neighbor-file patterns in the same directory and recent commits

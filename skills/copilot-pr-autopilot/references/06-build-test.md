@@ -26,7 +26,7 @@ back to step 5 for a follow-up fix or push as-is.
 
 **Discovery first** — read and combine:
 
-- `.github/instructions/*.md`,
+- `.agents/rules/*.md`,
 - `AGENTS.md`,
 - `CONTRIBUTING.md`,
 - `README.md`,

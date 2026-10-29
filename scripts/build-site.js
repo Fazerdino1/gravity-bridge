@@ -39,7 +39,7 @@ export function buildCatalog(root = resolve('.')) {
       const dir = join(base, name);
       if (!statSync(dir).isDirectory()) continue;
       const file = join(dir, 'SKILL.md');
-      const { data, body } = parseFrontmatter(readFileSync(file, 'utf8'));
+      const { data } = parseFrontmatter(readFileSync(file, 'utf8'));
       const description = String(data.description ?? '');
       items.push({
         type: folder === 'skills' ? 'skill' : 'agent',
@@ -50,7 +50,6 @@ export function buildCatalog(root = resolve('.')) {
         status: String(data.status ?? 'draft'),
         author: String(data.source_author ?? 'Community'),
         license: String(data.source_license ?? 'MIT'),
-        preview: body.trim().slice(0, 1400),
       });
     }
   }
@@ -58,7 +57,7 @@ export function buildCatalog(root = resolve('.')) {
   const rulesBase = join(root, 'rules');
   for (const file of readdirSync(rulesBase).filter((n) => !IGNORED.has(n) && n.endsWith('.md')).sort()) {
     const name = file.slice(0, -3);
-    const { data, body } = parseFrontmatter(readFileSync(join(rulesBase, file), 'utf8'));
+    const { data } = parseFrontmatter(readFileSync(join(rulesBase, file), 'utf8'));
     const description = String(data.description ?? '');
     items.push({
       type: 'rule',
@@ -70,7 +69,6 @@ export function buildCatalog(root = resolve('.')) {
       status: String(data.status ?? 'draft'),
       author: String(data.source_author ?? 'Community'),
       license: String(data.source_license ?? 'MIT'),
-      preview: body.trim().slice(0, 1400),
     });
   }
 

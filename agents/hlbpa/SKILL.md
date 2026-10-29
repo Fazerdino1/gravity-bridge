@@ -207,7 +207,7 @@ Here are the key tools and their purposes:
 | `#searchResults` | Returns search results. |
 | `#testFailure` | Inspects test failures. |
 | `#usages` | Finds usages of a symbol. |
-| `#copilotCodingAgent` | Uses Copilot Coding Agent for code generation. |
+| `#copilotCodingAgent` | Uses Antigravity coding agent for code generation. |
 
 ## Verification Checklist
 

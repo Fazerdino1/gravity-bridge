@@ -21,7 +21,7 @@ Use `ask_user` with choices for each step.
 ## Scenario 4: Enterprise Onboarding
 > Set up custom agents, repo instructions, and MCP integration for a new team repository.
 
-**Answer:** Add agent profiles to `.github/agents/`, verify `/instructions`, then `/mcp add`
+**Answer:** Add agent profiles to `.agents/skills/`, verify `/instructions`, then `/mcp add`
 
 ## Scenario 5: Power Editing Session
 > You're crafting a long prompt and need to edit quickly without losing context.
@@ -34,7 +34,7 @@ Use `ask_user` with choices for each step.
 **Answer:** `explore` agent (understand) → `task` agent (tests) → `general-purpose` (refactor) → `code-review` (verify)
 
 ## Scenario 7: New Project Setup
-> You cloned a new repo and need to set up Copilot CLI for max productivity.
+> You cloned a new repo and need to set up Antigravity CLI (agy) for max productivity.
 
 **Answer:** `/init` → `/model` → `/mcp add` (if needed) → `Shift+Tab` to Plan mode for first task
 

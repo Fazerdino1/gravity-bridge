@@ -20,13 +20,13 @@
 
 7. **Custom instructions precedence** (highest to lowest):
    - `CLAUDE.md` / `GEMINI.md` / `AGENTS.md` (git root + cwd)
-   - `.github/instructions/**/*.instructions.md` (path-specific!)
-   - `.github/copilot-instructions.md`
+   - `.agents/rules/**/*.instructions.md` (path-specific!)
+   - `GEMINI.md (or AGENTS.md)`
    - `~/.copilot/copilot-instructions.md`
    - `COPILOT_CUSTOM_INSTRUCTIONS_DIRS` (additional directories via env var)
 
 8. **Path-specific instructions:**
-   - `.github/instructions/backend.instructions.md` with `applyTo: "src/api/**"`
+   - `.agents/rules/backend.md` with `applyTo: "src/api/**"`
    - Different coding standards for different parts of the codebase
 
 9. **LSP config** — `~/.copilot/lsp-config.json` or `.github/lsp.json`

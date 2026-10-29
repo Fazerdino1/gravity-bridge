@@ -1,6 +1,6 @@
 ---
 name: lsp-setup
-description: Enable code intelligence (go-to-definition, find-references, hover, type info) for any programming language by installing and configuring an LSP server for Copilot CLI. Detects the OS, installs the right server, and generates the JSON configuration (user-level or repo-level). Use when you need deeper code understanding and no LSP server is configured, or when the user asks to set up, install, or configure an LSP server.
+description: Enable code intelligence (go-to-definition, find-references, hover, type info) for any programming language by installing and configuring an LSP server for Antigravity CLI (agy). Detects the OS, installs the right server, and generates the JSON configuration (user-level or repo-level). Use when you need deeper code understanding and no LSP server is configured, or when the user asks to set up, install, or configure an LSP server.
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/lsp-setup/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -14,7 +14,7 @@ status: draft
 
 # LSP Setup for Google Antigravity CLI
 
-**UTILITY SKILL** — installs and configures Language Server Protocol servers for Copilot CLI.
+**UTILITY SKILL** — installs and configures Language Server Protocol servers for Antigravity CLI (agy).
 USE FOR: "setup LSP", "install language server", "configure LSP for Java", "add TypeScript LSP", "enable code intelligence", "I need go-to-definition", "find references not working", "need better code understanding"
 DO NOT USE FOR: general coding tasks, IDE/editor LSP configuration, non-Copilot-CLI setups
 
@@ -30,10 +30,10 @@ DO NOT USE FOR: general coding tasks, IDE/editor LSP configuration, non-Copilot-
 
 ## Configuration Format
 
-Copilot CLI reads LSP configuration from user-level or repo-level locations, and repo-level config takes precedence over user-level config:
+Antigravity CLI (agy) reads LSP configuration from user-level or repo-level locations, and repo-level config takes precedence over user-level config:
 
 - **User-level**: `~/.copilot/lsp-config.json`
-- **Repo-level**: `.github/lsp.json` (a bare `lsp.json` at the repo root is not read: with Copilot CLI 1.0.95, `copilot lsp list` listed servers from `.github/lsp.json` but not from a root `lsp.json`)
+- **Repo-level**: `.github/lsp.json` (a bare `lsp.json` at the repo root is not read: with Antigravity CLI (agy) 1.0.95, `copilot lsp list` listed servers from `.github/lsp.json` but not from a root `lsp.json`)
 
 The JSON structure:
 
@@ -73,7 +73,7 @@ The JSON structure:
 
 After setup, tell the user:
 
-1. Type `/exit` to quit Copilot CLI — this is **required** so the new LSP configuration is loaded on next launch
+1. Type `/exit` to quit Antigravity CLI (agy) — this is **required** so the new LSP configuration is loaded on next launch
 2. Re-launch `copilot` in a project with files of the configured language
 3. Run `/lsp` to check the server status
 4. Try code intelligence features like go-to-definition or hover

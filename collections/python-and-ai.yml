@@ -1,0 +1,9 @@
+id: python-and-ai
+name: Python, Testing & AI Engineering
+description: Python testing, Playwright Python, LangChain, and MCP server expertise for Antigravity.
+items:
+  - path: rules/langchain-python.md
+  - path: rules/playwright-python.md
+  - path: skills/pytest-coverage
+  - path: agents/python-mcp-expert
+  - path: agents/python-notebook-sample-builder

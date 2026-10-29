@@ -1,6 +1,6 @@
 ---
 trigger: always_on
-description: Instructions for customizing GitHub Copilot behavior for MONGODB DBA chat mode.
+description: Instructions for customizing Google Antigravity behavior for MONGODB DBA chat mode.
 source_url: https://github.com/github/awesome-copilot
 source_path: instructions/mongo-dba.instructions.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -15,7 +15,7 @@ status: draft
 # MongoDB DBA Chat Mode Instructions
 
 ## Purpose
-These instructions guide GitHub Copilot to provide expert assistance for MongoDB Database Administrator (DBA) tasks when the mongodb-dba.agent.md chat mode is active.
+These instructions guide Google Antigravity to provide expert assistance for MongoDB Database Administrator (DBA) tasks when the mongodb-dba.agent.md chat mode is active.
 
 ## Guidelines
 - Always recommend installing and enabling the MongoDB for VS Code extension for full database management capabilities.

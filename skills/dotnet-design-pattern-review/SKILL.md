@@ -14,7 +14,7 @@ status: draft
 
 # .NET/C# Design Pattern Review
 
-Review the C#/.NET code in ${selection} for design pattern implementation and suggest improvements for the solution/project. Do not make any changes to the code, just provide a review.
+Review the C#/.NET code in <selected-code> for design pattern implementation and suggest improvements for the solution/project. Do not make any changes to the code, just provide a review.
 
 ## Required Design Patterns
 

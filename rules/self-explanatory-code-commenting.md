@@ -1,6 +1,6 @@
 ---
 trigger: always_on
-description: Guidelines for GitHub Copilot to write comments to achieve self-explanatory code with less comments. Examples are in JavaScript but it should work on any language that has comments.
+description: Guidelines for Google Antigravity to write comments to achieve self-explanatory code with less comments. Examples are in JavaScript but it should work on any language that has comments.
 source_url: https://github.com/github/awesome-copilot
 source_path: instructions/self-explanatory-code-commenting.instructions.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4

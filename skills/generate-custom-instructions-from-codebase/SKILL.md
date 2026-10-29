@@ -1,6 +1,6 @@
 ---
 name: generate-custom-instructions-from-codebase
-description: Migration and code evolution instructions generator for GitHub Copilot. Analyzes differences between two project versions (branches, commits, or releases) to create precise instructions allowing Copilot to maintain consistency during technology migrations, major refactoring, or framework version upgrades.
+description: Migration and code evolution instructions generator for Google Antigravity. Analyzes differences between two project versions (branches, commits, or releases) to create precise instructions allowing Copilot to maintain consistency during technology migrations, major refactoring, or framework version upgrades.
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/generate-custom-instructions-from-codebase/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -45,7 +45,7 @@ ${VALIDATION_REQUIRED="true|false"}
 ## Generated Prompt
 
 ```
-"Analyze code evolution between two project states to generate precise migration instructions for GitHub Copilot. These instructions will guide Copilot to automatically apply the same transformation patterns during future modifications. Follow this methodology:
+"Analyze code evolution between two project states to generate precise migration instructions for Google Antigravity. These instructions will guide Copilot to automatically apply the same transformation patterns during future modifications. Follow this methodology:
 
 ### Phase 1: Comparative State Analysis
 
@@ -85,7 +85,7 @@ ${MIGRATION_TYPE == "Technology Migration" ?
 Create a `.github/copilot-migration-instructions.md` file with this structure:
 
 \`\`\`markdown
-# GitHub Copilot Migration Instructions
+# Google Antigravity Migration Instructions
 
 ## Migration Context
 - **Type**: ${MIGRATION_TYPE}
@@ -209,7 +209,7 @@ ${AUTOMATION_LEVEL == "Aggressive" ?
 
 ### Final Result
 
-Migration instructions that enable GitHub Copilot to:
+Migration instructions that enable Google Antigravity to:
 1. **Automatically apply** the same transformations during future modifications
 2. **Maintain consistency** with newly adopted conventions  
 3. **Avoid obsolete patterns** by automatically proposing alternatives
@@ -237,7 +237,7 @@ Useful for adopting new patterns: Repository Pattern, Dependency Injection, Obse
 ## Unique Benefits
 
 ### 🧠 **Artificial Intelligence Enhancement**
-Unlike traditional migration documentation, these instructions "train" GitHub Copilot to reproduce your technology evolution decisions automatically during future code modifications.
+Unlike traditional migration documentation, these instructions "train" Google Antigravity to reproduce your technology evolution decisions automatically during future code modifications.
 
 ### 🔄 **Knowledge Capitalization**  
 Transforms specific project experience into reusable rules, avoiding the loss of migration expertise and accelerating future similar transformations.

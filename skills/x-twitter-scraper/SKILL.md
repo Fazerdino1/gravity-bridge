@@ -1,6 +1,6 @@
 ---
 name: x-twitter-scraper
-description: Build GitHub Copilot workflows with Xquik X API SDKs, REST endpoints, hosted Apify Actor runs, MCP tools, TweetClaw OpenClaw plugin installs, signed webhooks, tweet search, user lookup, follower exports, media actions, and agent automation.
+description: Build Google Antigravity workflows with Xquik X API SDKs, REST endpoints, hosted Apify Actor runs, MCP tools, TweetClaw OpenClaw plugin installs, signed webhooks, tweet search, user lookup, follower exports, media actions, and agent automation.
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/x-twitter-scraper/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4

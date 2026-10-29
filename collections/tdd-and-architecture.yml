@@ -1,0 +1,11 @@
+id: tdd-and-architecture
+name: TDD Cycle & System Architecture
+description: Red-Green-Refactor TDD personas, API breaking-change detection, and system architecture planning.
+items:
+  - path: skills/api-breaking-change-detector
+  - path: skills/create-implementation-plan
+  - path: agents/tdd-red
+  - path: agents/tdd-green
+  - path: agents/tdd-refactor
+  - path: agents/se-system-architecture-reviewer
+  - path: agents/project-architecture-planner

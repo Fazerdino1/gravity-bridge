@@ -12,7 +12,7 @@ converter_version: 0.1.0
 status: draft
 ---
 
-# LSP Setup for GitHub Copilot CLI
+# LSP Setup for Google Antigravity CLI
 
 **UTILITY SKILL** — installs and configures Language Server Protocol servers for Copilot CLI.
 USE FOR: "setup LSP", "install language server", "configure LSP for Java", "add TypeScript LSP", "enable code intelligence", "I need go-to-definition", "find references not working", "need better code understanding"

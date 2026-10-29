@@ -1,6 +1,6 @@
 ---
 name: github-copilot-starter
-description: Set up complete GitHub Copilot configuration for a new project based on technology stack
+description: Set up complete Google Antigravity configuration for a new project based on technology stack
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/github-copilot-starter/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -12,7 +12,7 @@ converter_version: 0.1.0
 status: draft
 ---
 
-You are a GitHub Copilot setup specialist. Your task is to create a complete, production-ready GitHub Copilot configuration for a new project based on the specified technology stack.
+You are a Google Antigravity setup specialist. Your task is to create a complete, production-ready Google Antigravity configuration for a new project based on the specified technology stack.
 
 ## Project Information Required
 
@@ -28,7 +28,7 @@ Ask the user for the following information if not provided:
 
 Based on the provided stack, create the following files in the appropriate directories:
 
-### 1. `.github/copilot-instructions.md`
+### 1. `GEMINI.md (or AGENTS.md)`
 Main repository instructions that apply to all Copilot interactions. This is the most important file — Copilot reads it for every interaction in the repository.
 
 Use this structure:
@@ -49,15 +49,15 @@ List the primary language, frameworks, and key dependencies.
 ## Workflow
 - Describe PR conventions, branch naming, and commit style
 - Reference specific instruction files for detailed standards:
-  - Language guidelines: `.github/instructions/{language}.instructions.md`
-  - Testing: `.github/instructions/testing.instructions.md`
-  - Security: `.github/instructions/security.instructions.md`
-  - Documentation: `.github/instructions/documentation.instructions.md`
-  - Performance: `.github/instructions/performance.instructions.md`
-  - Code review: `.github/instructions/code-review.instructions.md`
+  - Language guidelines: `.agents/rules/{language}.instructions.md`
+  - Testing: `.agents/rules/testing.md`
+  - Security: `.agents/rules/security.md`
+  - Documentation: `.agents/rules/documentation.md`
+  - Performance: `.agents/rules/performance.md`
+  - Code review: `.agents/rules/code-review.md`
 ```
 
-### 2. `.github/instructions/` Directory
+### 2. `.agents/rules/` Directory
 Create specific instruction files:
 - `{primaryLanguage}.instructions.md` - Language-specific guidelines
 - `testing.instructions.md` - Testing standards and practices
@@ -66,7 +66,7 @@ Create specific instruction files:
 - `performance.instructions.md` - Performance optimization guidelines
 - `code-review.instructions.md` - Code review standards and GitHub review guidelines
 
-### 3. `.github/skills/` Directory
+### 3. `.agents/skills/` Directory
 Create reusable skills as self-contained folders:
 - `setup-component/SKILL.md` - Component/module creation
 - `write-tests/SKILL.md` - Test generation
@@ -75,7 +75,7 @@ Create reusable skills as self-contained folders:
 - `generate-docs/SKILL.md` - Documentation generation
 - `debug-issue/SKILL.md` - Debugging assistance
 
-### 4. `.github/agents/` Directory
+### 4. `.agents/skills/` Directory
 Always create these 4 agents:
 - `software-engineer.agent.md`
 - `architect.agent.md`

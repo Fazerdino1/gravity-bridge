@@ -1,6 +1,6 @@
 ---
 trigger: model_decision
-description: This file provides guidance on building Python applications using GitHub Copilot SDK. Applies to files matching **.py, pyproject.toml, setup.py.
+description: This file provides guidance on building Python applications using Google Antigravity SDK. Applies to files matching **.py, pyproject.toml, setup.py.
 source_url: https://github.com/github/awesome-copilot
 source_path: instructions/copilot-sdk-python.instructions.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -18,7 +18,7 @@ Apply this rule when working on files matching: `**.py`, `pyproject.toml`, `setu
 
 - The SDK is in technical preview and may have breaking changes
 - Requires Python 3.9 or later
-- Requires GitHub Copilot CLI installed and in PATH
+- Requires Google Antigravity CLI installed and in PATH
 - Uses async/await patterns throughout (asyncio)
 - Supports both async context managers and manual lifecycle management
 - Type hints provided for better IDE support

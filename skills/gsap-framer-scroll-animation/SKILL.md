@@ -14,7 +14,7 @@ status: draft
 
 # GSAP & Framer Motion — Scroll Animations Skill
 
-Production-grade scroll animations with GitHub Copilot prompts, ready-to-use code recipes, and deep API references.
+Production-grade scroll animations with Google Antigravity prompts, ready-to-use code recipes, and deep API references.
 
 > **Design Companion:** This skill provides the *technical implementation* for scroll-driven motion.
 > For the *creative philosophy*, design principles, and premium aesthetics that should guide **how**
@@ -130,7 +130,7 @@ tl.from('.title', { opacity: 0, y: 60 }).from('.img', { scale: 0.85 });
 - For GSAP, always specify: selector, start/end strings, whether you want scrub or toggleActions
 - For Framer, always specify: which hook (useScroll vs whileInView), offset values, what to transform
 - Paste the exact error message when asking `/fix` — Copilot fixes are dramatically better with real errors
-- Use `@workspace` scope in Copilot Chat so it reads your existing component structure
+- Use `@workspace` scope in Antigravity Chat so it reads your existing component structure
 
 ## Reference Files
 

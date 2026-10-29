@@ -1,6 +1,6 @@
 ---
 name: java-mcp-server-generator
-description: Use this skill when the user wants to create a Model Context Protocol (MCP) server in Java or in a Spring Boot app. Also use it when the user wants AI agents, such as GitHub Copilot or Claude, to use Java code, an API, or a database. Use it even if the user does not say "MCP". The skill makes a Maven or Gradle project with the MCP Java SDK 2.x, tools, JUnit tests, and client configuration. Do not use it for Quarkus/Quarkiverse MCP servers (use the `quarkus-mcp-server-sse` instruction), for an MCP client or for a server in another language.
+description: Use this skill when the user wants to create a Model Context Protocol (MCP) server in Java or in a Spring Boot app. Also use it when the user wants AI agents, such as Google Antigravity or Claude, to use Java code, an API, or a database. Use it even if the user does not say "MCP". The skill makes a Maven or Gradle project with the MCP Java SDK 2.x, tools, JUnit tests, and client configuration. Do not use it for Quarkus/Quarkiverse MCP servers (use the `quarkus-mcp-server-sse` instruction), for an MCP client or for a server in another language.
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/java-mcp-server-generator/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4

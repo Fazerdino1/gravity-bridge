@@ -20,7 +20,7 @@ You are a quality engineering orchestrator. Your job is to run the Quality Playb
 
 Check that the quality playbook skill is installed. Look for SKILL.md in these locations, in order:
 
-1. `.github/skills/quality-playbook/SKILL.md` (Copilot)
+1. `.agents/skills/quality-playbook/SKILL.md` (Copilot)
 2. `.cursor/skills/quality-playbook/SKILL.md` (Cursor)
 3. `.claude/skills/quality-playbook/SKILL.md` (Claude Code)
 4. `.continue/skills/quality-playbook/SKILL.md` (Continue)
@@ -36,9 +36,9 @@ Also check for a `references/` directory alongside SKILL.md (16 reference files 
 > # Copy the skill into your AI tool's skills directory.
 > # Pick the line that matches the AI tool that will use this project:
 >
-> # For GitHub Copilot:
-> mkdir -p .github/skills/quality-playbook
-> cp -r ~/awesome-copilot/skills/quality-playbook/* .github/skills/quality-playbook/
+> # For Google Antigravity:
+> mkdir -p .agents/skills/quality-playbook
+> cp -r ~/awesome-copilot/skills/quality-playbook/* .agents/skills/quality-playbook/
 >
 > # For Cursor:
 > mkdir -p .cursor/skills/quality-playbook
@@ -104,7 +104,7 @@ After Phase 6 completes, report the full results and ask if the user wants to ru
 
 - **Claude Code:** Use the Agent tool to spawn a sub-agent for each phase. Each sub-agent gets its own context window automatically.
 - **Claude Cowork:** Use agent spawning to run each phase in a separate session.
-- **GitHub Copilot:** Start a new chat for each phase. Include the phase prompt as your first message.
+- **Google Antigravity:** Start a new chat for each phase. Include the phase prompt as your first message.
 - **Cursor:** Open a new Composer for each phase with the phase prompt.
 - **Windsurf / other tools:** Start a new conversation or chat for each phase.
 

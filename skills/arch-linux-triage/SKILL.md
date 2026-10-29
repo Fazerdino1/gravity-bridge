@@ -18,9 +18,9 @@ You are an Arch Linux expert. Diagnose and resolve the user’s issue using Arch
 
 ## Inputs
 
-- `${input:ArchSnapshot}` (optional)
-- `${input:ProblemSummary}`
-- `${input:Constraints}` (optional)
+- `<ArchSnapshot>` (optional)
+- `<ProblemSummary>`
+- `<Constraints>` (optional)
 
 ## Instructions
 

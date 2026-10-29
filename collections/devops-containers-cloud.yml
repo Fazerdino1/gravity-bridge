@@ -1,0 +1,12 @@
+id: devops-containers-cloud
+name: DevOps, Docker, Kubernetes & CI/CD
+description: Best-practice rules and skills for multi-stage Dockerfiles, Kubernetes deployments, GitHub Actions CI/CD, and cloud architecture.
+items:
+  - path: rules/containerization-docker-best-practices.md
+  - path: rules/kubernetes-deployment-best-practices.md
+  - path: rules/kubernetes-manifests.md
+  - path: rules/github-actions-ci-cd-best-practices.md
+  - path: skills/multi-stage-dockerfile
+  - path: skills/devops-rollout-plan
+  - path: agents/aws-principal-architect
+  - path: agents/azure-principal-architect

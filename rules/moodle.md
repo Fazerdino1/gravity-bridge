@@ -1,6 +1,6 @@
 ---
 trigger: model_decision
-description: Instructions for GitHub Copilot to generate code in a Moodle project context. Applies to files matching **/*.php, **/*.js, **/*.mustache, **/*.xml, **/*.css, **/*.scss.
+description: Instructions for Google Antigravity to generate code in a Moodle project context. Applies to files matching **/*.php, **/*.js, **/*.mustache, **/*.xml, **/*.css, **/*.scss.
 source_url: https://github.com/github/awesome-copilot
 source_path: instructions/moodle.instructions.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4

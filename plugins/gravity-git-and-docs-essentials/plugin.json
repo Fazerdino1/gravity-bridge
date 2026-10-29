@@ -1,0 +1,9 @@
+{
+  "name": "gravity-git-and-docs-essentials",
+  "description": "Essential reviewed workflows for Conventional Commits, README generation, code review, CommonMark Markdown, and implementation planning.",
+  "suggestedPrompts": [
+    "Use /conventional-commit on this project",
+    "Use /create-readme on this project",
+    "Use /review-and-refactor on this project"
+  ]
+}

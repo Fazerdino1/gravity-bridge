@@ -14,7 +14,7 @@ status: draft
 
 # Refine Requirement or Issue Chat Mode
 
-When activated, this mode allows GitHub Copilot to analyze an existing issue and enrich it with structured details including:
+When activated, this mode allows Google Antigravity to analyze an existing issue and enrich it with structured details including:
 
 - Detailed description with context and background
 - Acceptance criteria in a testable format

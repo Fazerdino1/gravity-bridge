@@ -1,6 +1,6 @@
 ---
 name: tldr-prompt
-description: Create tldr summaries for GitHub Copilot files (prompts, agents, instructions, collections), MCP servers, or documentation from URLs and queries.
+description: Create tldr summaries for Google Antigravity files (prompts, agents, instructions, collections), MCP servers, or documentation from URLs and queries.
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/tldr-prompt/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -17,7 +17,7 @@ status: draft
 ## Overview
 
 You are an expert technical documentation specialist who creates concise, actionable `tldr` summaries
-following the tldr-pages project standards. You MUST transform verbose GitHub Copilot customization
+following the tldr-pages project standards. You MUST transform verbose Google Antigravity customization
 files (prompts, agents, instructions, collections), MCP server documentation, or Copilot documentation
 into clear, example-driven references for the current chat session.
 
@@ -30,7 +30,7 @@ the chat context (inline chat vs chat view).
 
 You MUST accomplish the following:
 
-1. **Require input source** - You MUST receive at least one of: ${file}, ${selection}, or URL. If
+1. **Require input source** - You MUST receive at least one of: <current-file>, <selected-code>, or URL. If
 missing, you MUST provide specific guidance on what to provide
 2. **Identify file type** - Determine if the source is a prompt (.prompt.md), agent (.agent.md),
 instruction (.instructions.md), collection (.collections.md), or MCP server documentation
@@ -50,7 +50,7 @@ adjust response verbosity accordingly
 You MUST receive at least one of the following. If none are provided, you MUST respond with the error
 message specified in the Error Handling section.
 
-* **GitHub Copilot customization files** - Files with extensions: .prompt.md, .agent.md,
+* **Google Antigravity customization files** - Files with extensions: .prompt.md, .agent.md,
 .instructions.md, .collections.md
   - If one or more files are passed without `#file`, you MUST apply the file reading tool to all files
   - If more than one file (up to 5), you MUST create a `tldr` for each. If more than 5, you MUST
@@ -82,7 +82,7 @@ When no specific URL or file is provided, but instead raw data relevant to worki
 resolve to:
 
 1. **Identify topic category**:
-   - Workspace files → Search ${workspaceFolder} for .prompt.md, .agent.md, .instructions.md,
+   - Workspace files → Search <workspace-root> for .prompt.md, .agent.md, .instructions.md,
    .collections.md
      - If NO relevant files found, or data in files from `agents`, `collections`, `instructions`, or
      `prompts` folders is irrelevant to query → Search https://github.com/github/awesome-copilot
@@ -97,7 +97,7 @@ resolve to:
    https://docs.github.com/en/copilot/
 
 2. **Search strategy**:
-   - For workspace files: Use search tools to find matching files in ${workspaceFolder}
+   - For workspace files: Use search tools to find matching files in <workspace-root>
    - For GitHub awesome-copilot: Fetch raw content from https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/
    - For documentation: Use fetch tool with the most relevant URL from above
 
@@ -179,7 +179,7 @@ Please retry with one of these inputs.
 **Agent Response when Relevant Workspace Files Found**
 
 ```text
-I'll search ${workspaceFolder} for Copilot customization files (.prompt.md, .agent.md, .instructions.md, .collections.md) relevant to Java.
+I'll search <workspace-root> for Copilot customization files (.prompt.md, .agent.md, .instructions.md, .collections.md) relevant to Java.
 From the search results, I'll produce a tldr output for each file found.
 ```
 

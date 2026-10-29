@@ -124,7 +124,7 @@ board, install and register the `signals-dashboard` extension separately. If the
 operator asks you to "run cairn" / "open the dashboard" and it isn't already
 showing:
 
-1. Install the `signals-dashboard` canvas extension. In GitHub Copilot it's in
+1. Install the `signals-dashboard` canvas extension. In Google Antigravity it's in
    `awesome-copilot`: `copilot plugin install signals-dashboard@awesome-copilot`.
    (It also ships in the the-workshop repo at
    `.github/extensions/signals-dashboard/` for other setups.)

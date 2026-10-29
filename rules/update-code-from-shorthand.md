@@ -1,6 +1,6 @@
 ---
 trigger: model_decision
-description: Shorthand code will be in the file provided from the prompt or raw data in the prompt, and will be used to update the code file when the prompt has the text `UPDATE CODE FROM SHORTHAND`. Applies to files matching **/${input:file}.
+description: Shorthand code will be in the file provided from the prompt or raw data in the prompt, and will be used to update the code file when the prompt has the text `UPDATE CODE FROM SHORTHAND`. Applies to files matching **/<file>.
 source_url: https://github.com/github/awesome-copilot
 source_path: instructions/update-code-from-shorthand.instructions.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -12,7 +12,7 @@ converter_version: 0.1.0
 status: draft
 ---
 
-Apply this rule when working on files matching: `**/${input:file}`.
+Apply this rule when working on files matching: `**/<file>`.
 
 # Update Code from Shorthand
 
@@ -92,7 +92,7 @@ solution for the goal.
 
 ## Variables
 
-- REQUIRED_FILE = `${input:file}`;
+- REQUIRED_FILE = `<file>`;
 - openPrompt = "UPDATE CODE FROM SHORTHAND";
 - language:comment = "Single or multi-line comment of programming language.";
 - openMarker = "${language:comment} start-shorthand";

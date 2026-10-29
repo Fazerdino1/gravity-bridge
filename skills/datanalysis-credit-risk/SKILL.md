@@ -18,7 +18,7 @@ status: draft
 
 ```bash
 # Run the complete data cleaning pipeline
-python ".github/skills/datanalysis-credit-risk/scripts/example.py"
+python ".agents/skills/datanalysis-credit-risk/scripts/example.py"
 ```
 
 ## Complete Process Description

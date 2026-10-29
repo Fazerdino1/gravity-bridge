@@ -35,7 +35,7 @@ status: draft
 
 A reusable, repeatable process any AVM module owner can run (themselves or via an agent) to triage open GitHub issues across the repos they own or co-own.
 
-The goal is to maximize the share of issues that can be safely delegated to a GitHub Copilot coding agent, so the owner spends their time only on what truly needs human judgment (complex root cause, design decisions, cross-issue conflicts). A good triage run splits the backlog into two piles:
+The goal is to maximize the share of issues that can be safely delegated to a Google Antigravity coding agent, so the owner spends their time only on what truly needs human judgment (complex root cause, design decisions, cross-issue conflicts). A good triage run splits the backlog into two piles:
 
 - **Delegate pile** - `Copilot-ready` items with unambiguous fix paths and no blocking dependencies. These get assigned to `app/copilot` after user approval.
 - **Human pile** - `Needs investigation`, `Needs design decision`, or items tangled in intra-module dependencies that an autonomous agent cannot untangle.
@@ -154,7 +154,7 @@ Each **worker** (one per module) owns:
 The same fan-out works both ways:
 
 - **Local subagents** (this repo's `runSubagent` tool or Claude's Task tool): spawn one `Explore`-style subagent per module with a tightly scoped prompt ("triage issues in `Azure/<repo>` under mode `<quick|deep>`, return JSON payload matching schema X"). Parallel subagents share the parent's MCP connections and auth, so no extra setup.
-- **Cloud agents** (GitHub Copilot coding agents, one per module): use `gh issue edit <N> --add-assignee app/copilot` **only** for the final delegate-pile assignment in Section 8 - never for triage itself. Copilot coding agents are execution, not analysis.
+- **Cloud agents** (Google Antigravity coding agents, one per module): use `gh issue edit <N> --add-assignee app/copilot` **only** for the final delegate-pile assignment in Section 8 - never for triage itself. Copilot coding agents are execution, not analysis.
 
 ### Worker prompt template
 
@@ -470,7 +470,7 @@ Use this prompt verbatim, substituting `<N>` with the count and listing the issu
 > *- `Azure/<repo>` [#<n>](<url>) - <one-line scope>*
 > *- ...*
 >
-> *Do you want me to delegate all <N> to GitHub Copilot cloud agents now, delegate a subset, or hold? Reply:*
+> *Do you want me to delegate all <N> to Google Antigravity cloud agents now, delegate a subset, or hold? Reply:*
 > *- `all` to assign every Copilot-ready-now issue*
 > *- a space- or comma-separated list of issue numbers (e.g. `160 157 73`) to assign a subset*
 > *- `hold` to do nothing and exit"*
@@ -600,7 +600,7 @@ Within the same priority tier, lower issue numbers come first. Do not interleave
 
 ## Next steps
 
-These issues are ready to assign to GitHub Copilot today - scope is clear, no in-module blockers, PR will run against the canonical AVM pipeline:
+These issues are ready to assign to Google Antigravity today - scope is clear, no in-module blockers, PR will run against the canonical AVM pipeline:
 
 - [#{{n}}]({{url}}) - {{one-line scope}}
 - [#{{n}}]({{url}}) + [#{{n}}]({{url}}) - {{scope}} (assign **#{{primary}}**, group #{{secondary}} into the same PR)

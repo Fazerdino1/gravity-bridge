@@ -18,7 +18,7 @@ Apply this rule when working on files matching: `**/*.R`, `**/*.r`, `**/*.Rmd`, 
 
 ## Purpose
 
-Help GitHub Copilot generate idiomatic, safe, and maintainable R code across projects.
+Help Google Antigravity generate idiomatic, safe, and maintainable R code across projects.
 
 ## Core Conventions
 

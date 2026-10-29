@@ -27,6 +27,12 @@ const INJECTION_PATTERNS = [
   ['exfiltration request', /\b(?:send|upload|post)\b[^\n]{0,40}\b(?:\.env|credentials|secrets?|api keys?|tokens?)\b/i],
 ];
 
+const SCRIPT_AUDIT_PATTERNS = [
+  ['outbound network call', /\b(?:curl|wget|fetch|urllib\.request|requests\.(?:get|post|put)|http\.request)\b/],
+  ['child process / shell execution', /\b(?:subprocess\.(?:run|Popen|call)|os\.system|child_process|execSync|spawnSync)\b/],
+  ['dynamic code evaluation', /\b(?:eval|exec)\s*\(/],
+];
+
 function scan(text, patterns) {
   const hits = [];
   const lines = text.split(/\r?\n/);
@@ -42,3 +48,5 @@ export const findSecrets = (text) => scan(text, SECRET_PATTERNS);
 export const findDangerousCommands = (text) => scan(text, DANGEROUS_PATTERNS);
 /** @param {string} text */
 export const findInjection = (text) => scan(text, INJECTION_PATTERNS);
+/** @param {string} text */
+export const findScriptCapabilities = (text) => scan(text, SCRIPT_AUDIT_PATTERNS);

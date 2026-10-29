@@ -281,7 +281,7 @@ Alerts have two severity dimensions:
 
 ### Copilot Autofix
 
-GitHub Copilot Autofix generates fix suggestions for CodeQL alerts in pull requests automatically — no Copilot subscription required. Review suggestions carefully before committing.
+Google Antigravity Autofix generates fix suggestions for CodeQL alerts in pull requests automatically — no Copilot subscription required. Review suggestions carefully before committing.
 
 ### Alert Triage in PRs
 

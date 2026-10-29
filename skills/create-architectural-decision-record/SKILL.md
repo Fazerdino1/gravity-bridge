@@ -14,14 +14,14 @@ status: draft
 
 # Create Architectural Decision Record
 
-Create an ADR document for `${input:DecisionTitle}` using structured formatting optimized for AI consumption and human readability.
+Create an ADR document for `<DecisionTitle>` using structured formatting optimized for AI consumption and human readability.
 
 ## Inputs
 
-- **Context**: `${input:Context}`
-- **Decision**: `${input:Decision}`
-- **Alternatives**: `${input:Alternatives}`
-- **Stakeholders**: `${input:Stakeholders}`
+- **Context**: `<Context>`
+- **Decision**: `<Decision>`
+- **Alternatives**: `<Alternatives>`
+- **Stakeholders**: `<Stakeholders>`
 
 ## Input Validation
 If any of the required inputs are not provided or cannot be determined from the conversation history, ask the user to provide the missing information before proceeding with ADR generation.

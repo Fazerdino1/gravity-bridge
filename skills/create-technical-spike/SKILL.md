@@ -18,22 +18,22 @@ Create time-boxed technical spike documents for researching critical questions t
 
 ## Document Structure
 
-Create individual files in `${input:FolderPath|docs/spikes}` directory. Name each file using the pattern: `[category]-[short-description]-spike.md` (e.g., `api-copilot-integration-spike.md`, `performance-realtime-audio-spike.md`).
+Create individual files in `<FolderPath|docs/spikes>` directory. Name each file using the pattern: `[category]-[short-description]-spike.md` (e.g., `api-copilot-integration-spike.md`, `performance-realtime-audio-spike.md`).
 
 ```md
 ---
-title: "${input:SpikeTitle}"
-category: "${input:Category|Technical}"
+title: "<SpikeTitle>"
+category: "<Category|Technical>"
 status: "🔴 Not Started"
-priority: "${input:Priority|High}"
-timebox: "${input:Timebox|1 week}"
+priority: "<Priority|High>"
+timebox: "<Timebox|1 week>"
 created: [YYYY-MM-DD]
 updated: [YYYY-MM-DD]
-owner: "${input:Owner}"
-tags: ["technical-spike", "${input:Category|technical}", "research"]
+owner: "<Owner>"
+tags: ["technical-spike", "<Category|technical>", "research"]
 ---
 
-# ${input:SpikeTitle}
+# <SpikeTitle>
 
 ## Summary
 

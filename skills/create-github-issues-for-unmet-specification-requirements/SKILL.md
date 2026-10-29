@@ -14,7 +14,7 @@ status: draft
 
 # Create GitHub Issues for Unmet Specification Requirements
 
-Create GitHub Issues for unimplemented requirements in the specification at `${file}`.
+Create GitHub Issues for unimplemented requirements in the specification at `<current-file>`.
 
 ## Process
 

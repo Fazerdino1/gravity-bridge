@@ -16,7 +16,7 @@ Apply this rule when working on files matching: `**/*.py`.
 
 # LangChain Python Instructions
 
-These instructions guide GitHub Copilot in generating code and documentation for LangChain applications in Python. Focus on LangChain-specific patterns, APIs, and best practices.
+These instructions guide Google Antigravity in generating code and documentation for LangChain applications in Python. Focus on LangChain-specific patterns, APIs, and best practices.
 
 ## Runnable Interface (LangChain-specific)
 

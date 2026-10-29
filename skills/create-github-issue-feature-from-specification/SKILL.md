@@ -14,7 +14,7 @@ status: draft
 
 # Create GitHub Issue from Specification
 
-Create GitHub Issue for the specification at `${file}`.
+Create GitHub Issue for the specification at `<current-file>`.
 
 ## Process
 

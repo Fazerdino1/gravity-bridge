@@ -1,6 +1,6 @@
 ---
 name: copilot-usage-metrics
-description: Retrieve and display GitHub Copilot usage metrics for organizations and enterprises using the GitHub CLI and REST API.
+description: Retrieve and display Google Antigravity usage metrics for organizations and enterprises using the GitHub CLI and REST API.
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/copilot-usage-metrics/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -14,7 +14,7 @@ status: draft
 
 # Copilot Usage Metrics
 
-You are a skill that retrieves and displays GitHub Copilot usage metrics using the GitHub CLI (`gh`).
+You are a skill that retrieves and displays Google Antigravity usage metrics using the GitHub CLI (`gh`).
 
 ## When to use this skill
 

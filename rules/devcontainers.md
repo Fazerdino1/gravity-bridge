@@ -136,65 +136,7 @@ Source: <https://containers.dev/implementors/features/>
 
 The performance guidance is direct: "add a `postCreateCommand` to update the owner of the folder you mount since it may have been mounted as root".
 
-Look for a `mounts` entry with `type=volume` — typically `source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume` — or a `workspaceMount` with `type=volume`, in a configuration that also sets a non-root `remoteUser` or `containerUser`. Flag it when no `postCreateCommand` chowns that target. The failure is a permission error on first write into the mounted directory, not a build failure, so it surfaces late. The same page notes the step "is not required if you will be running in the container as `root`" — a root container is not a finding here.
 
-**Fix:** add the ownership fix to `postCreateCommand`, naming the same user as `remoteUser`, for example `"postCreateCommand": "sudo chown node node_modules"`. If the whole tree is on a volume, `workspaceMount` and `workspaceFolder` must both be set — the reference says of each that it "Requires `workspaceFolder` be set as well" and "Requires `workspaceMount` be set". Note that a `mounts`-based optimisation is local-only: Codespaces ignores bind mounts other than the Docker socket, so verify the configuration still works there. (That Codespaces limitation is stated by no document cited here; treat it as checkable background, not as cited.)
+---
 
-Source: <https://code.visualstudio.com/remote/advancedcontainers/improve-performance>
-
-### `updateRemoteUserUID` defaults to true on Linux — and an absent property is not a defect
-
-The reference states: "On Linux, if `containerUser` or `remoteUser` is specified, the user's UID/GID will be updated to match the local user's UID/GID to avoid permission problems with bind mounts. Defaults to `true`."
-
-**Do not report an absent `updateRemoteUserUID`.** It defaults to true, and on a Linux workstation that default is exactly what keeps bind-mounted files writable. A configuration that sets `remoteUser` or `containerUser` and leaves `updateRemoteUserUID` unset is the ordinary, correct case: emit nothing for it.
-
-The default costs something in only two situations, and one of them must be visible in the repository before there is anything to report.
-
-1. **The pipeline names an image the build does not produce.** With the default in effect on Linux, the reference CLI derives a second, `-uid`-suffixed image (visible in the CLI source at `src/spec-node/containerFeatures.ts`; stated by no document, so treat it as verified by inspection rather than cited), so a workflow that pins, tags, publishes or scans a specific `--image-name` is not operating on the image that actually runs. Report only on evidence of such a workflow: a CI invocation passing `--image-name`, a `devcontainers/ci` step setting `imageName` or `push`, or a documented prebuilt image tag.
-2. **A Linux-only ownership problem is being masked.** The step does not apply on macOS or Windows hosts, so an ownership workaround that makes permissions look right on a Mac may hide behaviour that differs on Linux. Report only when such a workaround is actually present. The forms below are examples, not an exhaustive list — read for the intent, which is a step that exists to correct file ownership or permissions: a `chown` or `chmod`, a `sudo` ownership step, an `install -o`, a `setfacl`, or a script whose name says as much. A step that merely works *around* an ownership mismatch without changing ownership — `git config --global --add safe.directory`, for instance — is not this symptom and is not a finding.
-
-If neither symptom is present, this rule is informational: it explains a default, and a default being in effect is not a finding.
-
-**Fix:** in CI, where the host UID is irrelevant and the extra build is pure cost, turn it off. The `devcontainers/ci` action exposes `skipContainerUserIdUpdate`, documented as "For non-root Dev Containers (i.e. where `remoteUser` is specified), the action attempts to make the container user UID and GID match those of the host user. Set this to true to skip this step". The CLI equivalent is `--update-remote-user-uid-default never`. Locally on Linux, leave it on. Set `"updateRemoteUserUID": false` in the configuration only when the container UID must stay fixed everywhere.
-
-Sources: <https://containers.dev/implementors/json_reference/> and <https://github.com/devcontainers/ci>
-
-## Deprecated properties
-
-### Top-level `extensions`, `settings` and `devPort` belong under `customizations.vscode`, and `appPort` is superseded by `forwardPorts`
-
-The VS Code schema marks the top-level properties: `"deprecated": true, "deprecationMessage": "Use 'customizations/vscode/extensions' instead"`, with the identical shape for `settings` and `devPort`.
-
-That pair sits on the **top-level** property. The schema also defines `customizations.vscode.extensions`, which opens identically but carries no deprecation — searching the schema for `"extensions"` finds the wrong one first, so match on the `deprecated` pair rather than the property name. Separately, flag `appPort`; the reference says of it: "In most cases, we recommend using the new \[forwardPorts property\](#general-devcontainerjson-properties). This property accepts a port or array of ports that should be published locally when the container is running." These are deprecations, not breakage — the old keys still work — so report them as modernisation.
-
-**Fix:** move `extensions` and `settings` under `customizations.vscode` verbatim, and `devPort` to `customizations.vscode.devPort`. The same namespace now also holds `mcp`, described in that schema as "Model Context Protocol server configurations" — put Model Context Protocol server configuration there rather than inventing a top-level key. Replace `appPort` with `forwardPorts` unless the port must be *published* on all interfaces rather than forwarded, in which case keep `appPort` and say why. Remember `customizations` is an open namespace: the specification only says each tool "should use a JSON object subproperty with a unique name", so an unknown key under it is not necessarily wrong.
-
-Sources: <https://github.com/microsoft/vscode/blob/main/extensions/configuration-editing/schemas/devContainer.vscode.schema.json> and <https://containers.dev/implementors/json_reference/>
-
-## Vendor-specific: running Claude Code in a dev container
-
-**This rule is not part of the Dev Container specification.** Every mechanical claim below is stated in Anthropic's own documentation, but nothing in the specification requires any of it, and a dev container that never runs Claude Code is not defective for lacking it. Apply this rule only to a configuration that installs or runs Claude Code, and never present it as specification.
-
-The vendor documentation states: "Because the container runs Claude Code as a non-root user and confines command execution to the container, you can pass `--dangerously-skip-permissions` for unattended operation. The CLI rejects this flag when launched as root, so confirm `remoteUser` is set to a non-root account."
-
-Then check three things. First, `remoteUser` is set and is not `root`. Second, there is a `mounts` entry for `~/.claude` **and** a `containerEnv` entry for `CLAUDE_CONFIG_DIR` pointing at the same path — the same page states that "mounting a volume at `~/.claude` alone doesn't keep you signed in", because the OAuth account file sits outside that directory, and a volume with no matching environment variable is the common half-configuration. Third, if the configuration runs the reference egress firewall, that page states it "adds the `NET_ADMIN` and `NET_RAW` capabilities through `runArgs`" — a firewall script without those capabilities fails at start.
-
-**Fix:** set a non-root `remoteUser` and add both halves of the auth mount, substituting the real home directory of that user:
-
-```json
-{
-  "remoteUser": "node",
-  "mounts": ["source=claude-code-config-${devcontainerId},target=/home/node/.claude,type=volume"],
-  "containerEnv": { "CLAUDE_CONFIG_DIR": "/home/node/.claude" }
-}
-```
-
-`${devcontainerId}` in the volume name isolates state per project; drop it to share one login across repositories. If `containerEnv` already exists, add the key to it rather than adding a second object. For the firewall, add `"runArgs": ["--cap-add=NET_ADMIN", "--cap-add=NET_RAW"]`. Treat the `anthropics/claude-code` reference configuration as a worked example rather than a maintained base image, and do not mount host secrets such as `~/.ssh` into the container.
-
-Source: <https://code.claude.com/docs/en/devcontainer>
-
-## Provenance and limits
-
-Eleven of these twelve rules are stated by the Dev Container specification, the reference CLI source, or official vendor documentation, and apply to any dev container. The twelfth — the Claude Code rule — is vendor-documented but conditional on a tool the specification does not mention, which is why it is fenced off in its own section above. Three passages are flagged in place as verified by inspection rather than cited: the reference CLI's lack of JSON Schema validation, the Codespaces bind-mount limitation, and the derived `-uid` image name. Everything else quoted here was read at its linked source, and every link resolved, on 2026-09-01.
-
-No false-positive rate has been measured for any of these rules, so none carries a severity label. The ordering above is editorial. Report what the configuration states and what the source says about it; do not attach a confidence number that nobody measured.
+> **Full Reference**: To keep this rule under Antigravity's 24,000-byte per-rule context limit, the complete unabridged reference is preserved in [docs/rule-references/devcontainers-full.md](../docs/rule-references/devcontainers-full.md). Read that file on demand when deeper details are needed.

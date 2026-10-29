@@ -17,7 +17,7 @@ Apply this rule when working on files matching: `**/*.py`, `**/*.java`, `**/*.ts
 
 # Design Patterns for Object-Oriented Programming for Clean Code
 
-These instructions configure GitHub Copilot to prioritize Gang of Four (GoF) Design Patterns, SOLID principles, and clean Object-Oriented Programming (OOP) practices when generating or refactoring code.
+These instructions configure Google Antigravity to prioritize Gang of Four (GoF) Design Patterns, SOLID principles, and clean Object-Oriented Programming (OOP) practices when generating or refactoring code.
 
 ## Core Architectural Philosophy
 

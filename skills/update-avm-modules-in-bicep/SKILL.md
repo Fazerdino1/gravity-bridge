@@ -14,11 +14,11 @@ status: draft
 
 # Update Azure Verified Modules in Bicep Files
 
-Update Bicep file `${file}` to use latest Azure Verified Module (AVM) versions. Limit progress updates to non-breaking changes. Don't output information other than the final output table and summary.
+Update Bicep file `<current-file>` to use latest Azure Verified Module (AVM) versions. Limit progress updates to non-breaking changes. Don't output information other than the final output table and summary.
 
 ## Process
 
-1. **Scan**: Extract AVM modules and current versions from `${file}`
+1. **Scan**: Extract AVM modules and current versions from `<current-file>`
 1. **Identify**: List all unique AVM modules used by matching `avm/res/{service}/{resource}` using `#search` tool
 1. **Check**: Use `#fetch` tool to get latest version of each AVM module from MCR: `https://mcr.microsoft.com/v2/bicep/avm/res/{service}/{resource}/tags/list`
 1. **Compare**: Parse semantic versions to identify AVM modules needing update

@@ -1,0 +1,9 @@
+{
+  "name": "gravity-tdd-and-architecture",
+  "description": "Red-Green-Refactor TDD personas, API breaking-change detection, and system architecture planning.",
+  "suggestedPrompts": [
+    "Use /api-breaking-change-detector on this project",
+    "Use /create-implementation-plan on this project",
+    "Use /tdd-red on this project"
+  ]
+}

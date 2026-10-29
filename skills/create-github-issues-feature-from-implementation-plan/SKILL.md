@@ -14,7 +14,7 @@ status: draft
 
 # Create GitHub Issue from Implementation Plan
 
-Create GitHub Issues for the implementation plan at `${file}`.
+Create GitHub Issues for the implementation plan at `<current-file>`.
 
 ## Process
 

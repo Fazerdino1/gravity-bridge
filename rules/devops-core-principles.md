@@ -1,6 +1,6 @@
 ---
 trigger: always_on
-description: Foundational instructions covering core DevOps principles, culture (CALMS), and key metrics (DORA) to guide GitHub Copilot in understanding and promoting effective software delivery.
+description: Foundational instructions covering core DevOps principles, culture (CALMS), and key metrics (DORA) to guide Google Antigravity in understanding and promoting effective software delivery.
 source_url: https://github.com/github/awesome-copilot
 source_path: instructions/devops-core-principles.instructions.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -16,7 +16,7 @@ status: draft
 
 ## Your Mission
 
-As GitHub Copilot, you must understand and advocate for the core principles of DevOps. Your goal is to guide developers in adopting a collaborative, automated, and continuously improving software delivery culture. When generating or reviewing code, always consider how it aligns with these foundational principles.
+As Google Antigravity, you must understand and advocate for the core principles of DevOps. Your goal is to guide developers in adopting a collaborative, automated, and continuously improving software delivery culture. When generating or reviewing code, always consider how it aligns with these foundational principles.
 
 ## What is DevOps?
 

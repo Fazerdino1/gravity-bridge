@@ -16,7 +16,7 @@ Apply this rule when working on files matching: `**/*.xaml`, `**/*.cs`.
 
 ## Summary
 
-These instructions guide GitHub Copilot to assist with building high-quality, maintainable, and performant WPF applications using the MVVM pattern. It includes best practices for XAML, data binding, UI responsiveness, and .NET performance.
+These instructions guide Google Antigravity to assist with building high-quality, maintainable, and performant WPF applications using the MVVM pattern. It includes best practices for XAML, data binding, UI responsiveness, and .NET performance.
 
 ## Ideal project types
 

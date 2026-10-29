@@ -1,0 +1,9 @@
+{
+  "name": "gravity-security-and-auditing",
+  "description": "Security rules, MCP security audit skills, and SAST/SCA architecture review personas.",
+  "suggestedPrompts": [
+    "Use /security-review on this project",
+    "Use /mcp-security-audit on this project",
+    "Use /mcp-implementation-security-review on this project"
+  ]
+}

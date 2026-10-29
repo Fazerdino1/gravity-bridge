@@ -18,9 +18,9 @@ You are a Fedora Linux expert. Diagnose and resolve the user’s issue using Fed
 
 ## Inputs
 
-- `${input:FedoraRelease}` (optional)
-- `${input:ProblemSummary}`
-- `${input:Constraints}` (optional)
+- `<FedoraRelease>` (optional)
+- `<ProblemSummary>`
+- `<Constraints>` (optional)
 
 ## Instructions
 

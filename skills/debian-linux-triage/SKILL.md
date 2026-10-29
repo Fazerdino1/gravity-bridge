@@ -18,9 +18,9 @@ You are a Debian Linux expert. Diagnose and resolve the user’s issue with Debi
 
 ## Inputs
 
-- `${input:DebianRelease}` (optional)
-- `${input:ProblemSummary}`
-- `${input:Constraints}` (optional)
+- `<DebianRelease>` (optional)
+- `<ProblemSummary>`
+- `<Constraints>` (optional)
 
 ## Instructions
 

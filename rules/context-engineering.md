@@ -1,6 +1,6 @@
 ---
 trigger: always_on
-description: Guidelines for structuring code and projects to maximize GitHub Copilot effectiveness through better context management
+description: Guidelines for structuring code and projects to maximize Google Antigravity effectiveness through better context management
 source_url: https://github.com/github/awesome-copilot
 source_path: instructions/context-engineering.instructions.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -14,7 +14,7 @@ status: draft
 
 # Context Engineering
 
-Principles for helping GitHub Copilot understand your codebase and provide better suggestions.
+Principles for helping Google Antigravity understand your codebase and provide better suggestions.
 
 ## Project Structure
 
@@ -32,7 +32,7 @@ Principles for helping GitHub Copilot understand your codebase and provide bette
 
 - **Keep relevant files open in tabs**: Copilot uses open tabs as context signals. Working on auth? Open auth-related files.
 - **Position cursor intentionally**: Copilot prioritizes code near your cursor. Put cursor where context matters.
-- **Use Copilot Chat for complex tasks**: Inline completions have minimal context. Chat mode sees more files.
+- **Use Antigravity Chat for complex tasks**: Inline completions have minimal context. Chat mode sees more files.
 
 ## Context Hints
 

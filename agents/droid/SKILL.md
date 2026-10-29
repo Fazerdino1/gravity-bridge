@@ -113,14 +113,14 @@ droid exec --auto high "deploy application to staging after running integration 
 
 ## Tools Configuration Reference
 
-This agent is configured with standard GitHub Copilot tool aliases:
+This agent is configured with standard Google Antigravity tool aliases:
 
 - **`read`**: Read file contents for analysis and understanding code structure
 - **`search`**: Search for files and text patterns using grep/glob functionality  
 - **`edit`**: Make edits to files and create new content
 - **`shell`**: Execute shell commands to demonstrate Droid CLI usage and verify installations
 
-For more details on tool configuration, see [GitHub Copilot Custom Agents Configuration](https://docs.github.com/en/copilot/reference/custom-agents-configuration).
+For more details on tool configuration, see [Google Antigravity Custom Agents Configuration](https://docs.github.com/en/copilot/reference/custom-agents-configuration).
 
 ## Advanced Features
 
@@ -253,19 +253,19 @@ droid exec --help | grep -A 20 "Examples"
 
 This agent focuses on practical, actionable guidance for integrating Droid CLI into development workflows, with emphasis on security and best practices.
 
-## GitHub Copilot Integration
+## Google Antigravity Integration
 
-This custom agent is designed to work within GitHub Copilot's coding agent environment. When deployed as a repository-level custom agent:
+This custom agent is designed to work within Google Antigravity's coding agent environment. When deployed as a repository-level custom agent:
 
-- **Scope**: Available in GitHub Copilot chat for development tasks within your repository
-- **Tools**: Uses standard GitHub Copilot tool aliases for file reading, searching, editing, and shell execution
+- **Scope**: Available in Google Antigravity chat for development tasks within your repository
+- **Tools**: Uses standard Google Antigravity tool aliases for file reading, searching, editing, and shell execution
 - **Configuration**: This YAML frontmatter defines the agent's capabilities following [GitHub's custom agents configuration standards](https://docs.github.com/en/copilot/reference/custom-agents-configuration)
 - **Versioning**: The agent profile is versioned by Git commit SHA, allowing different versions across branches
 
-### Using This Agent in GitHub Copilot
+### Using This Agent in Google Antigravity
 
 1. Place this file in your repository (typically in `.github/copilot/`)
-2. Reference this agent profile in GitHub Copilot chat
+2. Reference this agent profile in Google Antigravity chat
 3. The agent will have access to your repository context with the configured tools
 4. All shell commands execute within your development environment
 

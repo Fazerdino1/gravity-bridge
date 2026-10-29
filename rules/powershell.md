@@ -16,7 +16,7 @@ Apply this rule when working on files matching: `**/*.ps1`, `**/*.psm1`.
 
 # PowerShell Cmdlet Development Guidelines
 
-This guide provides PowerShell-specific instructions to help GitHub Copilot generate idiomatic,
+This guide provides PowerShell-specific instructions to help Google Antigravity generate idiomatic,
 safe, and maintainable scripts. It aligns with Microsoft’s PowerShell cmdlet development guidelines.
 
 ## Naming Conventions

@@ -1,6 +1,6 @@
 ---
 trigger: model_decision
-description: This file provides guidance on building C# applications using GitHub Copilot SDK. Applies to files matching **.cs, **.csproj.
+description: This file provides guidance on building C# applications using Google Antigravity SDK. Applies to files matching **.cs, **.csproj.
 source_url: https://github.com/github/awesome-copilot
 source_path: instructions/copilot-sdk-csharp.instructions.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -18,7 +18,7 @@ Apply this rule when working on files matching: `**.cs`, `**.csproj`.
 
 - The SDK is in technical preview and may have breaking changes
 - Requires .NET 10.0 or later
-- Requires GitHub Copilot CLI installed and in PATH
+- Requires Google Antigravity CLI installed and in PATH
 - Uses async/await patterns throughout
 - Implements IAsyncDisposable for resource cleanup
 

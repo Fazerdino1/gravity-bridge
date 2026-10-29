@@ -1,0 +1,9 @@
+{
+  "name": "gravity-fullstack-web-typescript",
+  "description": "Rules, skills, and personas for modern Next.js, Node.js, Vitest, Playwright TypeScript, and web accessibility.",
+  "suggestedPrompts": [
+    "Use /playwright-generate-test on this project",
+    "Use /playwright-explore-website on this project",
+    "Use /typescript-mcp-expert on this project"
+  ]
+}

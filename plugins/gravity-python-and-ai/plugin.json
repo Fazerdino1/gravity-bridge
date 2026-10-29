@@ -1,0 +1,9 @@
+{
+  "name": "gravity-python-and-ai",
+  "description": "Python testing, Playwright Python, LangChain, and MCP server expertise for Antigravity.",
+  "suggestedPrompts": [
+    "Use /pytest-coverage on this project",
+    "Use /python-mcp-expert on this project",
+    "Use /python-notebook-sample-builder on this project"
+  ]
+}

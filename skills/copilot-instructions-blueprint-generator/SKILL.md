@@ -1,6 +1,6 @@
 ---
 name: copilot-instructions-blueprint-generator
-description: Technology-agnostic blueprint generator for creating comprehensive copilot-instructions.md files that guide GitHub Copilot to produce code consistent with project standards, architecture patterns, and exact technology versions by analyzing existing codebase patterns and avoiding assumptions.
+description: Technology-agnostic blueprint generator for creating comprehensive copilot-instructions.md files that guide Google Antigravity to produce code consistent with project standards, architecture patterns, and exact technology versions by analyzing existing codebase patterns and avoiding assumptions.
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/copilot-instructions-blueprint-generator/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -24,12 +24,12 @@ ${VERSIONING="Semantic|CalVer|Custom"} <!-- Versioning approach -->
 
 ## Generated Prompt
 
-"Generate a comprehensive copilot-instructions.md file that will guide GitHub Copilot to produce code consistent with our project's standards, architecture, and technology versions. The instructions must be strictly based on actual code patterns in our codebase and avoid making any assumptions. Follow this approach:
+"Generate a comprehensive copilot-instructions.md file that will guide Google Antigravity to produce code consistent with our project's standards, architecture, and technology versions. The instructions must be strictly based on actual code patterns in our codebase and avoid making any assumptions. Follow this approach:
 
 ### 1. Core Instruction Structure
 
 ```markdown
-# GitHub Copilot Instructions
+# Google Antigravity Instructions
 
 ## Priority Guidelines
 
@@ -300,4 +300,4 @@ Important: Only include guidance based on patterns actually observed in the code
 
 ## Expected Output
 
-A comprehensive copilot-instructions.md file that will guide GitHub Copilot to produce code that is perfectly compatible with your existing technology versions and follows your established patterns and architecture.
+A comprehensive copilot-instructions.md file that will guide Google Antigravity to produce code that is perfectly compatible with your existing technology versions and follows your established patterns and architecture.

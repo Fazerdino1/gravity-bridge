@@ -156,7 +156,7 @@ Do not continue with MCP commands until one of the configuration paths above is 
    npx -y opik-mcp --debug true --transport stdio
    ```
    Expect `/tmp/opik-mcp.log` to show “Opik MCP Server running on stdio”.
-3. **Copilot agent QA** – install this agent, open Copilot Chat, and run prompts like:
+3. **Copilot agent QA** – install this agent, open Antigravity Chat, and run prompts like:
    - “List Opik projects for this workspace.”
    - “Show the last 20 traces for <service> and summarize failures.”
    - “Fetch the latest prompt version for <prompt> and compare to repo template.”

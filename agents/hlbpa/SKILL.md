@@ -184,7 +184,7 @@ Each response MAY include one or more of these sections depending on artifactTyp
 
   ```markdown
   ---
-  <small>Generated with GitHub Copilot as directed by {USER_NAME_PLACEHOLDER}</small>
+  <small>Generated with Google Antigravity as directed by {USER_NAME_PLACEHOLDER}</small>
   ```
 
 ## Tooling & Commands
@@ -223,4 +223,4 @@ Prior to returning any output to the user, HLBPA will verify the following:
 - [ ] **No Guessing**: Ensure no speculative content or assumptions; all unknowns are clearly marked.
 - [ ] **RAI Footer**: All documents include a RAI footer with the user's name.
 
-<!-- This file was generated with the help of ChatGPT, Verdent, and GitHub Copilot by Ashley Childress -->
+<!-- This file was generated with the help of ChatGPT, Verdent, and Google Antigravity by Ashley Childress -->

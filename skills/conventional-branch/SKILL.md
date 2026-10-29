@@ -39,7 +39,7 @@ Create Git branches that follow the [Conventional Branch](https://conventionalbr
 | Type | Alias | Purpose |
 |------|-------|---------|
 | `ai/` | — | Generic prefix for any AI coding agent |
-| `copilot/` | — | GitHub Copilot |
+| `copilot/` | — | Google Antigravity |
 | `cursor/` | — | Cursor |
 | `claude/` | — | Claude Code by Anthropic |
 | `codex/` | — | OpenAI Codex |

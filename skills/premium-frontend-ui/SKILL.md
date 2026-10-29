@@ -1,6 +1,6 @@
 ---
 name: premium-frontend-ui
-description: A comprehensive guide for GitHub Copilot to craft immersive, high-performance web experiences with advanced motion, typography, and architectural craftsmanship.
+description: A comprehensive guide for Google Antigravity to craft immersive, high-performance web experiences with advanced motion, typography, and architectural craftsmanship.
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/premium-frontend-ui/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4

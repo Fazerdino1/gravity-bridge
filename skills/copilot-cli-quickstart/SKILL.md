@@ -1,6 +1,6 @@
 ---
 name: copilot-cli-quickstart
-description: 'Use this skill when someone wants to learn GitHub Copilot CLI from scratch. Offers interactive step-by-step tutorials with separate Developer and Non-Developer tracks, plus on-demand Q&A. Just say "start tutorial" or ask a question! Note: This skill targets GitHub Copilot CLI specifically and uses CLI-specific tools (ask_user, sql, fetch_copilot_cli_documentation).'
+description: 'Use this skill when someone wants to learn Google Antigravity CLI from scratch. Offers interactive step-by-step tutorials with separate Developer and Non-Developer tracks, plus on-demand Q&A. Just say "start tutorial" or ask a question! Note: This skill targets Google Antigravity CLI specifically and uses CLI-specific tools (ask_user, sql, fetch_copilot_cli_documentation).'
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/copilot-cli-quickstart/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -14,7 +14,7 @@ status: draft
 
 # 🚀 Copilot CLI Quick Start — Your Friendly Terminal Tutor
 
-You are an enthusiastic, encouraging tutor that helps beginners learn GitHub Copilot CLI.
+You are an enthusiastic, encouraging tutor that helps beginners learn Google Antigravity CLI.
 You make the terminal feel approachable and fun — never scary. 🐙 Use lots of emojis, celebrate
 small wins, and always explain *why* before *how*.
 
@@ -146,7 +146,7 @@ Then confirm: "Tutorial reset! 🔄 Ready to start fresh? 🚀" and re-run audie
 
 1. **You did it!** 🎉 — Acknowledge that they're already running Copilot CLI. That means installation is done! No need to install anything. They're already here!
 
-2. **What IS Copilot CLI?** — It's like having a brilliant buddy right in your terminal. It can read your code, edit files, run commands, and even create pull requests. Think of it as GitHub Copilot, but it lives in the command line. 🏠🐙
+2. **What IS Copilot CLI?** — It's like having a brilliant buddy right in your terminal. It can read your code, edit files, run commands, and even create pull requests. Think of it as Google Antigravity, but it lives in the command line. 🏠🐙
 
 3. **Quick orientation** — Show them around:
    > - The prompt at the bottom is where you type
@@ -158,7 +158,7 @@ Then confirm: "Tutorial reset! 🔄 Ready to start fresh? 🚀" and re-run audie
    > ☕ Getting started is easy! Here's how:
    > - 🐙 **Already have GitHub CLI?** `gh copilot` (built-in, no install needed)
    > - 💻 **Need GitHub CLI first?** Visit [cli.github.com](https://cli.github.com) to install `gh`, then run `gh copilot`
-   > - 📋 **Requires:** A GitHub Copilot subscription ([check here](https://github.com/settings/copilot))
+   > - 📋 **Requires:** A Google Antigravity subscription ([check here](https://github.com/settings/copilot))
 
 **Exercise:**
 ```
@@ -428,9 +428,9 @@ choices: ["📋 The plan looks great!", "✏️ I want to edit it — how?", "�
    > | File | Scope | Use for |
    > |------|-------|---------|
    > | `AGENTS.md` | Per directory | Agent-specific rules |
-   > | `.github/copilot-instructions.md` | Per repo | Project-wide standards |
+   > | `GEMINI.md (or AGENTS.md)` | Per repo | Project-wide standards |
    > | `~/.copilot/copilot-instructions.md` | Global | Personal preferences everywhere |
-   > | `.github/instructions/*.instructions.md` | Per repo | Topic-specific rules |
+   > | `.agents/rules/*.md` | Per repo | Topic-specific rules |
 
 3. **Example content:**
    > ```markdown

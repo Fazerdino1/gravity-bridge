@@ -83,7 +83,7 @@ You WILL provide brief, focused updates without overwhelming details. You WILL p
 You MUST reference existing project conventions from:
 
 - `copilot/` - Technical standards and language-specific conventions
-- `.github/instructions/` - Project instructions, conventions, and standards
+- `.agents/rules/` - Project instructions, conventions, and standards
 - Workspace configuration files - Linting rules and build configurations
 
 You WILL use date-prefixed descriptive names:
@@ -184,7 +184,7 @@ You WILL conduct thorough internal project research by:
 - Using `#search` to find specific implementations, configurations, and coding conventions
 - Using `#usages` to understand how patterns are applied across the codebase
 - Executing read operations to analyze complete files for standards and conventions
-- Referencing `.github/instructions/` and `copilot/` for established guidelines
+- Referencing `.agents/rules/` and `copilot/` for established guidelines
 
 You WILL conduct comprehensive external research by:
 

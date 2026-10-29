@@ -1,6 +1,6 @@
 ---
 name: suggest-awesome-github-copilot-skills
-description: Suggest relevant GitHub Copilot skills from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing skills in this repository, and identifying outdated skills that need updates.
+description: Suggest relevant Google Antigravity skills from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing skills in this repository, and identifying outdated skills that need updates.
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/suggest-awesome-github-copilot-skills/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -12,14 +12,14 @@ converter_version: 0.1.0
 status: draft
 ---
 
-# Suggest Awesome GitHub Copilot Skills
+# Suggest Awesome Google Antigravity Skills
 
 Analyze current repository context and suggest relevant Agent Skills from the [GitHub awesome-copilot repository](https://github.com/github/awesome-copilot/blob/main/docs/README.skills.md) that are not already available in this repository. Agent Skills are self-contained folders located in the [skills](https://github.com/github/awesome-copilot/tree/main/skills) folder of the awesome-copilot repository, each containing a `SKILL.md` file with instructions and optional bundled assets.
 
 ## Process
 
 1. **Fetch Available Skills**: Extract skills list and descriptions from [awesome-copilot README.skills.md](https://github.com/github/awesome-copilot/blob/main/docs/README.skills.md). Must use `#fetch` tool.
-2. **Scan Local Skills**: Discover existing skill folders in `.github/skills/` folder
+2. **Scan Local Skills**: Discover existing skill folders in `.agents/skills/` folder
 3. **Extract Descriptions**: Read front matter from local `SKILL.md` files to get `name` and `description`
 4. **Fetch Remote Versions**: For each local skill, fetch the corresponding `SKILL.md` from awesome-copilot repository using raw GitHub URLs (e.g., `https://raw.githubusercontent.com/github/awesome-copilot/main/skills/<skill-name>/SKILL.md`)
 5. **Compare Versions**: Compare local skill content with remote versions to identify:
@@ -34,7 +34,7 @@ Analyze current repository context and suggest relevant Agent Skills from the [G
 11. **Output**: Provide structured table with suggestions, descriptions, and links to both awesome-copilot skills and similar local skills
     **AWAIT** user request to proceed with installation or updates of specific skills. DO NOT INSTALL OR UPDATE UNLESS DIRECTED TO DO SO.
 12. **Download/Update Assets**: For requested skills, automatically:
-    - Download new skills to `.github/skills/` folder, preserving the folder structure
+    - Download new skills to `.agents/skills/` folder, preserving the folder structure
     - Update outdated skills by replacing with latest version from awesome-copilot
     - Download both `SKILL.md` and any bundled assets (scripts, templates, data files)
     - Do NOT adjust content of the files
@@ -69,7 +69,7 @@ Display analysis results in structured table comparing awesome-copilot skills wi
 
 ## Local Skills Discovery Process
 
-1. List all folders in `.github/skills/` directory
+1. List all folders in `.agents/skills/` directory
 2. For each folder, read `SKILL.md` front matter to extract `name` and `description`
 3. List any bundled assets within each skill folder
 4. Build comprehensive inventory of existing skills with their capabilities
@@ -110,7 +110,7 @@ description: 'Brief description of what this skill provides and when to use it'
 
 - Use `fetch` tool to get content from awesome-copilot repository skills documentation
 - Use `githubRepo` tool to get individual skill content for download
-- Scan local file system for existing skills in `.github/skills/` directory
+- Scan local file system for existing skills in `.agents/skills/` directory
 - Read YAML front matter from local `SKILL.md` files to extract names and descriptions
 - Compare local skills with remote versions to detect outdated skills
 - Compare against existing skills in this repository to avoid duplicates
@@ -135,5 +135,5 @@ When outdated skills are identified:
 2. Document specific differences in the "Suggestion Rationale" column
 3. Provide recommendation to update with key changes noted
 4. When user requests update, replace entire local skill folder with remote version
-5. Preserve folder location in `.github/skills/` directory
+5. Preserve folder location in `.agents/skills/` directory
 6. Ensure all bundled assets are downloaded alongside the updated `SKILL.md`

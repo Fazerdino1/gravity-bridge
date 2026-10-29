@@ -1,0 +1,13 @@
+id: fullstack-web-typescript
+name: Full-Stack Web & TypeScript
+description: Rules, skills, and personas for modern Next.js, Node.js, Vitest, Playwright TypeScript, and web accessibility.
+items:
+  - path: rules/nextjs.md
+  - path: rules/nextjs-tailwind.md
+  - path: rules/nodejs-javascript-vitest.md
+  - path: rules/playwright-typescript.md
+  - path: rules/a11y.md
+  - path: skills/playwright-generate-test
+  - path: skills/playwright-explore-website
+  - path: agents/typescript-mcp-expert
+  - path: agents/vuejs-expert

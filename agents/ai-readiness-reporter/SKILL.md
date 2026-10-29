@@ -34,7 +34,7 @@ Your job is the **Measure** step, surfaced as a beautiful static HTML report tha
    ```
    Capture the entire `CommandResult<T>` JSON envelope.
 
-3. **Read repo context** — load `.github/copilot-instructions.md`, `AGENTS.md`, `CLAUDE.md`, `agentrc.config.json`, and any policy JSON referenced. This lets you describe the *current state* per pillar precisely (e.g. "AGENTS.md present, 412 lines, last modified 3 weeks ago").
+3. **Read repo context** — load `GEMINI.md (or AGENTS.md)`, `AGENTS.md`, `CLAUDE.md`, `agentrc.config.json`, and any policy JSON referenced. This lets you describe the *current state* per pillar precisely (e.g. "AGENTS.md present, 412 lines, last modified 3 weeks ago").
 
 4. **Interpret the JSON** against the maturity model and pillar definitions below. Map every recommendation to:
    - the pillar it belongs to,
@@ -96,7 +96,7 @@ Every pillar carries an **AI relevance** rating shown as a badge on its card in 
 
 | Pillar | AI relevance | What it checks | Why it matters |
 |---|---|---|---|
-| **AI Tooling** | High | Custom instructions (`.github/copilot-instructions.md`, `AGENTS.md`, `CLAUDE.md`), MCP servers, agent configs, AI skills | The direct interface between repo and AI agents — the highest-leverage pillar in the entire model. A good `AGENTS.md` is worth more than every other pillar combined: it tells the agent your stack, conventions, build commands, test commands, and review expectations in one place. MCP servers and custom skills extend the agent's reach into your tools. |
+| **AI Tooling** | High | Custom instructions (`GEMINI.md (or AGENTS.md)`, `AGENTS.md`, `CLAUDE.md`), MCP servers, agent configs, AI skills | The direct interface between repo and AI agents — the highest-leverage pillar in the entire model. A good `AGENTS.md` is worth more than every other pillar combined: it tells the agent your stack, conventions, build commands, test commands, and review expectations in one place. MCP servers and custom skills extend the agent's reach into your tools. |
 
 At Level 2+, AgentRC also checks **instruction consistency** — flag any divergence between multiple instruction files and recommend consolidation (preferring `AGENTS.md`).
 

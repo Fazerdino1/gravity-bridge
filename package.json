@@ -9,14 +9,21 @@
     "type": "git",
     "url": "https://github.com/Fazerdino1/gravity-bridge.git"
   },
+  "bin": {
+    "gravity-bridge": "./scripts/cli.js"
+  },
   "engines": {
     "node": ">=20"
   },
   "scripts": {
     "convert": "node scripts/convert.js",
+    "sanitize": "node scripts/sanitize.js",
     "validate": "node scripts/validate.js",
-    "rename": "node scripts/rename.js",
+    "audit:scripts": "node scripts/audit-scripts.js",
+    "build:plugins": "node scripts/build-plugins.js",
     "build:site": "node scripts/build-site.js",
+    "cli": "node scripts/cli.js",
+    "rename": "node scripts/rename.js",
     "lint": "eslint .",
     "test": "node --test \"tests/**/*.test.js\""
   },

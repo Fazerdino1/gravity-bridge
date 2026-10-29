@@ -14,7 +14,7 @@ status: draft
 
 # PostgreSQL Development Assistant
 
-Expert PostgreSQL guidance for ${selection} (or entire project if no selection). Focus on PostgreSQL-specific features, optimization patterns, and advanced capabilities.
+Expert PostgreSQL guidance for <selected-code> (or entire project if no selection). Focus on PostgreSQL-specific features, optimization patterns, and advanced capabilities.
 
 ## � PostgreSQL-Specific Features
 

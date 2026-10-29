@@ -14,7 +14,7 @@ status: draft
 
 # .NET/C# Best Practices
 
-Your task is to ensure .NET/C# code in ${selection} meets the best practices specific to this solution/project. This includes:
+Your task is to ensure .NET/C# code in <selected-code> meets the best practices specific to this solution/project. This includes:
 
 ## Documentation & Structure
 

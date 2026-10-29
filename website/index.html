@@ -4,6 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light dark">
+  <script>
+    try {
+      document.querySelector('meta[name="color-scheme"]').content = localStorage.getItem('color-scheme') ?? 'light dark';
+    } catch {}
+  </script>
   <title>Gravity Bridge — Google Antigravity Community Hub</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -16,6 +21,7 @@
       </a>
       <nav aria-label="Main navigation">
         <ul class="nav-links">
+          <li><a href="#collections" data-i18n="navCollections">Collections & Plugins (6)</a></li>
           <li><a href="#catalog" data-i18n="navCatalog">Catalogue (855)</a></li>
           <li><a href="#contributing" data-i18n="navContributing">Contribuer</a></li>
           <li><a href="#coc" data-i18n="navCoc">Code de conduite</a></li>
@@ -23,11 +29,16 @@
           <li><a href="https://github.com/Fazerdino1/gravity-bridge" target="_blank" rel="noopener">GitHub ↗</a></li>
         </ul>
       </nav>
-      <div class="lang-switcher" role="group" aria-label="Language selector">
-        <button type="button" class="lang-btn" data-lang="en">EN</button>
-        <button type="button" class="lang-btn active" data-lang="fr">FR</button>
-        <button type="button" class="lang-btn" data-lang="es">ES</button>
-        <button type="button" class="lang-btn" data-lang="de">DE</button>
+      <div class="header-controls">
+        <button type="button" id="theme-toggle" class="icon-btn" aria-label="Toggle color scheme" title="Thème Clair / Sombre">
+          <span id="theme-icon" aria-hidden="true">🌓</span>
+        </button>
+        <div class="lang-switcher" role="group" aria-label="Language selector">
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn active" data-lang="fr">FR</button>
+          <button type="button" class="lang-btn" data-lang="es">ES</button>
+          <button type="button" class="lang-btn" data-lang="de">DE</button>
+        </div>
       </div>
     </div>
   </header>
@@ -36,8 +47,12 @@
     <section class="hero">
       <h1 data-i18n="heroTitle">Gravity Bridge pour Google Antigravity</h1>
       <p class="hero-sub" data-i18n="heroSubtitle">
-        Le hub open source communautaire (licence MIT) regroupant 855 skills, règles et personas d'agents adaptés, vérifiés et attribués pour Google Antigravity.
+        Le hub open source communautaire (licence MIT) regroupant 855 skills, règles, personas d'agents et 6 plugins prêts à l'emploi pour Google Antigravity.
       </p>
+      <div class="cli-banner">
+        <code>npx github:Fazerdino1/gravity-bridge add conventional-commit</code>
+        <button type="button" id="copy-hero-cli" class="mini-btn" data-i18n="copyCmd">Copier</button>
+      </div>
       <div class="hero-actions">
         <a class="btn primary" href="https://github.com/Fazerdino1/gravity-bridge/issues/new?template=new_resource.yml" target="_blank" rel="noopener" data-i18n="ctaPropose">
           + Proposer une ressource Antigravity
@@ -52,21 +67,38 @@
       <div class="stats-bar" id="stats-bar" aria-live="polite">
         <div class="stat"><strong id="stat-total">855</strong> <span data-i18n="statTotal">Ressources</span></div>
         <div class="stat"><strong id="stat-skills">440</strong> <span>Skills (`.agents/skills/`)</span></div>
-        <div class="stat"><strong id="stat-rules">193</strong> <span data-i18n="statRules">Règles (`.agents/rules/`)</span></div>
+        <div class="stat"><strong id="stat-rules">193</strong> <span data-i18n="statRules">Règles (&lt;24 Ko)</span></div>
         <div class="stat"><strong id="stat-agents">222</strong> <span>Personas (`agents/`)</span></div>
+        <div class="stat"><strong id="stat-collections">6</strong> <span>Collections & Plugins</span></div>
       </div>
+    </section>
+
+    <section id="collections" class="section">
+      <div class="section-header">
+        <h2 data-i18n="collectionsTitle">Collections & Plugins Antigravity (Installation en 1 clic)</h2>
+        <p data-i18n="collectionsSub">Installez un pack complet de skills et règles thématiques ou le plugin Antigravity correspondant.</p>
+      </div>
+      <div id="collections-grid" class="collections-grid"></div>
     </section>
 
     <section id="catalog" class="section">
       <div class="section-header">
         <h2 data-i18n="catalogTitle">Catalogue interactif Antigravity</h2>
-        <p data-i18n="catalogSub">Recherchez parmi les 855 ressources et copiez la commande d'installation pour votre projet `.agents/`.</p>
+        <p data-i18n="catalogSub">Recherchez, filtrez par technologie, prévisualisez et copiez la commande d'installation CLI.</p>
       </div>
 
       <search class="filter-bar">
         <form id="filter-form" onsubmit="return false;">
-          <label for="search-input" class="sr-only" data-i18n="searchLabel">Rechercher une ressource</label>
-          <input type="search" id="search-input" name="q" placeholder="Rechercher (ex: typescript, commit, docker, security, plan...)" autocomplete="off">
+          <div class="search-row">
+            <label for="search-input" class="sr-only" data-i18n="searchLabel">Rechercher une ressource</label>
+            <input type="search" id="search-input" name="q" placeholder="Rechercher (ex: typescript, commit, docker, security, plan...)" autocomplete="off">
+            <label for="sort-select" class="sr-only">Trier par</label>
+            <select id="sort-select" class="sort-select">
+              <option value="reviewed" data-i18n="sortReviewed">Tri : Vérifiés ★ d'abord</option>
+              <option value="az" data-i18n="sortAz">Tri : Nom (A → Z)</option>
+              <option value="author" data-i18n="sortAuthor">Tri : Par auteur</option>
+            </select>
+          </div>
           <div class="filter-pills" role="group" aria-label="Filter by resource type">
             <button type="button" class="pill active" data-type="all" data-i18n="filterAll">Tous (855)</button>
             <button type="button" class="pill" data-type="skill">Skills (440)</button>
@@ -74,6 +106,7 @@
             <button type="button" class="pill" data-type="agent">Personas (222)</button>
             <button type="button" class="pill" data-type="reviewed" data-i18n="filterReviewed">Vérifiés ★</button>
           </div>
+          <div class="tag-pills" id="tag-pills" role="group" aria-label="Filter by technology tag"></div>
         </form>
       </search>
 
@@ -100,6 +133,32 @@
     </section>
   </main>
 
+  <dialog id="preview-dialog" class="preview-dialog" closedby="any">
+    <form method="dialog" class="dialog-header">
+      <div>
+        <span id="dialog-badge" class="badge"></span>
+        <h2 id="dialog-title" class="dialog-title"></h2>
+      </div>
+      <button value="close" class="icon-btn" aria-label="Close preview">✕</button>
+    </form>
+    <div class="dialog-body">
+      <p id="dialog-desc" class="dialog-desc"></p>
+      <div class="install-box">
+        <strong data-i18n="installCliLabel">Installation en 1 commande (CLI) :</strong>
+        <div class="install-cmd-row">
+          <code id="dialog-cli-cmd"></code>
+          <button type="button" id="dialog-copy-cli" class="mini-btn" data-i18n="copyCmd">Copier</button>
+        </div>
+      </div>
+      <h3 data-i18n="previewHeading">Aperçu du contenu</h3>
+      <pre tabindex="0"><code id="dialog-preview-code"></code></pre>
+      <div class="dialog-footer">
+        <span id="dialog-meta"></span>
+        <a id="dialog-gh-link" class="btn primary" href="#" target="_blank" rel="noopener" data-i18n="viewFile">Voir sur GitHub ↗</a>
+      </div>
+    </div>
+  </dialog>
+
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>
@@ -108,6 +167,7 @@
       </p>
       <p>
         <a href="https://github.com/Fazerdino1/gravity-bridge/blob/main/NOTICE.md" target="_blank" rel="noopener">NOTICE.md (Attributions)</a> ·
+        <a href="https://github.com/Fazerdino1/gravity-bridge/blob/main/docs/scripts-security-audit.md" target="_blank" rel="noopener">Audit Sécurité Scripts</a> ·
         <a href="https://github.com/Fazerdino1/gravity-bridge/blob/main/SECURITY.md" target="_blank" rel="noopener">SECURITY.md</a>
       </p>
     </div>

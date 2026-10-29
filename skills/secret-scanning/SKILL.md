@@ -226,14 +226,14 @@ Dismiss with a documented reason:
 
 For scanning code changes for secrets inside an AI coding agent before committing, install the **Advanced Security plugin** which provides the `run_secret_scanning` MCP tool and a dedicated scanning skill.
 
-**GitHub Copilot CLI:**
+**Google Antigravity CLI:**
 ```bash
 /plugin install advanced-security@copilot-plugins
 ```
 
 **Visual Studio Code:**
-- In Copilot Chat, open **Chat: Plugins** (or use `@agentPlugins`) and install the `advanced-security` plugin
-- Then run `/secret-scanning` in Copilot Chat
+- In Antigravity Chat, open **Chat: Plugins** (or use `@agentPlugins`) and install the `advanced-security` plugin
+- Then run `/secret-scanning` in Antigravity Chat
 
 See: [Advanced Security Plugin — Secret Scanning Skill](https://github.com/github/copilot-plugins/blob/main/plugins/advanced-security/skills/secret-scanning/SKILL.md)
 

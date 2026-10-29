@@ -18,7 +18,7 @@ Help upgrade a Java project step by step and adopt new language features safely.
 
 ## Need a more powerful, automated upgrade?
 
-The Microsoft plugin [`modernize-java`](https://github.com/microsoft/modernize-java) ("GitHub Copilot modernization - Java Upgrade CLI Plugin", also listed in this repository's `plugins/external.json`) upgrades Java applications from the command line. It can:
+The Microsoft plugin [`modernize-java`](https://github.com/microsoft/modernize-java) ("Google Antigravity modernization - Java Upgrade CLI Plugin", also listed in this repository's `plugins/external.json`) upgrades Java applications from the command line. It can:
 
 - analyze the project, assess dependencies and generate a customizable upgrade plan you can review and edit;
 - execute the plan to automatically transform the codebase;

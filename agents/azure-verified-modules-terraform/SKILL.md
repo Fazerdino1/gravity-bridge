@@ -53,9 +53,9 @@ Use Azure Verified Modules for Terraform to enforce Azure best practices via pre
 - Use `azure_get_deployment_best_practices` tool for deployment guidance
 - Use `microsoft.docs.mcp` tool to look up Azure service-specific guidance
 
-## Custom Instructions for GitHub Copilot Agents
+## Custom Instructions for Google Antigravity Agents
 
-**IMPORTANT**: When GitHub Copilot Agent or GitHub Copilot Coding Agent is working on this repository, the following local unit tests MUST be executed to comply with PR checks. Failure to run these tests will cause PR validation failures:
+**IMPORTANT**: When Google Antigravity Agent or Google Antigravity Coding Agent is working on this repository, the following local unit tests MUST be executed to comply with PR checks. Failure to run these tests will cause PR validation failures:
 
 ```bash
 ./avm pre-commit

@@ -422,10 +422,10 @@ user-scope paths exist (use the filesystem; no need to ask first):
 
 | Harness | User-scope custom instructions path |
 |---------|--------------------------------------|
-| VS Code Copilot Chat / Claude Code | `%USERPROFILE%\.claude\CLAUDE.md` |
-| GitHub Copilot CLI | `%USERPROFILE%\.copilot\copilot-instructions.md` |
+| VS Code Antigravity Chat / Claude Code | `%USERPROFILE%\.claude\CLAUDE.md` |
+| Google Antigravity CLI | `%USERPROFILE%\.copilot\copilot-instructions.md` |
 
-VS Code Copilot Chat does not natively read `%USERPROFILE%\.agents\AGENTS.md`,
+VS Code Antigravity Chat does not natively read `%USERPROFILE%\.agents\AGENTS.md`,
 but it does read `%USERPROFILE%\.claude\CLAUDE.md`, which is the same file
 Claude Code uses. So `.claude\CLAUDE.md` is the shared user-scope file for
 those two harnesses.
@@ -447,8 +447,8 @@ it, so a single write flows to every wired-up harness.
    file and symlinking the others to it so a single edit reaches all
    harnesses (step 10c).
 4. Else (no user-scope custom instructions files exist anywhere), ask:
-   "Which AI harness do you use most: VS Code Copilot Chat, Claude Code,
-   GitHub Copilot CLI, something else?" Then create the matching
+   "Which AI harness do you use most: VS Code Antigravity Chat, Claude Code,
+   Google Antigravity CLI, something else?" Then create the matching
    user-scope file (`.claude\CLAUDE.md` for the first two,
    `.copilot\copilot-instructions.md` for Copilot CLI) with a
    `## Personal Context` section.

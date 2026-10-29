@@ -117,7 +117,7 @@ status: draft
 
 | FP pattern | How to detect |
 |---|---|
-| `.github/skills/` templates | Path contains `.github/skills/` — skill template, not server code |
+| `.agents/skills/` templates | Path contains `.agents/skills/` — skill template, not server code |
 | Vendored SDK / OSS copies | File defines `class FastMCP`, `class McpServer`, or path is in `node_modules/`, `vendor/` |
 | MCP client configs | `.vscode/mcp.json` with `inputs`/`servers` but no server code |
 | Documentation / tutorials | `.md`, `.rst` with code fences unrelated to the repo's own server |

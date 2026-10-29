@@ -1,6 +1,6 @@
 ---
 name: suggest-awesome-github-copilot-instructions
-description: Suggest relevant GitHub Copilot instruction files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing instructions in this repository, and identifying outdated instructions that need updates.
+description: Suggest relevant Google Antigravity instruction files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing instructions in this repository, and identifying outdated instructions that need updates.
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/suggest-awesome-github-copilot-instructions/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -12,14 +12,14 @@ converter_version: 0.1.0
 status: draft
 ---
 
-# Suggest Awesome GitHub Copilot Instructions
+# Suggest Awesome Google Antigravity Instructions
 
 Analyze current repository context and suggest relevant copilot-instruction files from the [GitHub awesome-copilot repository](https://github.com/github/awesome-copilot/blob/main/docs/README.instructions.md) that are not already available in this repository.
 
 ## Process
 
 1. **Fetch Available Instructions**: Extract instruction list and descriptions from [awesome-copilot README.instructions.md](https://github.com/github/awesome-copilot/blob/main/docs/README.instructions.md). Must use `#fetch` tool.
-2. **Scan Local Instructions**: Discover existing instruction files in `.github/instructions/` folder
+2. **Scan Local Instructions**: Discover existing instruction files in `.agents/rules/` folder
 3. **Extract Descriptions**: Read front matter from local instruction files to get descriptions and `applyTo` patterns
 4. **Fetch Remote Versions**: For each local instruction, fetch the corresponding version from awesome-copilot repository using raw GitHub URLs (e.g., `https://raw.githubusercontent.com/github/awesome-copilot/main/instructions/<filename>`)
 5. **Compare Versions**: Compare local instruction content with remote versions to identify:
@@ -34,7 +34,7 @@ Analyze current repository context and suggest relevant copilot-instruction file
 11. **Output**: Provide structured table with suggestions, descriptions, and links to both awesome-copilot instructions and similar local instructions
    **AWAIT** user request to proceed with installation or updates of specific instructions. DO NOT INSTALL OR UPDATE UNLESS DIRECTED TO DO SO.
 12. **Download/Update Assets**: For requested instructions, automatically:
-    - Download new instructions to `.github/instructions/` folder
+    - Download new instructions to `.agents/rules/` folder
     - Update outdated instructions by replacing with latest version from awesome-copilot
     - Do NOT adjust content of the files
     - Use `#fetch` tool to download assets, but may use `curl` using `#runInTerminal` tool to ensure all content is retrieved
@@ -86,8 +86,8 @@ Display analysis results in structured table comparing awesome-copilot instructi
 ## File Structure Requirements
 
 Based on GitHub documentation, copilot-instructions files should be:
-- **Repository-wide instructions**: `.github/copilot-instructions.md` (applies to entire repository)
-- **Path-specific instructions**: `.github/instructions/NAME.instructions.md` (applies to specific file patterns via `applyTo` frontmatter)
+- **Repository-wide instructions**: `GEMINI.md (or AGENTS.md)` (applies to entire repository)
+- **Path-specific instructions**: `.agents/rules/NAME.md` (applies to specific file patterns via `applyTo` frontmatter)
 - **Community instructions**: `instructions/NAME.instructions.md` (for sharing and distribution)
 
 ## Front Matter Structure
@@ -103,7 +103,7 @@ applyTo: '**/*.js,**/*.ts' # Optional: glob patterns for file matching
 ## Requirements
 
 - Use `githubRepo` tool to get content from awesome-copilot repository instructions folder
-- Scan local file system for existing instructions in `.github/instructions/` directory
+- Scan local file system for existing instructions in `.agents/rules/` directory
 - Read YAML front matter from local instruction files to extract descriptions and `applyTo` patterns
 - Compare local instructions with remote versions to detect outdated instructions
 - Compare against existing instructions in this repository to avoid duplicates
@@ -128,4 +128,4 @@ When outdated instructions are identified:
 2. Document specific differences in the "Suggestion Rationale" column
 3. Provide recommendation to update with key changes noted
 4. When user requests update, replace entire local file with remote version
-5. Preserve file location in `.github/instructions/` directory
+5. Preserve file location in `.agents/rules/` directory

@@ -112,7 +112,7 @@ Common intrinsic tasks that require the `~/` prefix:
 - `~/powershell` - For running PowerShell scripts
 - `~/gitclone` - For cloning Git repositories
 
-### Recommending use of the Dev Box tools with Copilot Chat for generating YAML image definition files
+### Recommending use of the Dev Box tools with Antigravity Chat for generating YAML image definition files
 
 To avoid confusion or conflicting information, that may potentially happen in some situations when using the dev box tools along with information in this file, you should understand when to use the dev box tools and when to generate YAML content directly based on the information in this file, dev box CLI, and/or referenced documentation
 
@@ -198,7 +198,7 @@ Run this command in Terminal to apply the customizations on the Dev Box to aid i
 ```devbox customizations apply-tasks --filePath "{image definition filepath}"```
 
 > [!NOTE]
-> Running via GitHub Copilot Chat rather than via the Visual Studio Code Dev Box extension can be beneficial in that you can then read the console output directly. For example, to confirm the outcome and assist with troubleshooting as needed. However, Visual Studio Code must be running as administrator to run system tasks.
+> Running via Google Antigravity Chat rather than via the Visual Studio Code Dev Box extension can be beneficial in that you can then read the console output directly. For example, to confirm the outcome and assist with troubleshooting as needed. However, Visual Studio Code must be running as administrator to run system tasks.
 
 ### devbox customizations list-tasks
 
@@ -259,55 +259,7 @@ This will help you find the exact package IDs (like `Microsoft.VisualStudioCode`
 
 - When asked for assistance troubleshooting issues applying the tasks (or proactively troubleshooting after customizations failed to apply), offer to find the relevant logs and provide guidance on how to address the issue.
 
-- **IMPORTANT TROUBLESHOOTING INFORMATION** Logs are found in the following location: ```C:\ProgramData\Microsoft\DevBoxAgent\Logs\customizations```
-  - The most recent logs are found in the folder named with the most recent timestamp. The expected format is: ```yyyy-MM-DDTHH-mm-ss```
-  - Then, within the folder named using the timestamp, there is a ```tasks``` subfolder which then contains one or more subfolders; one for each task that was applied as part of the apply tasks operation
-  - You will need to recursively look for all files within the subfolders (within the ```tasks``` folder) called ```stderr.log```
-  - If a ```stderr.log``` file is empty, we can assume the task was applied successfully. If the file contains some content, we should assume the task failed and that this provides valuable information as to the cause of the issue
 
-- If it's not clear that the issue is related to a specific task, recommend testing each task on its own to help isolating the issue
-- If there seems to be an issue being able to use the current task to address the requirements, you can suggest evaluating if an alternative task might be a better fit. This can be done by running the `devbox customizations list-tasks` command to see if there are other tasks that might be more suitable for the requirements. As a fallback, assuming the ```~/powershell``` task is not the task being userd at present, this can be explored as the ultimate fallback
+---
 
-## Important: Common issues
-
-### PowerShell task
-
-#### Use of double-quotes in PowerShell task
-
-- Use of double-quotes in the PowerShell task can cause unexpected issues, notably when copying and pasting script from an existing standalone PowerShell file
-- If the stderr.log suggests there's a syntax error, suggest replacing double-quotes with single-quotes in the inline PowerShell script where possible. This can help resolve issues related to string interpolation or escaping characters that may not be handled correctly with double-quotes in the context of the Dev Box customization tasks
-- If use of double-quotes is necessary, ensure that the script is properly escaped to avoid syntax errors. This may involve using backticks or other escaping mechanisms to ensure that the script runs correctly within the Dev Box environment
-
-> [!NOTE]
-> When using single-quotes, ensure that any variables or expressions that need to be evaluated are not enclosed in single-quotes, as this will prevent them from being interpreted correctly.
-
-#### General PowerShell guidance
-
-- If the user is struggling to resolve issues with a PowerShell script defined within the intrinstic task, suggest testing and iterating on the script as needed in a standalone file first before integrating it back into the YAML customization file. This can offer a faster inner-loop and aid in ensuring that the script works correctly before then adapting for use in the YAML file
-- If the script is quite long, involves lots of error handling, and/or there's duplication across several tasks within the image definition file, consider encapsulating the download handling as a customization task. This can then be developed and tested in isolation, reused, and reduce verbosity of the image definition file itself
-
-#### Downloading files using the intrinsic PowerShell task
-
-- If you are using commands like `Invoke-WebRequest` or `Start-BitsTransfer`, consider adding the `$progressPreference = 'SilentlyContinue'` statement to the top of the PowerShell script to suppress progress bar output during the execution of those commands. This avoids the unnecessary overhead which may improve performance slightly
-- If the file is large and causing performance or timeout issues, consider whether it's possible to download that file from a different source or using a different method. Examples for consideration:
-  - Host the file in an Azure Storage account. Then, use utilities like `azcopy` or `Azure CLI` to download the file more efficiently. This can help with large files and provide better performance. See: [Transfer data using azcopy](https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10?tabs=dnf#transfer-data) and [Download a file from Azure Storage](https://learn.microsoft.com/azure/dev-box/how-to-customizations-connect-resource-repository#example-download-a-file-from-azure-storage)
-  - Host the file in a git repository. Then, use the `~/gitclone` intrinsic task to clone the repository and access the files directly. This can be more efficient than downloading large files individually
-
-### WinGet task
-
-#### Use of packages from sources other than winget (such as msstore)
-
-The built-in winget task does not support installing packages from sources other than the ```winget``` repository. If the user needs to install packages from sources like `msstore`, they could use the `~/powershell` task to run a PowerShell script that installs the package using the winget CLI command directly instead.
-
-##### **CRITICAL** Important considerations when invoking winget CLI directly and using msstore
-
-- Packages from the `msstore` source must be installed in the the `userTasks` section of the YAML file. This is because the `msstore` source requires user context to install applications from the Microsoft Store
-- The `winget` CLI command must be available in the PATH environment variable for the user context when the `~/powershell` task is run. If the `winget` CLI command is not available in the PATH, the task will fail to execute
-- Include acceptance flags (`--accept-source-agreements`, `--accept-package-agreements`) to avoid interactive prompts when executing `winget install` directly
-
-### Task context errors
-
-#### Error: "System tasks are not allowed in standard usercontext"
-
-- Solution: Move administrative operations to `tasks` section
-- Ensure you're running customizations with appropriate privileges when testing locally
+> **Full Reference**: To keep this rule under Antigravity's 24,000-byte per-rule context limit, the complete unabridged reference is preserved in [docs/rule-references/devbox-image-definition-full.md](../docs/rule-references/devbox-image-definition-full.md). Read that file on demand when deeper details are needed.

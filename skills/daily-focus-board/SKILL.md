@@ -15,7 +15,7 @@ status: draft
 # Daily Focus Board
 
 A warm, visual "let's go" board for a person's day — rendered from a self-contained HTML
-template, opened in a browser (ideally a side-panel **canvas** in the GitHub Copilot app), and
+template, opened in a browser (ideally a side-panel **canvas** in the Google Antigravity app), and
 kept current *by conversation*: the human tells you what they finished, you update the board.
 
 This is Ember partnership in daily practice: not a static to-do list, a thing you run *with*
@@ -167,7 +167,7 @@ assume someone is neurodivergent, and keep every affordance optional. See
 
 ## References
 
-- `references/tutorial.md` — how to use the board in the GitHub Copilot app (browser canvas) or
+- `references/tutorial.md` — how to use the board in the Google Antigravity app (browser canvas) or
   directly through Ember: the daily loop (check-in → mantra → plan → work → end-of-day save).
 - `examples/sample-board.html` — a populated example board: open it to see the board in action,
   or copy it as a starting point (it's this template with a sample config injected).

@@ -23,7 +23,7 @@ Harness = Instructions + Constraints + Feedback + Memory + Evaluation + Governan
 
 Use this skill when the user asks to:
 
-- make a repository more reliable for GitHub Copilot or other coding agents
+- make a repository more reliable for Google Antigravity or other coding agents
 - add durable agent instructions, repository rules, or guardrails
 - prevent repeated AI coding-agent mistakes
 - record known failure paths and the checks that prevent recurrence
@@ -57,8 +57,8 @@ Read these files and folders when they exist:
 
 - `README.md`
 - `AGENTS.md`
-- `.github/copilot-instructions.md`
-- `.github/instructions/`
+- `GEMINI.md (or AGENTS.md)`
+- `.agents/rules/`
 - `.github/workflows/`
 - `CONTRIBUTING.md`
 - package manifests such as `package.json`, `pyproject.toml`, `go.mod`,
@@ -92,8 +92,8 @@ Pick only the surfaces that fit the target repository:
 
 | Need | Preferred artifact |
 | --- | --- |
-| Always-on agent behavior | `AGENTS.md` or `.github/copilot-instructions.md` |
-| File-scoped guidance | `.github/instructions/*.instructions.md` |
+| Always-on agent behavior | `AGENTS.md` or `GEMINI.md (or AGENTS.md)` |
+| File-scoped guidance | `.agents/rules/*.md` |
 | Recurring project checks | `scripts/check_*.py`, shell scripts, or package scripts |
 | CI enforcement | existing workflow files or a small new workflow |
 | Known failures | `docs/failures/*.md` |

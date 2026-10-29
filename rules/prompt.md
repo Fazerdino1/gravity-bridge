@@ -1,6 +1,6 @@
 ---
 trigger: model_decision
-description: Guidelines for creating high-quality prompt files for GitHub Copilot. Applies to files matching **/*.prompt.md.
+description: Guidelines for creating high-quality prompt files for Google Antigravity. Applies to files matching **/*.prompt.md.
 source_url: https://github.com/github/awesome-copilot
 source_path: instructions/prompt.instructions.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -16,10 +16,10 @@ Apply this rule when working on files matching: `**/*.prompt.md`.
 
 # Copilot Prompt Files Guidelines
 
-Instructions for creating effective and maintainable prompt files that guide GitHub Copilot in delivering consistent, high-quality outcomes across any repository.
+Instructions for creating effective and maintainable prompt files that guide Google Antigravity in delivering consistent, high-quality outcomes across any repository.
 
 ## Scope and Principles
-- Target audience: maintainers and contributors authoring reusable prompts for Copilot Chat.
+- Target audience: maintainers and contributors authoring reusable prompts for Antigravity Chat.
 - Goals: predictable behaviour, clear expectations, minimal permissions, and portability across repositories.
 - Primary references: VS Code documentation on prompt files and organization-specific conventions.
 
@@ -45,7 +45,7 @@ Every prompt file should include YAML frontmatter with the following fields:
 - Preserve any additional metadata (`language`, `tags`, `visibility`, etc.) required by your organization
 
 ## File Naming and Placement
-- Use kebab-case filenames ending with `.prompt.md` and store them under `.github/prompts/` unless your workspace standard specifies another directory.
+- Use kebab-case filenames ending with `.prompt.md` and store them under `.agents/skills/` unless your workspace standard specifies another directory.
 - Provide a short filename that communicates the action (for example, `generate-readme.prompt.md` rather than `prompt1.prompt.md`).
 
 ## Body Structure
@@ -55,8 +55,8 @@ Every prompt file should include YAML frontmatter with the following fields:
 - Reference related prompts or instruction files using relative links to aid discoverability.
 
 ## Input and Context Handling
-- Use `${input:variableName[:placeholder]}` for required values and explain when the user must supply them. Provide defaults or alternatives where possible.
-- Call out contextual variables such as `${selection}`, `${file}`, `${workspaceFolder}` only when they are essential, and describe how Copilot should interpret them.
+- Use `<variableName[: placeholder]>` for required values and explain when the user must supply them. Provide defaults or alternatives where possible.
+- Call out contextual variables such as `<selected-code>`, `<current-file>`, `<workspace-root>` only when they are essential, and describe how Copilot should interpret them.
 - Document how to proceed when mandatory context is missing (for example, “Request the file path and stop if it remains undefined”).
 
 ## Tool and Permission Guidance

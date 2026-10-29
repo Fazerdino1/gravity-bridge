@@ -174,7 +174,7 @@ az bicep build --file main.bicep
 - **Deployment Guidance**: Use `azure_get_deployment_best_practices` tool
 - **Service Documentation**: Use `microsoft.docs.mcp` for Azure service-specific guidance
 
-### GitHub Copilot Integration
+### Google Antigravity Integration
 
 When working with Bicep:
 

@@ -158,7 +158,7 @@ Before finalizing a custom agent, verify:
 
 ## Output Format
 
-Always create `.agent.md` files in the `.github/agents/` folder of the workspace. Use kebab-case for filenames (e.g., `security-reviewer.agent.md`).
+Always create `.agent.md` files in the `.agents/skills/` folder of the workspace. Use kebab-case for filenames (e.g., `security-reviewer.agent.md`).
 
 Provide the complete file content, not just snippets. After creation, explain the design choices and suggest how to use the agent effectively.
 

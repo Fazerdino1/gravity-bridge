@@ -1,6 +1,6 @@
 ---
 trigger: model_decision
-description: This file provides guidance on building Node.js/TypeScript applications using GitHub Copilot SDK. Applies to files matching **.ts, **.js, package.json.
+description: This file provides guidance on building Node.js/TypeScript applications using Google Antigravity SDK. Applies to files matching **.ts, **.js, package.json.
 source_url: https://github.com/github/awesome-copilot
 source_path: instructions/copilot-sdk-nodejs.instructions.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -18,7 +18,7 @@ Apply this rule when working on files matching: `**.ts`, `**.js`, `package.json`
 
 - The SDK is in technical preview and may have breaking changes
 - Requires Node.js 18.0 or later
-- Requires GitHub Copilot CLI installed and in PATH
+- Requires Google Antigravity CLI installed and in PATH
 - Built with TypeScript for type safety
 - Uses async/await patterns throughout
 - Provides full TypeScript type definitions

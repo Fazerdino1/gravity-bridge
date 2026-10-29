@@ -40,7 +40,7 @@ Use this skill when you need to:
 Add the Transloadit MCP server to your IDE config. This gives the agent direct access
 to Transloadit tools (`create_template`, `create_assembly`, `list_assembly_notifications`, etc.).
 
-**VS Code / GitHub Copilot** (`.vscode/mcp.json` or user settings):
+**VS Code / Google Antigravity** (`.vscode/mcp.json` or user settings):
 
 ```json
 {

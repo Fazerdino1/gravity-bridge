@@ -14,12 +14,12 @@ status: draft
 
 # Update Markdown File Index
 
-Update markdown file `${file}` with an index/table of files from folder `${input:folder}`.
+Update markdown file `<current-file>` with an index/table of files from folder `<folder>`.
 
 ## Process
 
-1. **Scan**: Read the target markdown file `${file}` to understand existing structure
-2. **Discover**: List all files in the specified folder `${input:folder}` matching pattern `${input:pattern}`
+1. **Scan**: Read the target markdown file `<current-file>` to understand existing structure
+2. **Discover**: List all files in the specified folder `<folder>` matching pattern `<pattern>`
 3. **Analyze**: Identify if an existing table/index section exists to update, or create new structure
 4. **Structure**: Generate appropriate table/list format based on file types and existing content
 5. **Update**: Replace existing section or add new section with file index

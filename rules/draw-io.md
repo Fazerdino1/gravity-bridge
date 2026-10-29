@@ -16,7 +16,7 @@ Apply this rule when working on files matching: `**/*.drawio`, `**/*.drawio.svg`
 
 # draw.io Diagram Standards
 
-> **Skill**: Load `.github/skills/draw-io/SKILL.md` for full workflow, XML recipes, and troubleshooting before generating or editing any `.drawio` file.
+> **Skill**: Load `.agents/skills/draw-io/SKILL.md` for full workflow, XML recipes, and troubleshooting before generating or editing any `.drawio` file.
 
 ---
 
@@ -25,10 +25,10 @@ Apply this rule when working on files matching: `**/*.drawio`, `**/*.drawio.svg`
 Follow these steps for every draw.io task:
 
 1. **Identify** the diagram type (flowchart / architecture / sequence / ER / UML / network / BPMN)
-2. **Select** the matching template from `.github/skills/draw-io/templates/` and adapt it, or start from the minimal skeleton
+2. **Select** the matching template from `.agents/skills/draw-io/templates/` and adapt it, or start from the minimal skeleton
 3. **Plan** the layout on paper before writing XML — define tiers, actors, or entities first
 4. **Generate** valid mxGraph XML following the rules below
-5. **Validate** using `python .github/skills/draw-io/scripts/validate-drawio.py <file>`
+5. **Validate** using `python .agents/skills/draw-io/scripts/validate-drawio.py <file>`
 6. **Confirm** the file renders by opening it in VS Code with the draw.io extension (`hediet.vscode-drawio`)
 
 ---
@@ -137,7 +137,7 @@ edgeStyle=orthogonalEdgeStyle;html=1;
 
 ```bash
 # Run automated validation
-python .github/skills/draw-io/scripts/validate-drawio.py <file.drawio>
+python .agents/skills/draw-io/scripts/validate-drawio.py <file.drawio>
 ```
 
 ---
@@ -146,10 +146,10 @@ python .github/skills/draw-io/scripts/validate-drawio.py <file.drawio>
 
 | File | Use For |
 |---|---|
-| `.github/skills/draw-io/SKILL.md` | Full agent workflow, recipes, troubleshooting |
-| `.github/skills/draw-io/references/drawio-xml-schema.md` | Complete mxCell attribute reference |
-| `.github/skills/draw-io/references/style-reference.md` | All style keys, shape names, edge types |
-| `.github/skills/draw-io/references/shape-libraries.md` | Shape library catalog with style strings |
-| `.github/skills/draw-io/templates/` | Ready-to-use `.drawio` templates per diagram type |
-| `.github/skills/draw-io/scripts/validate-drawio.py` | XML structure validator |
-| `.github/skills/draw-io/scripts/add-shape.py` | CLI: add a shape to an existing diagram |
+| `.agents/skills/draw-io/SKILL.md` | Full agent workflow, recipes, troubleshooting |
+| `.agents/skills/draw-io/references/drawio-xml-schema.md` | Complete mxCell attribute reference |
+| `.agents/skills/draw-io/references/style-reference.md` | All style keys, shape names, edge types |
+| `.agents/skills/draw-io/references/shape-libraries.md` | Shape library catalog with style strings |
+| `.agents/skills/draw-io/templates/` | Ready-to-use `.drawio` templates per diagram type |
+| `.agents/skills/draw-io/scripts/validate-drawio.py` | XML structure validator |
+| `.agents/skills/draw-io/scripts/add-shape.py` | CLI: add a shape to an existing diagram |

@@ -14,7 +14,7 @@ status: draft
 
 # QA Engineering Best Practices
 
-A structured set of instructions for GitHub Copilot to assist with quality assurance engineering tasks including test design, automation, and defect management across any technology stack.
+A structured set of instructions for Google Antigravity to assist with quality assurance engineering tasks including test design, automation, and defect management across any technology stack.
 
 ---
 

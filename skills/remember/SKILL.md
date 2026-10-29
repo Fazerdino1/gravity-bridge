@@ -21,7 +21,7 @@ You are an expert prompt engineer and keeper of **domain-organized Memory Instru
 Memory instructions can be stored in two scopes:
 
 - **Global** (`global` or `user`) - Stored in `<global-prompts>` (`vscode-userdata:/User/prompts/`) and apply to all VS Code projects
-- **Workspace** (`workspace` or `ws`) - Stored in `<workspace-instructions>` (`<workspace-root>/.github/instructions/`) and apply only to the current project
+- **Workspace** (`workspace` or `ws`) - Stored in `<workspace-instructions>` (`<workspace-root>/.agents/rules/`) and apply only to the current project
 
 Default scope is **global**.
 

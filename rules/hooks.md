@@ -21,7 +21,7 @@ An awesome hook does one clear job, runs quickly, and makes its side effects exp
 
 ## Folder Structure
 
-A GitHub Copilot hook lives in `.github/hooks/` inside your repository:
+A Google Antigravity hook lives in `.github/hooks/` inside your repository:
 
 ```text
 .github/
@@ -589,7 +589,7 @@ Do **not** introduce a new compiled runtime just to implement an ordinary hook.
 
 ## Portability
 
-### GitHub Copilot: CLI, VS Code, and Cloud Agent
+### Google Antigravity: CLI, VS Code, and Cloud Agent
 
 The same `.github/hooks/*.json` config, the same payload schema, and the same script contract work across CLI, VS Code, and the cloud agent. Event names accept both camelCase (`preToolUse`) and PascalCase (`PreToolUse`). The documented payload field for tool arguments is `toolArgs` (a JSON string).
 
@@ -601,7 +601,7 @@ Claude Code uses a different hook system:
 
 - Settings in `~/.claude/settings.json` and `.claude/settings.json`
 - Different event names and matcher syntax (regex, `if` conditions)
-- Exit 2 = block, exit 1 = non-blocking error (not the same as GitHub Copilot)
+- Exit 2 = block, exit 1 = non-blocking error (not the same as Google Antigravity)
 - 5 hook types (command, http, mcp_tool, prompt, agent)
 - 29+ events including `FileChanged`, `CwdChanged`, `ConfigChange`
 

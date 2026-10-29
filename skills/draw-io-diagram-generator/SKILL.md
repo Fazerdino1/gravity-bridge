@@ -188,7 +188,7 @@ edgeStyle=entityRelationEdgeStyle;html=1;endArrow=ERmany;startArrow=ERone;
 1. **Write the file** to the requested path with `.drawio` extension
 2. **Run the validator** (optional but recommended):
    ```bash
-   python .github/skills/draw-io-diagram-generator/scripts/validate-drawio.py <path-to-file.drawio>
+   python .agents/skills/draw-io-diagram-generator/scripts/validate-drawio.py <path-to-file.drawio>
    ```
 3. **Tell the user** how to open the file:
    > "Open `<filename>` in VS Code — it will render automatically with the draw.io extension. You can use draw.io's web app or desktop app as well if you prefer."
@@ -372,7 +372,7 @@ When modifying an existing `.drawio` file:
 
 Use `scripts/add-shape.py` to safely add a single shape without editing raw XML:
 ```bash
-python .github/skills/draw-io-diagram-generator/scripts/add-shape.py docs/arch.drawio "New Service" 700 380
+python .agents/skills/draw-io-diagram-generator/scripts/add-shape.py docs/arch.drawio "New Service" 700 380
 ```
 
 ---
@@ -433,7 +433,7 @@ Before delivering any generated `.drawio` file, verify:
 
 Run the automated validator:
 ```bash
-python .github/skills/draw-io-diagram-generator/scripts/validate-drawio.py <file.drawio>
+python .agents/skills/draw-io-diagram-generator/scripts/validate-drawio.py <file.drawio>
 ```
 
 ---
@@ -454,7 +454,7 @@ When delivering a diagram, always provide:
 
 ## 11. References
 
-All companion files are in `.github/skills/draw-io-diagram-generator/`:
+All companion files are in `.agents/skills/draw-io-diagram-generator/`:
 
 | File | Contents |
 |---|---|

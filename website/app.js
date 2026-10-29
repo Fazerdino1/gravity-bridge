@@ -1,264 +1,374 @@
-/* global document, fetch, navigator, setTimeout */
+/* global document, window, localStorage, fetch, navigator, setTimeout, history, URLSearchParams */
 const REPO_URL = 'https://github.com/Fazerdino1/gravity-bridge';
 const PAGE_SIZE = 36;
+const ALL_TAGS = [
+  'TypeScript / JS',
+  'Python',
+  '.NET / C#',
+  'Java / Spring',
+  'DevOps & Cloud',
+  'Security',
+  'Testing & QA',
+  'AI & Agents',
+];
 
 const I18N = {
   fr: {
+    navCollections: 'Collections & Plugins (6)',
     navCatalog: 'Catalogue (855)',
     navContributing: 'Contribuer',
     navCoc: 'Code de conduite',
     navFaq: 'FAQ',
     heroTitle: 'Gravity Bridge pour Google Antigravity',
     heroSubtitle:
-      "Le hub open source communautaire (licence MIT) regroupant 855 skills, règles et personas d'agents adaptés, vérifiés et attribués pour Google Antigravity.",
+      "Le hub open source communautaire (licence MIT) regroupant 855 skills, règles, personas d'agents et 6 plugins prêts à l'emploi pour Google Antigravity.",
     ctaPropose: '+ Proposer une ressource Antigravity',
     ctaProblem: 'Signaler un problème',
     ctaRepo: 'Voir le dépôt GitHub',
     statTotal: 'Ressources',
-    statRules: 'Règles (.agents/rules/)',
+    statRules: 'Règles (<24 Ko)',
+    collectionsTitle: 'Collections & Plugins Antigravity (Installation en 1 commande)',
+    collectionsSub: 'Installez un pack thématique complet dans .agents/ ou comme plugin Antigravity.',
     catalogTitle: 'Catalogue interactif Antigravity',
-    catalogSub: "Recherchez parmi les 855 ressources et copiez le chemin pour votre dossier .agents/.",
+    catalogSub: "Recherchez, filtrez par technologie, prévisualisez et copiez la commande d'installation CLI.",
     searchLabel: 'Rechercher une ressource',
     searchPlaceholder: 'Rechercher (ex: typescript, commit, docker, security, plan...)',
+    sortReviewed: "Tri : Vérifiés ★ d'abord",
+    sortAz: 'Tri : Nom (A → Z)',
+    sortAuthor: 'Tri : Par auteur',
     filterAll: 'Tous (855)',
     filterRules: 'Règles (193)',
     filterReviewed: 'Vérifiés ★',
     loadMore: 'Afficher plus de résultats',
     resultsShowing: (shown, total) => `${shown} affichés sur ${total} ressources correspondantes`,
-    copyCmd: 'Copier chemin',
+    previewBtn: 'Aperçu',
+    copyCmd: 'Copier CLI',
     copied: 'Copié !',
-    viewFile: 'Voir sur GitHub ↗',
+    viewFile: 'GitHub ↗',
     byAuthor: 'Auteur :',
+    installCliLabel: 'Installation en 1 commande (CLI) :',
+    previewHeading: 'Aperçu du contenu',
     contribTitle: 'Contribuer & Utiliser avec Google Antigravity',
     contribHtml: `
-      <h3>1. Comment installer une ressource dans Google Antigravity</h3>
-      <ul>
-        <li><strong>Skill ou Persona :</strong> copiez le dossier dans <code>&lt;votre-projet&gt;/.agents/skills/&lt;nom&gt;/SKILL.md</code> (ou globalement dans <code>~/.gemini/skills/</code>). Vous pouvez ensuite l'invoquer avec <code>/&lt;nom&gt;</code>.</li>
-        <li><strong>Règle :</strong> copiez le fichier dans <code>&lt;votre-projet&gt;/.agents/rules/&lt;nom&gt;.md</code>.</li>
-      </ul>
+      <h3>1. Installer en 1 commande avec le CLI Gravity Bridge</h3>
+      <pre tabindex="0"><code># Installer un skill, une règle ou une persona dans votre projet (.agents/) :
+npx github:Fazerdino1/gravity-bridge add conventional-commit
+
+# Installer toute une collection thématique :
+npx github:Fazerdino1/gravity-bridge add --collection fullstack-web-typescript
+
+# Installer un plugin Antigravity complet dans ~/.gemini/config/plugins/ :
+npx github:Fazerdino1/gravity-bridge add --plugin git-and-docs-essentials</code></pre>
       <h3>2. Formulaires interactifs GitHub Issues</h3>
-      <p>Pour que les menus déroulants et cases à cocher soient cliquables sur GitHub, utilisez ces liens directs vers les formulaires (et non l'aperçu brut du fichier <code>.yml</code> dans le dépôt) :</p>
       <ul>
         <li><a href="${REPO_URL}/issues/new?template=new_resource.yml" target="_blank" rel="noopener">Proposer une nouvelle ressource Antigravity</a></li>
         <li><a href="${REPO_URL}/issues/new?template=conversion_problem.yml" target="_blank" rel="noopener">Signaler un problème de ressource ou de conversion</a></li>
         <li><a href="${REPO_URL}/issues/new?template=bug_report.yml" target="_blank" rel="noopener">Signaler un bug dans les scripts</a></li>
         <li><a href="${REPO_URL}/issues/new?template=license_or_removal_request.yml" target="_blank" rel="noopener">Demande de licence, d'attribution ou de retrait</a></li>
       </ul>
-      <h3>3. Convertir ou valider en ligne de commande</h3>
-      <pre tabindex="0"><code>npm run convert -- --source &lt;chemin-source&gt; --out . --only &lt;nom&gt; --dry-run
-npm run validate</code></pre>
     `,
     cocHeading: 'Code de conduite du Contributor Covenant (v2.1)',
     cocHtml: `
-      <h3>Notre engagement</h3>
-      <p>En tant que membres, contributeurs et dirigeants, nous nous engageons à faire de la participation à notre communauté une expérience exempte de harcèlement pour tout le monde, quels que soient l'âge, la corpulence, le handicap visible ou invisible, l'appartenance ethnique, les caractéristiques sexuelles, l'identité et l'expression de genre, le niveau d'expérience, l'éducation, le statut socio-économique, la nationalité, l'apparence personnelle, la race, la caste, la couleur de peau, la religion, ou l'identité et l'orientation sexuelles.</p>
-      <p>Nous nous engageons à agir et interagir de manière à contribuer à une communauté ouverte, accueillante, diversifiée, inclusive et saine.</p>
-      <h3>Nos critères</h3>
-      <p><strong>Exemples de comportements positifs :</strong> faire preuve d'empathie et de bienveillance, respecter les opinions divergentes, donner et accepter des critiques constructives, assumer ses responsabilités et se concentrer sur le bien de la communauté.</p>
-      <p><strong>Exemples de comportements inacceptables :</strong> langage ou images sexualisés, trolling, commentaires insultants ou péjoratifs, harcèlement public ou privé, publication d'informations privées d'autrui sans autorisation.</p>
-      <h3>Application et signalement</h3>
-      <p>Tout comportement abusif, harcelant ou inacceptable peut être signalé à <a href="mailto:fazerdinotheck@outlook.fr">fazerdinotheck@outlook.fr</a> ou via le <a href="${REPO_URL}/security/advisories/new" target="_blank" rel="noopener">signalement privé GitHub</a>. Toutes les plaintes sont examinées rapidement, équitablement et en toute confidentialité.</p>
-      <h3>Directives d'application (4 niveaux)</h3>
-      <ol>
-        <li><strong>1. Correction :</strong> avertissement écrit privé et demande d'explication.</li>
-        <li><strong>2. Avertissement :</strong> interdiction d'interagir avec les personnes concernées pendant une période donnée.</li>
-        <li><strong>3. Bannissement temporaire :</strong> suspension temporaire de toute interaction publique ou privée dans la communauté.</li>
-        <li><strong>4. Bannissement permanent :</strong> exclusion définitive en cas de violations graves ou répétées.</li>
-      </ol>
-      <p>Version intégrale disponible dans le dépôt : <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.fr.md" target="_blank" rel="noopener">CODE_OF_CONDUCT.fr.md</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">English</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.es.md" target="_blank" rel="noopener">Español</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.de.md" target="_blank" rel="noopener">Deutsch</a>.</p>
+      <p>Nous nous engageons à faire de la participation à notre communauté une expérience exempte de harcèlement pour tout le monde, en contribuant à une communauté ouverte, accueillante, diversifiée, inclusive et saine.</p>
+      <p>Tout comportement inacceptable peut être signalé à <a href="mailto:fazerdinotheck@outlook.fr">fazerdinotheck@outlook.fr</a> ou via le <a href="${REPO_URL}/security/advisories/new" target="_blank" rel="noopener">signalement privé GitHub</a>.</p>
+      <p>Texte intégral : <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.fr.md" target="_blank" rel="noopener">Français</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">English</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.es.md" target="_blank" rel="noopener">Español</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.de.md" target="_blank" rel="noopener">Deutsch</a>.</p>
     `,
     faqHeading: 'FAQ — Questions fréquentes',
     faqHtml: `
-      <h3>Pourquoi les menus déroulants dans .github/ISSUE_TEMPLATE/*.yml ne sont-ils pas cliquables quand on ouvre le fichier ?</h3>
-      <p>Sur GitHub, cliquer sur un fichier <code>.yml</code> dans l'explorateur de code affiche seulement un aperçu statique. Pour utiliser le vrai formulaire interactif, cliquez sur l'onglet <strong>Issues → New issue</strong> ou sur les boutons en haut de ce site.</p>
-      <h3>Quelle est la licence des ressources ?</h3>
-      <p>Le projet est sous licence MIT et chaque ressource conserve sa licence et son auteur d'origine dans son en-tête et dans <a href="${REPO_URL}/blob/main/NOTICE.md" target="_blank" rel="noopener">NOTICE.md</a>.</p>
-      <h3>Comment demander le retrait ou la modification d'une ressource dont je suis l'auteur ?</h3>
-      <p>Ouvrez une <a href="${REPO_URL}/issues/new?template=license_or_removal_request.yml" target="_blank" rel="noopener">demande de retrait</a> ou écrivez à <a href="mailto:fazerdinotheck@outlook.fr">fazerdinotheck@outlook.fr</a>. Le retrait est immédiat.</p>
+      <h3>Comment les règles de plus de 24 Ko sont-elles gérées ?</h3>
+      <p>Antigravity applique une limite de 24 000 octets par fichier de règle. Notre outil <code>npm run sanitize</code> condense automatiquement les règles volumineuses sous 24 Ko et conserve la référence complète dans <code>docs/rule-references/</code>.</p>
+      <h3>Les scripts embarqués dans les skills sont-ils audités ?</h3>
+      <p>Oui : <code>npm run audit:scripts</code> inspecte les 91 scripts embarqués et publie le rapport dans <a href="${REPO_URL}/blob/main/docs/scripts-security-audit.md" target="_blank" rel="noopener">docs/scripts-security-audit.md</a>.</p>
     `,
   },
   en: {
+    navCollections: 'Collections & Plugins (6)',
     navCatalog: 'Catalog (855)',
     navContributing: 'Contribute',
     navCoc: 'Code of Conduct',
     navFaq: 'FAQ',
     heroTitle: 'Gravity Bridge for Google Antigravity',
     heroSubtitle:
-      'The MIT-licensed open-source community hub hosting 855 skills, rules, and agent personas adapted, validated, and attributed for Google Antigravity.',
+      'The MIT-licensed open-source community hub with 855 skills, rules, agent personas, and 6 ready-to-use plugins for Google Antigravity.',
     ctaPropose: '+ Propose an Antigravity Resource',
     ctaProblem: 'Report an Issue',
     ctaRepo: 'View GitHub Repository',
     statTotal: 'Resources',
-    statRules: 'Rules (.agents/rules/)',
+    statRules: 'Rules (<24 KB)',
+    collectionsTitle: 'Antigravity Collections & Plugins (1-Command Install)',
+    collectionsSub: 'Install a complete curated bundle into .agents/ or as a global Antigravity plugin.',
     catalogTitle: 'Interactive Antigravity Catalog',
-    catalogSub: 'Search all 855 resources and copy the path for your .agents/ workspace.',
+    catalogSub: 'Search, filter by technology tag, preview content, and copy the one-line CLI install command.',
     searchLabel: 'Search resources',
     searchPlaceholder: 'Search (e.g. typescript, commit, docker, security, plan...)',
+    sortReviewed: 'Sort: Reviewed ★ first',
+    sortAz: 'Sort: Name (A → Z)',
+    sortAuthor: 'Sort: By author',
     filterAll: 'All (855)',
     filterRules: 'Rules (193)',
     filterReviewed: 'Reviewed ★',
     loadMore: 'Load more results',
     resultsShowing: (shown, total) => `Showing ${shown} of ${total} matching resources`,
-    copyCmd: 'Copy path',
+    previewBtn: 'Preview',
+    copyCmd: 'Copy CLI',
     copied: 'Copied!',
-    viewFile: 'View on GitHub ↗',
+    viewFile: 'GitHub ↗',
     byAuthor: 'Author:',
+    installCliLabel: 'One-Command CLI Install:',
+    previewHeading: 'Content Preview',
     contribTitle: 'Contribute & Use with Google Antigravity',
     contribHtml: `
-      <h3>1. How to use a resource in Google Antigravity</h3>
-      <ul>
-        <li><strong>Skill or Persona:</strong> copy the folder into <code>&lt;your-project&gt;/.agents/skills/&lt;name&gt;/SKILL.md</code> (or globally in <code>~/.gemini/skills/</code>) and invoke with <code>/&lt;name&gt;</code>.</li>
-        <li><strong>Rule:</strong> copy the file into <code>&lt;your-project&gt;/.agents/rules/&lt;name&gt;.md</code>.</li>
-      </ul>
+      <h3>1. Install in 1 Command with the Gravity Bridge CLI</h3>
+      <pre tabindex="0"><code># Install a skill, rule, or persona into your project (.agents/):
+npx github:Fazerdino1/gravity-bridge add conventional-commit
+
+# Install a curated thematic collection:
+npx github:Fazerdino1/gravity-bridge add --collection fullstack-web-typescript
+
+# Install a complete Antigravity plugin into ~/.gemini/config/plugins/:
+npx github:Fazerdino1/gravity-bridge add --plugin git-and-docs-essentials</code></pre>
       <h3>2. Interactive GitHub Issue Forms</h3>
-      <p>To use clickable dropdowns and checkboxes on GitHub, open the live Issue Forms below (rather than previewing raw <code>.yml</code> files in the repository tree):</p>
       <ul>
         <li><a href="${REPO_URL}/issues/new?template=new_resource.yml" target="_blank" rel="noopener">Propose a New Antigravity Resource</a></li>
         <li><a href="${REPO_URL}/issues/new?template=conversion_problem.yml" target="_blank" rel="noopener">Report a Resource or Conversion Problem</a></li>
         <li><a href="${REPO_URL}/issues/new?template=bug_report.yml" target="_blank" rel="noopener">Report a Tooling Bug</a></li>
         <li><a href="${REPO_URL}/issues/new?template=license_or_removal_request.yml" target="_blank" rel="noopener">License, Attribution, or Removal Request</a></li>
       </ul>
-      <h3>3. CLI Converter & Validator</h3>
-      <pre tabindex="0"><code>npm run convert -- --source &lt;source-path&gt; --out . --only &lt;name&gt; --dry-run
-npm run validate</code></pre>
     `,
     cocHeading: 'Contributor Covenant Code of Conduct (v2.1)',
     cocHtml: `
-      <h3>Our Pledge</h3>
-      <p>We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, caste, color, religion, or sexual identity and orientation.</p>
-      <p>We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.</p>
-      <h3>Our Standards</h3>
-      <p><strong>Positive behavior includes:</strong> demonstrating empathy and kindness, respecting differing viewpoints, giving and accepting constructive feedback, accepting responsibility, and focusing on what is best for the overall community.</p>
-      <p><strong>Unacceptable behavior includes:</strong> sexualized language or imagery, trolling, insulting comments, public or private harassment, and publishing others' private information without permission.</p>
-      <h3>Enforcement & Reporting</h3>
-      <p>Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to <a href="mailto:fazerdinotheck@outlook.fr">fazerdinotheck@outlook.fr</a> or through <a href="${REPO_URL}/security/advisories/new" target="_blank" rel="noopener">GitHub private reporting</a>. All complaints will be reviewed and investigated promptly, fairly, and confidentially.</p>
-      <h3>Enforcement Guidelines (4 Levels)</h3>
-      <ol>
-        <li><strong>1. Correction:</strong> A private, written warning providing clarity around the violation.</li>
-        <li><strong>2. Warning:</strong> A warning with consequences for continued behavior and no interaction for a specified period.</li>
-        <li><strong>3. Temporary Ban:</strong> A temporary ban from any interaction or public communication with the community.</li>
-        <li><strong>4. Permanent Ban:</strong> A permanent ban from any public interaction within the community.</li>
-      </ol>
-      <p>Full text in the repository: <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">CODE_OF_CONDUCT.md</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.fr.md" target="_blank" rel="noopener">Français</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.es.md" target="_blank" rel="noopener">Español</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.de.md" target="_blank" rel="noopener">Deutsch</a>.</p>
+      <p>We pledge to make participation in our community a harassment-free experience for everyone and to act in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.</p>
+      <p>Unacceptable behavior may be reported to <a href="mailto:fazerdinotheck@outlook.fr">fazerdinotheck@outlook.fr</a> or through <a href="${REPO_URL}/security/advisories/new" target="_blank" rel="noopener">GitHub private reporting</a>.</p>
+      <p>Full text: <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">English</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.fr.md" target="_blank" rel="noopener">Français</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.es.md" target="_blank" rel="noopener">Español</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.de.md" target="_blank" rel="noopener">Deutsch</a>.</p>
     `,
     faqHeading: 'FAQ — Frequently Asked Questions',
     faqHtml: `
-      <h3>Why can't I select options when viewing .github/ISSUE_TEMPLATE/*.yml in the code tree?</h3>
-      <p>Viewing a <code>.yml</code> file in GitHub's file browser shows a static preview. Use <strong>Issues → New issue</strong> or the buttons above to open the interactive form.</p>
-      <h3>How is attribution handled?</h3>
-      <p>Every converted file records its source URL, commit, license, and original author in YAML front matter and in <a href="${REPO_URL}/blob/main/NOTICE.md" target="_blank" rel="noopener">NOTICE.md</a>.</p>
-      <h3>How do I request removal of my content?</h3>
-      <p>Open a <a href="${REPO_URL}/issues/new?template=license_or_removal_request.yml" target="_blank" rel="noopener">removal request</a> or email <a href="mailto:fazerdinotheck@outlook.fr">fazerdinotheck@outlook.fr</a>.</p>
+      <h3>How are rules larger than 24 KB handled?</h3>
+      <p>Antigravity enforces a 24,000-byte per-rule limit. <code>npm run sanitize</code> condenses large rules below 24 KB and preserves the full unabridged reference in <code>docs/rule-references/</code>.</p>
+      <h3>Are bundled skill scripts audited?</h3>
+      <p>Yes: <code>npm run audit:scripts</code> scans all 91 bundled scripts and writes <a href="${REPO_URL}/blob/main/docs/scripts-security-audit.md" target="_blank" rel="noopener">docs/scripts-security-audit.md</a>.</p>
     `,
   },
   es: {
+    navCollections: 'Colecciones y Plugins (6)',
     navCatalog: 'Catálogo (855)',
     navContributing: 'Contribuir',
     navCoc: 'Código de Conducta',
     navFaq: 'FAQ',
     heroTitle: 'Gravity Bridge para Google Antigravity',
     heroSubtitle:
-      'El centro comunitario de código abierto (licencia MIT) con 855 skills, reglas y personas de agentes adaptados, verificados y atribuidos para Google Antigravity.',
+      'El centro comunitario de código abierto (licencia MIT) con 855 skills, reglas, personas de agentes y 6 plugins para Google Antigravity.',
     ctaPropose: '+ Proponer un recurso Antigravity',
     ctaProblem: 'Informar de un problema',
     ctaRepo: 'Ver repositorio en GitHub',
     statTotal: 'Recursos',
-    statRules: 'Reglas (.agents/rules/)',
+    statRules: 'Reglas (<24 KB)',
+    collectionsTitle: 'Colecciones y Plugins de Antigravity',
+    collectionsSub: 'Instale un paquete temático completo con un solo comando CLI.',
     catalogTitle: 'Catálogo interactivo de Antigravity',
-    catalogSub: 'Busque entre los 855 recursos y copie la ruta para su carpeta .agents/.',
+    catalogSub: 'Busque, filtre por tecnología, previsualice y copie el comando de instalación.',
     searchLabel: 'Buscar recursos',
     searchPlaceholder: 'Buscar (ej: typescript, commit, docker, security, plan...)',
+    sortReviewed: 'Orden: Revisados ★ primero',
+    sortAz: 'Orden: Nombre (A → Z)',
+    sortAuthor: 'Orden: Por autor',
     filterAll: 'Todos (855)',
     filterRules: 'Reglas (193)',
     filterReviewed: 'Revisados ★',
     loadMore: 'Mostrar más resultados',
     resultsShowing: (shown, total) => `Mostrando ${shown} de ${total} recursos`,
-    copyCmd: 'Copiar ruta',
+    previewBtn: 'Vista previa',
+    copyCmd: 'Copiar CLI',
     copied: '¡Copiado!',
-    viewFile: 'Ver en GitHub ↗',
+    viewFile: 'GitHub ↗',
     byAuthor: 'Autor:',
+    installCliLabel: 'Instalación con 1 comando (CLI):',
+    previewHeading: 'Vista previa del contenido',
     contribTitle: 'Contribuir y usar con Google Antigravity',
-    contribHtml: `
-      <h3>1. Cómo usar un recurso en Google Antigravity</h3>
-      <ul>
-        <li><strong>Skill o Persona:</strong> copie la carpeta en <code>&lt;su-proyecto&gt;/.agents/skills/&lt;nombre&gt;/SKILL.md</code>.</li>
-        <li><strong>Regla:</strong> copie el archivo en <code>&lt;su-proyecto&gt;/.agents/rules/&lt;nombre&gt;.md</code>.</li>
-      </ul>
-      <h3>2. Formularios interactivos de GitHub Issues</h3>
-      <ul>
-        <li><a href="${REPO_URL}/issues/new?template=new_resource.yml" target="_blank" rel="noopener">Proponer un nuevo recurso</a></li>
-        <li><a href="${REPO_URL}/issues/new?template=conversion_problem.yml" target="_blank" rel="noopener">Informar de un problema de conversión</a></li>
-        <li><a href="${REPO_URL}/issues/new?template=license_or_removal_request.yml" target="_blank" rel="noopener">Solicitud de licencia o eliminación</a></li>
-      </ul>
-    `,
+    contribHtml: `<pre tabindex="0"><code>npx github:Fazerdino1/gravity-bridge add conventional-commit</code></pre>`,
     cocHeading: 'Código de Conducta del Contributor Covenant (v2.1)',
-    cocHtml: `
-      <p>Nos comprometemos a hacer de la participación en nuestra comunidad una experiencia libre de acoso para todo el mundo, contribuyendo a una comunidad abierta, acogedora, diversa, inclusiva y sana.</p>
-      <p>Cualquier comportamiento inaceptable puede reportarse a <a href="mailto:fazerdinotheck@outlook.fr">fazerdinotheck@outlook.fr</a> o mediante el <a href="${REPO_URL}/security/advisories/new" target="_blank" rel="noopener">reporte privado de GitHub</a>.</p>
-      <p>Texto completo: <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.es.md" target="_blank" rel="noopener">CODE_OF_CONDUCT.es.md</a>.</p>
-    `,
+    cocHtml: `<p>Contacto: <a href="mailto:fazerdinotheck@outlook.fr">fazerdinotheck@outlook.fr</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.es.md" target="_blank" rel="noopener">CODE_OF_CONDUCT.es.md</a>.</p>`,
     faqHeading: 'FAQ — Preguntas frecuentes',
-    faqHtml: `
-      <p>Para abrir los formularios interactivos con menús desplegables funcionales, utilice <strong>Issues → New issue</strong> o los enlaces directos de esta página.</p>
-    `,
+    faqHtml: `<p>Todas las reglas respetan el límite de 24 KB de Antigravity.</p>`,
   },
   de: {
+    navCollections: 'Sammlungen & Plugins (6)',
     navCatalog: 'Katalog (855)',
     navContributing: 'Mitwirken',
     navCoc: 'Verhaltenskodex',
     navFaq: 'FAQ',
     heroTitle: 'Gravity Bridge für Google Antigravity',
     heroSubtitle:
-      'Der Open-Source-Community-Hub (MIT-Lizenz) mit 855 angepassten, geprüften und zugeordneten Skills, Regeln und Agenten-Personas für Google Antigravity.',
+      'Der Open-Source-Community-Hub (MIT-Lizenz) mit 855 Skills, Regeln, Agenten-Personas und 6 Plugins für Google Antigravity.',
     ctaPropose: '+ Antigravity-Ressource vorschlagen',
     ctaProblem: 'Problem melden',
     ctaRepo: 'GitHub-Repository ansehen',
     statTotal: 'Ressourcen',
-    statRules: 'Regeln (.agents/rules/)',
+    statRules: 'Regeln (<24 KB)',
+    collectionsTitle: 'Antigravity-Sammlungen & Plugins',
+    collectionsSub: 'Installieren Sie ein kuratiertes Paket mit einem einzigen CLI-Befehl.',
     catalogTitle: 'Interaktiver Antigravity-Katalog',
-    catalogSub: 'Durchsuchen Sie alle 855 Ressourcen und kopieren Sie den Pfad für Ihren .agents/-Ordner.',
+    catalogSub: 'Suchen, nach Technologie filtern, Vorschau anzeigen und CLI-Befehl kopieren.',
     searchLabel: 'Ressource suchen',
     searchPlaceholder: 'Suchen (z. B. typescript, commit, docker, security, plan...)',
+    sortReviewed: 'Sortierung: Geprüft ★ zuerst',
+    sortAz: 'Sortierung: Name (A → Z)',
+    sortAuthor: 'Sortierung: Nach Autor',
     filterAll: 'Alle (855)',
     filterRules: 'Regeln (193)',
     filterReviewed: 'Geprüft ★',
     loadMore: 'Mehr Ergebnisse laden',
     resultsShowing: (shown, total) => `${shown} von ${total} passenden Ressourcen angezeigt`,
-    copyCmd: 'Pfad kopieren',
+    previewBtn: 'Vorschau',
+    copyCmd: 'CLI kopieren',
     copied: 'Kopiert!',
-    viewFile: 'Auf GitHub ansehen ↗',
+    viewFile: 'GitHub ↗',
     byAuthor: 'Autor:',
+    installCliLabel: 'Installation mit 1 Befehl (CLI):',
+    previewHeading: 'Inhaltsvorschau',
     contribTitle: 'Mitwirken & Nutzung mit Google Antigravity',
-    contribHtml: `
-      <h3>1. Nutzung in Google Antigravity</h3>
-      <ul>
-        <li><strong>Skill oder Persona:</strong> Ordner nach <code>&lt;projekt&gt;/.agents/skills/&lt;name&gt;/SKILL.md</code> kopieren.</li>
-        <li><strong>Regel:</strong> Datei nach <code>&lt;projekt&gt;/.agents/rules/&lt;name&gt;.md</code> kopieren.</li>
-      </ul>
-      <h3>2. Interaktive GitHub-Issue-Formulare</h3>
-      <ul>
-        <li><a href="${REPO_URL}/issues/new?template=new_resource.yml" target="_blank" rel="noopener">Neue Ressource vorschlagen</a></li>
-        <li><a href="${REPO_URL}/issues/new?template=conversion_problem.yml" target="_blank" rel="noopener">Konvertierungsproblem melden</a></li>
-        <li><a href="${REPO_URL}/issues/new?template=license_or_removal_request.yml" target="_blank" rel="noopener">Lizenz- oder Entfernungsanfrage</a></li>
-      </ul>
-    `,
+    contribHtml: `<pre tabindex="0"><code>npx github:Fazerdino1/gravity-bridge add conventional-commit</code></pre>`,
     cocHeading: 'Verhaltenskodex des Contributor Covenant (v2.1)',
-    cocHtml: `
-      <p>Wir verpflichten uns, die Teilnahme an unserer Gemeinschaft zu einer belästigungsfreien Erfahrung für alle zu machen.</p>
-      <p>Vorfälle können unter <a href="mailto:fazerdinotheck@outlook.fr">fazerdinotheck@outlook.fr</a> oder über die <a href="${REPO_URL}/security/advisories/new" target="_blank" rel="noopener">private Sicherheitsmeldung auf GitHub</a> gemeldet werden.</p>
-      <p>Vollständiger Text: <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.de.md" target="_blank" rel="noopener">CODE_OF_CONDUCT.de.md</a>.</p>
-    `,
+    cocHtml: `<p>Kontakt: <a href="mailto:fazerdinotheck@outlook.fr">fazerdinotheck@outlook.fr</a> · <a href="${REPO_URL}/blob/main/CODE_OF_CONDUCT.de.md" target="_blank" rel="noopener">CODE_OF_CONDUCT.de.md</a>.</p>`,
     faqHeading: 'FAQ — Häufig gestellte Fragen',
-    faqHtml: `
-      <p>Verwenden Sie <strong>Issues → New issue</strong> oder die Schaltflächen oben, um die interaktiven GitHub-Formulare zu öffnen.</p>
-    `,
+    faqHtml: `<p>Alle Regeln halten das 24-KB-Limit von Antigravity ein.</p>`,
   },
 };
 
 let currentLang = 'fr';
 let allItems = [];
+let allCollections = [];
 let activeFilter = 'all';
+let activeTag = '';
+let activeSort = 'reviewed';
 let visibleLimit = PAGE_SIZE;
+
+function syncUrlState() {
+  const params = new URLSearchParams();
+  if (currentLang !== 'fr') params.set('lang', currentLang);
+  const q = (document.getElementById('search-input')?.value || '').trim();
+  if (q) params.set('q', q);
+  if (activeFilter !== 'all') params.set('type', activeFilter);
+  if (activeTag) params.set('tag', activeTag);
+  if (activeSort !== 'reviewed') params.set('sort', activeSort);
+  const qs = params.toString();
+  history.replaceState(null, '', qs ? `?${qs}${window.location.hash}` : window.location.pathname + window.location.hash);
+}
+
+function loadUrlState() {
+  const params = new URLSearchParams(window.location.search);
+  const lang = params.get('lang');
+  if (lang && I18N[lang]) currentLang = lang;
+  const q = params.get('q');
+  if (q && document.getElementById('search-input')) document.getElementById('search-input').value = q;
+  const type = params.get('type');
+  if (type) activeFilter = type;
+  const tag = params.get('tag');
+  if (tag) activeTag = tag;
+  const sort = params.get('sort');
+  if (sort && document.getElementById('sort-select')) {
+    activeSort = sort;
+    document.getElementById('sort-select').value = sort;
+  }
+}
+
+function setupThemeToggle() {
+  const meta = document.querySelector('meta[name="color-scheme"]');
+  const btn = document.getElementById('theme-toggle');
+  if (!meta || !btn) return;
+  btn.addEventListener('click', () => {
+    const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const current = meta.content === 'light dark' ? (sysDark ? 'dark' : 'light') : meta.content;
+    const target = current === 'dark' ? 'light' : 'dark';
+    const sysScheme = sysDark ? 'dark' : 'light';
+    if (target === sysScheme) {
+      meta.content = 'light dark';
+      try { localStorage.removeItem('color-scheme'); } catch { /* ignore storage restrictions */ }
+    } else {
+      meta.content = target;
+      try { localStorage.setItem('color-scheme', target); } catch { /* ignore storage restrictions */ }
+    }
+  });
+}
+
+function renderCollections() {
+  const grid = document.getElementById('collections-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  const dict = I18N[currentLang];
+  for (const col of allCollections) {
+    const card = document.createElement('article');
+    card.className = 'col-card';
+    const cmd = `npx github:Fazerdino1/gravity-bridge add --collection ${col.id}`;
+    card.innerHTML = `
+      <div>
+        <div class="res-top">
+          <span class="badge reviewed">Collection (${col.items.length})</span>
+          <span class="badge skill">Plugin: ${col.pluginId}</span>
+        </div>
+        <h3>${col.name}</h3>
+        <p>${col.description}</p>
+      </div>
+      <div>
+        <div class="col-cmd">${cmd}</div>
+        <div class="res-footer" style="margin-top:0.5rem">
+          <span>${col.items.length} items</span>
+          <button type="button" class="mini-btn copy-col-btn">${dict.copyCmd}</button>
+        </div>
+      </div>
+    `;
+    const copyBtn = card.querySelector('.copy-col-btn');
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard?.writeText(cmd);
+      copyBtn.textContent = dict.copied;
+      setTimeout(() => { copyBtn.textContent = I18N[currentLang].copyCmd; }, 1400);
+    });
+    grid.appendChild(card);
+  }
+}
+
+function renderTagPills() {
+  const wrap = document.getElementById('tag-pills');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  for (const tag of ALL_TAGS) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = `tag-pill${activeTag === tag ? ' active' : ''}`;
+    btn.textContent = `# ${tag}`;
+    btn.addEventListener('click', () => {
+      activeTag = activeTag === tag ? '' : tag;
+      visibleLimit = PAGE_SIZE;
+      renderTagPills();
+      syncUrlState();
+      renderCatalog();
+    });
+    wrap.appendChild(btn);
+  }
+}
+
+function openPreviewModal(item) {
+  const dialog = document.getElementById('preview-dialog');
+  if (!dialog) return;
+  const dict = I18N[currentLang];
+  document.getElementById('dialog-badge').className = `badge ${item.type}`;
+  document.getElementById('dialog-badge').textContent = item.type;
+  document.getElementById('dialog-title').textContent = item.name;
+  document.getElementById('dialog-desc').textContent = item.description;
+  const cliCmd = `npx github:Fazerdino1/gravity-bridge add ${item.name}`;
+  document.getElementById('dialog-cli-cmd').textContent = cliCmd;
+  document.getElementById('dialog-preview-code').textContent = item.preview || item.description;
+  document.getElementById('dialog-meta').textContent = `${dict.byAuthor} ${item.author} · License: ${item.license} · Status: ${item.status}`;
+  document.getElementById('dialog-gh-link').href = `${REPO_URL}/blob/main/${item.path}`;
+
+  const copyBtn = document.getElementById('dialog-copy-cli');
+  copyBtn.onclick = () => {
+    navigator.clipboard?.writeText(cliCmd);
+    copyBtn.textContent = dict.copied;
+    setTimeout(() => { copyBtn.textContent = I18N[currentLang].copyCmd; }, 1400);
+  };
+  dialog.showModal();
+}
 
 function applyLanguage(lang) {
   currentLang = I18N[lang] ? lang : 'fr';
@@ -277,20 +387,32 @@ function applyLanguage(lang) {
   for (const btn of document.querySelectorAll('.lang-btn')) {
     btn.classList.toggle('active', btn.dataset.lang === currentLang);
   }
+  for (const p of document.querySelectorAll('.pill')) {
+    p.classList.toggle('active', p.dataset.type === activeFilter);
+  }
+  renderCollections();
+  renderTagPills();
   renderCatalog();
 }
 
 function getFilteredItems() {
   const q = (document.getElementById('search-input')?.value || '').trim().toLowerCase();
-  return allItems.filter((item) => {
+  const filtered = allItems.filter((item) => {
     if (activeFilter === 'reviewed' && item.status !== 'reviewed') return false;
     if (activeFilter !== 'all' && activeFilter !== 'reviewed' && item.type !== activeFilter) return false;
+    if (activeTag && !(item.tags || []).includes(activeTag)) return false;
     if (!q) return true;
     return (
       item.name.toLowerCase().includes(q) ||
       item.description.toLowerCase().includes(q) ||
       item.author.toLowerCase().includes(q)
     );
+  });
+
+  return filtered.sort((a, b) => {
+    if (activeSort === 'az') return a.name.localeCompare(b.name);
+    if (activeSort === 'author') return a.author.localeCompare(b.author) || a.name.localeCompare(b.name);
+    return (a.status === 'reviewed' ? -1 : 1) - (b.status === 'reviewed' ? -1 : 1) || a.name.localeCompare(b.name);
   });
 }
 
@@ -333,6 +455,15 @@ function renderCatalog() {
     desc.className = 'res-desc';
     desc.textContent = item.description;
 
+    const tagsRow = document.createElement('div');
+    tagsRow.className = 'res-tags';
+    for (const t of item.tags || []) {
+      const tg = document.createElement('span');
+      tg.className = 'res-tag';
+      tg.textContent = t;
+      tagsRow.appendChild(tg);
+    }
+
     const footer = document.createElement('div');
     footer.className = 'res-footer';
 
@@ -342,16 +473,21 @@ function renderCatalog() {
     const actions = document.createElement('div');
     actions.className = 'res-actions';
 
+    const previewBtn = document.createElement('button');
+    previewBtn.type = 'button';
+    previewBtn.className = 'mini-btn';
+    previewBtn.textContent = dict.previewBtn;
+    previewBtn.addEventListener('click', () => openPreviewModal(item));
+
     const copyBtn = document.createElement('button');
     copyBtn.type = 'button';
     copyBtn.className = 'mini-btn';
     copyBtn.textContent = dict.copyCmd;
+    const cliCmd = `npx github:Fazerdino1/gravity-bridge add ${item.name}`;
     copyBtn.addEventListener('click', () => {
-      navigator.clipboard?.writeText(item.path);
+      navigator.clipboard?.writeText(cliCmd);
       copyBtn.textContent = dict.copied;
-      setTimeout(() => {
-        copyBtn.textContent = I18N[currentLang].copyCmd;
-      }, 1400);
+      setTimeout(() => { copyBtn.textContent = I18N[currentLang].copyCmd; }, 1400);
     });
 
     const link = document.createElement('a');
@@ -361,28 +497,45 @@ function renderCatalog() {
     link.rel = 'noopener';
     link.textContent = dict.viewFile;
 
-    actions.append(copyBtn, link);
+    actions.append(previewBtn, copyBtn, link);
     footer.append(authorSpan, actions);
-    card.append(top, title, desc, footer);
+    card.append(top, title, desc, tagsRow, footer);
     grid.appendChild(card);
   }
 }
 
 async function init() {
+  loadUrlState();
+  setupThemeToggle();
+
+  document.getElementById('copy-hero-cli')?.addEventListener('click', (e) => {
+    navigator.clipboard?.writeText('npx github:Fazerdino1/gravity-bridge add conventional-commit');
+    e.currentTarget.textContent = I18N[currentLang].copied;
+  });
+
   for (const btn of document.querySelectorAll('.lang-btn')) {
-    btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+    btn.addEventListener('click', () => {
+      applyLanguage(btn.dataset.lang);
+      syncUrlState();
+    });
   }
   for (const pill of document.querySelectorAll('.pill')) {
     pill.addEventListener('click', () => {
-      for (const p of document.querySelectorAll('.pill')) p.classList.remove('active');
-      pill.classList.add('active');
       activeFilter = pill.dataset.type;
       visibleLimit = PAGE_SIZE;
+      for (const p of document.querySelectorAll('.pill')) p.classList.toggle('active', p.dataset.type === activeFilter);
+      syncUrlState();
       renderCatalog();
     });
   }
   document.getElementById('search-input')?.addEventListener('input', () => {
     visibleLimit = PAGE_SIZE;
+    syncUrlState();
+    renderCatalog();
+  });
+  document.getElementById('sort-select')?.addEventListener('change', (e) => {
+    activeSort = e.target.value;
+    syncUrlState();
     renderCatalog();
   });
   document.getElementById('load-more-btn')?.addEventListener('click', () => {
@@ -394,11 +547,12 @@ async function init() {
     const res = await fetch('./catalog.json');
     const data = await res.json();
     allItems = data.items || [];
-    allItems.sort((a, b) => (a.status === 'reviewed' ? -1 : 1) - (b.status === 'reviewed' ? -1 : 1) || a.name.localeCompare(b.name));
+    allCollections = data.collections || [];
   } catch {
     allItems = [];
+    allCollections = [];
   }
-  applyLanguage('fr');
+  applyLanguage(currentLang);
 }
 
 init();

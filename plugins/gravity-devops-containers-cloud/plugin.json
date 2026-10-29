@@ -1,0 +1,9 @@
+{
+  "name": "gravity-devops-containers-cloud",
+  "description": "Best-practice rules and skills for multi-stage Dockerfiles, Kubernetes deployments, GitHub Actions CI/CD, and cloud architecture.",
+  "suggestedPrompts": [
+    "Use /multi-stage-dockerfile on this project",
+    "Use /devops-rollout-plan on this project",
+    "Use /aws-principal-architect on this project"
+  ]
+}

@@ -161,7 +161,7 @@ applyTo: ".copilot-tracking/changes/{{date}}-{{task_description}}-changes.md"
 ### Standards References
 
 - #file:../../copilot/{{language}}.md - {{language_conventions_description}}
-- #file:../../.github/instructions/{{instruction_file}}.instructions.md - {{instruction_description}}
+- #file:../../.agents/rules/{{instruction_file}}.instructions.md - {{instruction_description}}
 
 ## Implementation Checklist
 
@@ -286,12 +286,12 @@ You WILL create `{{date}}-{{task_description}}-changes.md` in #file:../changes/ 
 
 ### Step 2: Execute Implementation
 
-You WILL follow #file:../../.github/instructions/task-implementation.instructions.md
+You WILL follow #file:../../.agents/rules/task-implementation.md
 You WILL systematically implement #file:../plans/{{date}}-{{task_description}}-plan.instructions.md task-by-task
 You WILL follow ALL project standards and conventions
 
-**CRITICAL**: If ${input:phaseStop:true} is true, you WILL stop after each Phase for user review.
-**CRITICAL**: If ${input:taskStop:false} is true, you WILL stop after each Task for user review.
+**CRITICAL**: If <phaseStop: true> is true, you WILL stop after each Phase for user review.
+**CRITICAL**: If <taskStop: false> is true, you WILL stop after each Task for user review.
 
 ### Step 3: Cleanup
 

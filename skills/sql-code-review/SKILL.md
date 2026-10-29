@@ -14,7 +14,7 @@ status: draft
 
 # SQL Code Review
 
-Perform a thorough SQL code review of ${selection} (or entire project if no selection) focusing on security, performance, maintainability, and database best practices.
+Perform a thorough SQL code review of <selected-code> (or entire project if no selection) focusing on security, performance, maintainability, and database best practices.
 
 ## 🔒 Security Analysis
 

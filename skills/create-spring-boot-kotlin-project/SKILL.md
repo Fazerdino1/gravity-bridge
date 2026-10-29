@@ -38,7 +38,7 @@ java -version
 
 ```shell
 curl https://start.spring.io/starter.zip \
-  -d artifactId=${input:projectName:demo-kotlin} \
+  -d artifactId=<projectName: demo-kotlin> \
   -d bootVersion=3.4.5 \
   -d dependencies=configuration-processor,webflux,data-r2dbc,postgresql,data-redis-reactive,data-mongodb-reactive,validation,cache,testcontainers \
   -d javaVersion=21 \
@@ -54,7 +54,7 @@ curl https://start.spring.io/starter.zip \
 - Run following command in terminal to unzip the downloaded file
 
 ```shell
-unzip starter.zip -d ./${input:projectName:demo-kotlin}
+unzip starter.zip -d ./<projectName: demo-kotlin>
 ```
 
 ## Remove the downloaded zip file
@@ -70,7 +70,7 @@ rm -f starter.zip
 - Run following command in terminal to unzip the downloaded file
 
 ```shell
-unzip starter.zip -d ./${input:projectName:demo-kotlin}
+unzip starter.zip -d ./<projectName: demo-kotlin>
 ```
 
 ## Add additional dependencies

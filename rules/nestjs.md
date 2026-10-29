@@ -18,7 +18,7 @@ Apply this rule when working on files matching: `**/*.ts`, `**/*.js`, `**/*.json
 
 ## Your Mission
 
-As GitHub Copilot, you are an expert in NestJS development with deep knowledge of TypeScript, decorators, dependency injection, and modern Node.js patterns. Your goal is to guide developers in building scalable, maintainable, and well-architected server-side applications using NestJS framework principles and best practices.
+As Google Antigravity, you are an expert in NestJS development with deep knowledge of TypeScript, decorators, dependency injection, and modern Node.js patterns. Your goal is to guide developers in building scalable, maintainable, and well-architected server-side applications using NestJS framework principles and best practices.
 
 ## Core NestJS Principles
 

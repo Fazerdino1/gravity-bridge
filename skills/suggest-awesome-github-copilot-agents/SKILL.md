@@ -1,6 +1,6 @@
 ---
 name: suggest-awesome-github-copilot-agents
-description: Suggest relevant GitHub Copilot Custom Agents files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing custom agents in this repository, and identifying outdated agents that need updates.
+description: Suggest relevant Google Antigravity Custom Agents files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing custom agents in this repository, and identifying outdated agents that need updates.
 source_url: https://github.com/github/awesome-copilot
 source_path: skills/suggest-awesome-github-copilot-agents/SKILL.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -12,14 +12,14 @@ converter_version: 0.1.0
 status: draft
 ---
 
-# Suggest Awesome GitHub Copilot Custom Agents
+# Suggest Awesome Google Antigravity Custom Agents
 
 Analyze current repository context and suggest relevant Custom Agents files from the [GitHub awesome-copilot repository](https://github.com/github/awesome-copilot/blob/main/docs/README.agents.md) that are not already available in this repository. Custom Agent files are located in the [agents](https://github.com/github/awesome-copilot/tree/main/agents) folder of the awesome-copilot repository.
 
 ## Process
 
 1. **Fetch Available Custom Agents**: Extract Custom Agents list and descriptions from [awesome-copilot README.agents.md](https://github.com/github/awesome-copilot/blob/main/docs/README.agents.md). Must use `fetch` tool.
-2. **Scan Local Custom Agents**: Discover existing custom agent files in `.github/agents/` folder
+2. **Scan Local Custom Agents**: Discover existing custom agent files in `.agents/skills/` folder
 3. **Extract Descriptions**: Read front matter from local custom agent files to get descriptions
 4. **Fetch Remote Versions**: For each local agent, fetch the corresponding version from awesome-copilot repository using raw GitHub URLs (e.g., `https://raw.githubusercontent.com/github/awesome-copilot/main/agents/<filename>`)
 5. **Compare Versions**: Compare local agent content with remote versions to identify:
@@ -33,7 +33,7 @@ Analyze current repository context and suggest relevant Custom Agents files from
 10. **Output**: Provide structured table with suggestions, descriptions, and links to both awesome-copilot custom agents and similar local custom agents
     **AWAIT** user request to proceed with installation or updates of specific custom agents. DO NOT INSTALL OR UPDATE UNLESS DIRECTED TO DO SO.
 11. **Download/Update Assets**: For requested agents, automatically:
-    - Download new agents to `.github/agents/` folder
+    - Download new agents to `.agents/skills/` folder
     - Update outdated agents by replacing with latest version from awesome-copilot
     - Do NOT adjust content of the files
     - Use `#fetch` tool to download assets, but may use `curl` using `#runInTerminal` tool to ensure all content is retrieved
@@ -67,7 +67,7 @@ Display analysis results in structured table comparing awesome-copilot custom ag
 
 ## Local Agent Discovery Process
 
-1. List all `*.agent.md` files in `.github/agents/` directory
+1. List all `*.agent.md` files in `.agents/skills/` directory
 2. For each discovered file, read front matter to extract `description`
 3. Build comprehensive inventory of existing agents
 4. Use this inventory to avoid suggesting duplicates
@@ -88,7 +88,7 @@ Display analysis results in structured table comparing awesome-copilot custom ag
 ## Requirements
 
 - Use `githubRepo` tool to get content from awesome-copilot repository agents folder
-- Scan local file system for existing agents in `.github/agents/` directory
+- Scan local file system for existing agents in `.agents/skills/` directory
 - Read YAML front matter from local agent files to extract descriptions
 - Compare local agents with remote versions to detect outdated agents
 - Compare against existing agents in this repository to avoid duplicates
@@ -112,4 +112,4 @@ When outdated agents are identified:
 2. Document specific differences in the "Suggestion Rationale" column
 3. Provide recommendation to update with key changes noted
 4. When user requests update, replace entire local file with remote version
-5. Preserve file location in `.github/agents/` directory
+5. Preserve file location in `.agents/skills/` directory

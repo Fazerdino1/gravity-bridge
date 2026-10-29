@@ -1,6 +1,6 @@
 ---
 trigger: model_decision
-description: Guidelines for creating high-quality Agent Skills for GitHub Copilot. Applies to files matching **/skills/**/SKILL.md.
+description: Guidelines for creating high-quality Agent Skills for Google Antigravity. Applies to files matching **/skills/**/SKILL.md.
 source_url: https://github.com/github/awesome-copilot
 source_path: instructions/agent-skills.instructions.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -16,7 +16,7 @@ Apply this rule when working on files matching: `**/skills/**/SKILL.md`.
 
 # Agent Skills File Guidelines
 
-Instructions for creating effective and portable Agent Skills that enhance GitHub Copilot with specialized capabilities, workflows, and bundled resources.
+Instructions for creating effective and portable Agent Skills that enhance Google Antigravity with specialized capabilities, workflows, and bundled resources.
 
 ## What Are Agent Skills?
 
@@ -34,7 +34,7 @@ Skills are stored in specific locations:
 
 | Location | Scope | Recommendation |
 |----------|-------|----------------|
-| `.github/skills/<skill-name>/` | Project/repository | Recommended for project skills |
+| `.agents/skills/<skill-name>/` | Project/repository | Recommended for project skills |
 | `.claude/skills/<skill-name>/` | Project/repository | Legacy, for backward compatibility |
 | `~/.copilot/skills/<skill-name>/` | Personal (user-wide) | Recommended for personal skills |
 | `~/.agents/skills/<skill-name>/` | Personal (user-wide) | Alternative supported personal skills directory |
@@ -179,7 +179,7 @@ Skills can include additional files that Copilot accesses on-demand:
 ### Directory Structure Example
 
 ```
-.github/skills/my-skill/
+.agents/skills/my-skill/
 ├── SKILL.md              # Required: Main instructions
 ├── LICENSE.txt           # Recommended: License terms (Apache 2.0 typical)
 ├── scripts/              # Optional: Executable automation

@@ -14,7 +14,7 @@ status: draft
 
 # PostgreSQL Code Review Assistant
 
-Expert PostgreSQL code review for ${selection} (or entire project if no selection). Focus on PostgreSQL-specific best practices, anti-patterns, and quality standards that are unique to PostgreSQL.
+Expert PostgreSQL code review for <selected-code> (or entire project if no selection). Focus on PostgreSQL-specific best practices, anti-patterns, and quality standards that are unique to PostgreSQL.
 
 ## 🎯 PostgreSQL-Specific Review Areas
 

@@ -18,9 +18,9 @@ You are a CentOS Linux expert. Diagnose and resolve the user’s issue with RHEL
 
 ## Inputs
 
-- `${input:CentOSVersion}` (optional)
-- `${input:ProblemSummary}`
-- `${input:Constraints}` (optional)
+- `<CentOSVersion>` (optional)
+- `<ProblemSummary>`
+- `<Constraints>` (optional)
 
 ## Instructions
 

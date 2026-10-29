@@ -720,7 +720,7 @@ keeps each phase honest and reversible (generic across any ecosystem):
 - **Keep the executable docs alive too (H8).** The living-plan discipline is not
   only the plan file. Any phase that changes **topology** — module/reactor
   membership, removed services, renamed branches, changed commands, new/removed
-  endpoints — must update `.github/copilot-instructions.md`, the `README`, and any
+  endpoints — must update `GEMINI.md (or AGENTS.md)`, the `README`, and any
   module/topology list **in the same PR**. Treat those doc updates as part of the
   phase's Definition of Done, not a follow-up — a stale "quarantined module" list
   or a hard-coded old-branch link actively misleads the next agent/human.
@@ -728,12 +728,12 @@ keeps each phase honest and reversible (generic across any ecosystem):
   against `references/migration-hazards.md` (H1–H8) and fold the fixes into tasks
   and exit criteria before writing code. Record the cleared checklist in the
   phase's "Decisions made".
-- **Emit editable instructions.** Produce a `.github/copilot-instructions.md`
+- **Emit editable instructions.** Produce a `GEMINI.md (or AGENTS.md)`
   (create the `.github/` directory if needed) from the template at
   `references/copilot-instructions.template.md` — a commands table plus the
   regime-aware phase-gate and branch/PR rules — so the executing agent/human has
-  the canonical commands and gates in the location GitHub Copilot auto-loads. The
-  user edits it to their own gates. If a `.github/copilot-instructions.md` already
+  the canonical commands and gates in the location Google Antigravity auto-loads. The
+  user edits it to their own gates. If a `GEMINI.md (or AGENTS.md)` already
   exists, do not overwrite it — merge the commands/gating/branch sections in, or
   write the generated file alongside as
   `.github/copilot-instructions.modernization.md` and tell the user to merge.
@@ -792,12 +792,12 @@ Produce a primary Markdown file named `MODERNIZATION_PLAN.md` with:
    platform-configuration handoffs the agent cannot perform (e.g. enabling
    required status checks / branch protection to make CI an enforced gate)
 
-Also emit a companion **`.github/copilot-instructions.md`** (the path GitHub
+Also emit a companion **`GEMINI.md (or AGENTS.md)`** (the path GitHub
 Copilot auto-loads; create `.github/` if absent) from
 `references/copilot-instructions.template.md`, populated with the project's
 canonical commands and phase-gating / branch rules, for whoever executes the
 plan to edit and adopt. Never overwrite an existing
-`.github/copilot-instructions.md` — merge into it or write a sibling
+`GEMINI.md (or AGENTS.md)` — merge into it or write a sibling
 `.github/copilot-instructions.modernization.md` and flag it for the user.
 
 ### Conventions

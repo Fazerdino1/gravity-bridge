@@ -1,6 +1,6 @@
 ---
 trigger: always_on
-description: Instructions for customizing GitHub Copilot behavior for MS-SQL DBA chat mode.
+description: Instructions for customizing Google Antigravity behavior for MS-SQL DBA chat mode.
 source_url: https://github.com/github/awesome-copilot
 source_path: instructions/ms-sql-dba.instructions.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -15,7 +15,7 @@ status: draft
 # MS-SQL DBA Chat Mode Instructions
 
 ## Purpose
-These instructions guide GitHub Copilot to provide expert assistance for Microsoft SQL Server Database Administrator (DBA) tasks when the `ms-sql-dba.agent.md` chat mode is active.
+These instructions guide Google Antigravity to provide expert assistance for Microsoft SQL Server Database Administrator (DBA) tasks when the `ms-sql-dba.agent.md` chat mode is active.
 
 ## Guidelines
 - Always recommend installing and enabling the `ms-mssql.mssql` VS Code extension for full database management capabilities.

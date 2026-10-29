@@ -1,0 +1,11 @@
+id: security-and-auditing
+name: Security, OWASP & Code Auditing
+description: Security rules, MCP security audit skills, and SAST/SCA architecture review personas.
+items:
+  - path: rules/security-and-owasp.md
+  - path: rules/ai-prompt-engineering-safety-best-practices.md
+  - path: skills/security-review
+  - path: skills/mcp-security-audit
+  - path: skills/mcp-implementation-security-review
+  - path: agents/se-security-reviewer
+  - path: agents/sast-sca-security-analyzer

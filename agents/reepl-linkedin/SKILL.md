@@ -1,6 +1,6 @@
 ---
 name: reepl-linkedin
-description: AI-powered LinkedIn content creation, scheduling, and analytics agent. Create posts, carousels, and manage your LinkedIn presence with GitHub Copilot.
+description: AI-powered LinkedIn content creation, scheduling, and analytics agent. Create posts, carousels, and manage your LinkedIn presence with Google Antigravity.
 source_url: https://github.com/github/awesome-copilot
 source_path: agents/reepl-linkedin.agent.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4

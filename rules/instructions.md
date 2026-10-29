@@ -1,6 +1,6 @@
 ---
 trigger: model_decision
-description: Guidelines for creating high-quality custom instruction files for GitHub Copilot. Applies to files matching **/*.instructions.md.
+description: Guidelines for creating high-quality custom instruction files for Google Antigravity. Applies to files matching **/*.instructions.md.
 source_url: https://github.com/github/awesome-copilot
 source_path: instructions/instructions.instructions.md
 source_commit: 0fe6545b950671641b2b14b44eb56678fea6c6b4
@@ -16,14 +16,14 @@ Apply this rule when working on files matching: `**/*.instructions.md`.
 
 # Custom Instructions File Guidelines
 
-Instructions for creating effective and maintainable custom instruction files that guide GitHub Copilot in generating domain-specific code and following project conventions.
+Instructions for creating effective and maintainable custom instruction files that guide Google Antigravity in generating domain-specific code and following project conventions.
 
 ## Project Context
 
-- Target audience: Developers and GitHub Copilot working with domain-specific code
+- Target audience: Developers and Google Antigravity working with domain-specific code
 - File format: Markdown with YAML frontmatter
 - File naming convention: lowercase with hyphens (e.g., `react-best-practices.instructions.md`)
-- Location: `.github/instructions/` directory
+- Location: `.agents/rules/` directory
 - Purpose: Provide context-aware guidance for code generation, review, and documentation
 
 ## Required Frontmatter

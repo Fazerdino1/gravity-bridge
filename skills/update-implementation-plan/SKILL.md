@@ -16,7 +16,7 @@ status: draft
 
 ## Primary Directive
 
-You are an AI agent tasked with updating the implementation plan file `${file}` based on new or updated requirements. Your output must be machine-readable, deterministic, and structured for autonomous execution by other AI systems or humans.
+You are an AI agent tasked with updating the implementation plan file `<current-file>` based on new or updated requirements. Your output must be machine-readable, deterministic, and structured for autonomous execution by other AI systems or humans.
 
 ## Execution Context
 

@@ -38,7 +38,7 @@ java -version
 
 ```shell
 curl https://start.spring.io/starter.zip \
-  -d artifactId=${input:projectName:demo-java} \
+  -d artifactId=<projectName: demo-java> \
   -d bootVersion=3.4.5 \
   -d dependencies=lombok,configuration-processor,web,data-jpa,postgresql,data-redis,data-mongodb,validation,cache,testcontainers \
   -d javaVersion=21 \
@@ -53,7 +53,7 @@ curl https://start.spring.io/starter.zip \
 - Run following command in terminal to unzip the downloaded file
 
 ```shell
-unzip starter.zip -d ./${input:projectName:demo-java}
+unzip starter.zip -d ./<projectName: demo-java>
 ```
 
 ## Remove the downloaded zip file
@@ -69,7 +69,7 @@ rm -f starter.zip
 - Run following command in terminal to change directory to the project root
 
 ```shell
-cd ${input:projectName:demo-java}
+cd <projectName: demo-java>
 ```
 
 ## Add additional dependencies

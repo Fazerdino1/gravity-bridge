@@ -1,0 +1,9 @@
+id: git-and-docs-essentials
+name: Git, Documentation & Planning Essentials
+description: Essential reviewed workflows for Conventional Commits, README generation, code review, CommonMark Markdown, and implementation planning.
+items:
+  - path: skills/conventional-commit
+  - path: skills/create-readme
+  - path: skills/review-and-refactor
+  - path: rules/markdown.md
+  - path: agents/implementation-plan

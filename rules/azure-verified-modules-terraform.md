@@ -20,9 +20,9 @@ Apply this rule when working on files matching: `**/*.terraform`, `**/*.tf`, `**
 
 Azure Verified Modules (AVM) are pre-built, tested, and validated Terraform and Bicep modules that follow Azure best practices. Use these modules to create, update, or review Azure Infrastructure as Code (IaC) with confidence.
 
-## Custom Instructions for GitHub Copilot Agents
+## Custom Instructions for Google Antigravity Agents
 
-**IMPORTANT**: When GitHub Copilot Agent or GitHub Copilot Coding Agent is working on this repository, the following local unit tests MUST be executed to comply with PR checks. Failure to run these tests will cause PR validation failures:
+**IMPORTANT**: When Google Antigravity Agent or Google Antigravity Coding Agent is working on this repository, the following local unit tests MUST be executed to comply with PR checks. Failure to run these tests will cause PR validation failures:
 
 ```bash
 ./avm pre-commit
@@ -171,7 +171,7 @@ terraform validate
 - **Service Documentation**: Use `microsoft.docs.mcp` tool for Azure service-specific guidance
 - **Schema Information**: Use `azure_get_schema_for_Bicep` for Bicep resources
 
-### GitHub Copilot Integration
+### Google Antigravity Integration
 
 When working with AVM repositories:
 

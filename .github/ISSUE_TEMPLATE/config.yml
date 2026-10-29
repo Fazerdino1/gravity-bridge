@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 🌐 Gravity Bridge Web Hub & Interactive Catalog
+    url: https://fazerdino1.github.io/gravity-bridge/
+    about: Browse all 855 Antigravity skills, rules, and agent personas, read the multilingual Code of Conduct, and view the FAQ.
+  - name: 🔒 Report a Security or Code of Conduct Issue Privately
+    url: https://github.com/Fazerdino1/gravity-bridge/security/advisories/new
+    about: Privately report a security vulnerability or Code of Conduct violation.

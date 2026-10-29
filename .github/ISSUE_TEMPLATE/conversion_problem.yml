@@ -12,7 +12,8 @@ body:
   - type: input
     id: source
     attributes:
-      label: Source path in awesome-copilot
+      label: Original source path (if converted)
+      placeholder: skills/example/SKILL.md
   - type: textarea
     id: problem
     attributes:

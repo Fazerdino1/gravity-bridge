@@ -4,13 +4,46 @@
 //   plugins/<id>/
 //   ├── plugin.json
 //   ├── README.md
+//   ├── references/<rule>.md (full rule documentation for on-demand reading)
 //   ├── skills/<skill>/SKILL.md (+ extra files)
-//   └── rules/AGENTS.md (combined rules with no frontmatter, per Antigravity plugin spec)
+//   └── rules/AGENTS.md (compact rules summary <= 3,500 bytes to stay under Antigravity's 20k-token rules budget)
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { basename, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import YAML from 'yaml';
 import { parseFrontmatter } from './lib/frontmatter.js';
+
+const MAX_RULE_SUMMARY_CHARS = 700;
+
+function summarizeRuleBody(body, ruleSlug) {
+  const lines = body
+    .split('\n')
+    .map((l) => l.trim())
+    .filter(Boolean);
+  const picked = [];
+  let total = 0;
+
+  for (const line of lines) {
+    if (line.startsWith('```') || line.startsWith('|')) continue;
+    const isHeading = /^#{1,3}\s+/.test(line);
+    const isBullet = /^[-*]\s+/.test(line);
+    const isApplyHint = line.startsWith('Apply this rule');
+    if (isHeading || isBullet || isApplyHint) {
+      if (total + line.length + 1 > MAX_RULE_SUMMARY_CHARS) break;
+      picked.push(line);
+      total += line.length + 1;
+    }
+  }
+
+  if (!picked.length) {
+    picked.push(body.slice(0, MAX_RULE_SUMMARY_CHARS).trim());
+  }
+
+  picked.push(
+    `> Full reference inside this plugin: \`references/${ruleSlug}.md\` (read on demand when working on matching files).`,
+  );
+  return picked.join('\n');
+}
 
 export function buildPlugins(root = resolve('.')) {
   const colDir = join(root, 'collections');
@@ -32,8 +65,12 @@ export function buildPlugins(root = resolve('.')) {
       const srcPath = join(root, item.path);
       if (!existsSync(srcPath)) continue;
       if (item.path.startsWith('rules/')) {
+        const ruleSlug = basename(item.path, '.md');
         const { body } = parseFrontmatter(readFileSync(srcPath, 'utf8'));
-        ruleBlocks.push(`<!-- Source: ${item.path} -->\n${body.trim()}`);
+        const refsDir = join(pluginDir, 'references');
+        mkdirSync(refsDir, { recursive: true });
+        writeFileSync(join(refsDir, `${ruleSlug}.md`), `${body.trim()}\n`);
+        ruleBlocks.push(`<!-- Source: ${item.path} -->\n${summarizeRuleBody(body.trim(), ruleSlug)}`);
       } else if (item.path.startsWith('skills/') || item.path.startsWith('agents/')) {
         const sName = basename(item.path);
         const destSkillDir = join(pluginDir, 'skills', sName);

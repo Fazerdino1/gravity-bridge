@@ -5,7 +5,7 @@
 //   node scripts/cli.js add <name> [--dest .] [--global]
 //   node scripts/cli.js add --collection <id> [--dest .]
 //   node scripts/cli.js add --plugin <id>
-import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { basename, dirname, join, resolve } from 'node:path';
 import { parseArgs } from 'node:util';
@@ -116,6 +116,7 @@ export function runCli(argv = process.argv.slice(2), root = REPO_ROOT) {
         return 1;
       }
       const target = join(homedir(), '.gemini', 'config', 'plugins', id);
+      rmSync(target, { recursive: true, force: true });
       mkdirSync(target, { recursive: true });
       cpSync(srcPlugin, target, { recursive: true });
       console.log(`Installed plugin ${id} → ${target} (restart Antigravity to activate)`);
